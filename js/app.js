@@ -103,6 +103,28 @@
     revealables.forEach(function (el) {
       observer.observe(el);
     });
+
+    /* Safety net: the loading overlay can sit above the page while the
+       observer initialises. Once everything has loaded, force-reveal any
+       element that is already within (or above) the viewport so the hero
+       and other above-the-fold content can never stay stuck at opacity 0. */
+    var revealVisible = function () {
+      revealables.forEach(function (el) {
+        if (el.classList.contains("is-visible")) return;
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.92) {
+          el.classList.add("is-visible");
+          observer.unobserve(el);
+        }
+      });
+    };
+    if (document.readyState === "complete") {
+      window.setTimeout(revealVisible, 200);
+    } else {
+      window.addEventListener("load", function () {
+        window.setTimeout(revealVisible, 200);
+      });
+    }
   }
 })();
 
@@ -352,6 +374,10 @@
       });
       singleState[group] = el.getAttribute("data-value");
       refreshRequirements();
+      // Single-choice steps marked [data-advance] auto-submit on selection.
+      if (el.closest("[data-advance]")) {
+        window.setTimeout(goNext, reduce ? 0 : 280);
+      }
     });
   });
 
