@@ -4,20 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#050505" />
-  <title>CareerOS — Your career, unified and verified.</title>
-  <meta name="description" content="CareerOS connects GitHub, LeetCode, GeeksforGeeks, LinkedIn and more into one verified professional identity — your career operating system." />
+  <title>Create Your CareerOS — Onboarding</title>
+  <meta name="description" content="Set up your CareerOS — a single professional operating system for your projects, coding profiles, achievements, certifications and career progress." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
-<body>
-  <!-- NAVBAR -->
-  <header class="nav" id="nav">
-    <div class="container nav__inner">
-      <a class="brand" href="index.html" aria-label="CareerOS home">
+<body data-google-redirect="../dashboard.html">
+  <!-- Architectural background (matches homepage) -->
+  <div class="ob-bg" aria-hidden="true">
+    <div class="ob-bg__glow ob-bg__glow--1"></div>
+    <div class="ob-bg__glow ob-bg__glow--2"></div>
+    <div class="ob-bg__grid"></div>
+    <div class="ob-bg__beam"></div>
+  </div>
+
+  <!-- TOP BAR: brand + progress -->
+  <header class="ob-top">
+    <div class="ob-top__inner">
+      <button class="ob-back" id="obBack" type="button" aria-label="Go back" hidden>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 5 L8 12 L15 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <a class="brand" href="../index.html" aria-label="CareerOS home">
         <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
@@ -25,207 +39,229 @@
         <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
       </a>
 
-      <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="platform.html" class="nav__link">Platform</a>
-        <a href="resume.html" class="nav__link">Resume</a>
-        <a href="about.html" class="nav__link">About</a>
-        <a href="signin.html" class="nav__link nav__signin">Sign In</a>
-        <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
-      </nav>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="ob-steps" id="obSteps" aria-hidden="true"></div>
     </div>
+    <div class="ob-progress"><span class="ob-progress__fill" id="obProgressFill"></span></div>
   </header>
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="top">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__photo"></div>
-        <div class="hero__glow hero__glow--1"></div>
-        <div class="hero__glow hero__glow--2"></div>
-        <div class="hero__grid"></div>
-        <div class="hero__beam"></div>
+  <main class="ob-main" id="obMain">
+
+    <!-- STEP 1 — WELCOME -->
+    <section class="ob-step is-active" data-step="1" aria-labelledby="s1-title">
+      <div class="ob-step__inner ob-welcome">
+        <span class="eyebrow">Welcome to CareerOS</span>
+        <h1 class="ob-h1" id="s1-title">Create Your CareerOS</h1>
+        <p class="ob-sub">Build your professional identity from the work you've already done.</p>
+        <p class="ob-desc">Connect the platforms where your achievements already exist.</p>
+
+        <div class="ob-welcome__actions">
+          <button class="btn btn--primary btn--lg ob-oauth" type="button" data-google-connect>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ob-oauth__icon">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.65l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+            </svg>
+            Continue with Google
+          </button>
+          <button class="btn btn--ghost btn--lg ob-oauth" type="button" data-next>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="ob-oauth__icon">
+              <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/>
+            </svg>
+            Continue with GitHub
+          </button>
+        </div>
+        <p class="ob-fineprint">By continuing you agree to the CareerOS Terms &amp; Privacy Policy.</p>
       </div>
-      <div class="container">
-        <div class="hero__inner reveal">
-          <span class="eyebrow">Your professional operating system</span>
-          <h1 class="hero__title">Your career,<br /><span class="hero__title-accent">unified and verified.</span></h1>
-          <p class="hero__desc">
-            CareerOS pulls the work you've already done — across every platform —
-            into a single, proof-backed professional identity. No manual updates.
-            No inflated portfolios. Just verified progress.
-          </p>
-          <div class="hero__actions">
-            <a href="signup.html" class="btn btn--primary btn--lg">Get Started — it's free</a>
-            <a href="platform.html" class="btn btn--ghost btn--lg">See how it works</a>
-          </div>
+    </section>
+
+    <!-- STEP 2 — USER TYPE -->
+    <section class="ob-step" data-step="2" aria-labelledby="s2-title" hidden>
+      <div class="ob-step__inner">
+        <span class="ob-kicker">Step 2</span>
+        <h2 class="ob-h2" id="s2-title">What best describes you?</h2>
+        <p class="ob-sub">We'll tailor your CareerOS to fit where you are right now.</p>
+
+        <div class="ob-cards ob-cards--type" role="radiogroup" aria-label="User type">
+          <button class="ob-card" type="button" role="radio" aria-checked="false" data-single="userType" data-value="Student">
+            <span class="ob-card__icon" aria-hidden="true">🎓</span>
+            <span class="ob-card__title">Student</span>
+            <span class="ob-card__desc">Learning, building skills and projects.</span>
+          </button>
+          <button class="ob-card" type="button" role="radio" aria-checked="false" data-single="userType" data-value="Job Seeker">
+            <span class="ob-card__icon" aria-hidden="true">🔍</span>
+            <span class="ob-card__title">Job Seeker</span>
+            <span class="ob-card__desc">Actively looking for the next role.</span>
+          </button>
+          <button class="ob-card" type="button" role="radio" aria-checked="false" data-single="userType" data-value="Developer">
+            <span class="ob-card__icon" aria-hidden="true">⌨️</span>
+            <span class="ob-card__title">Developer</span>
+            <span class="ob-card__desc">Shipping code and solving problems.</span>
+          </button>
+          <button class="ob-card" type="button" role="radio" aria-checked="false" data-single="userType" data-value="Professional">
+            <span class="ob-card__icon" aria-hidden="true">💼</span>
+            <span class="ob-card__title">Professional</span>
+            <span class="ob-card__desc">Growing an established career.</span>
+          </button>
+        </div>
+
+        <div class="ob-actions">
+          <button class="btn btn--primary btn--lg ob-continue" type="button" data-next data-requires="userType" disabled>Continue</button>
         </div>
       </div>
     </section>
 
-    <!-- INTEGRATIONS MARQUEE -->
-    <section class="section integrations" id="integrations">
-      <div class="container">
-        <header class="section__head reveal">
-          <span class="section__kicker">Connected ecosystem</span>
-          <h2 class="section__title">Everything your career touches, in one place.</h2>
-          <p class="section__lede">
-            CareerOS plugs into the platforms where your achievements already live —
-            and dozens more. Connect once, stay in sync forever.
-          </p>
-        </header>
-      </div>
+    <!-- STEP 3 — CONNECT YOUR ECOSYSTEM -->
+    <section class="ob-step" data-step="3" aria-labelledby="s3-title" hidden>
+      <div class="ob-step__inner">
+        <span class="ob-kicker">Step 3</span>
+        <h2 class="ob-h2" id="s3-title">Connect Your Ecosystem</h2>
+        <p class="ob-sub">Import your achievements automatically.</p>
 
-      <div class="marquee reveal" aria-label="Supported integrations" role="img">
-      <div class="marquee reveal" aria-label="Supported integrations" role="img">
-        <div class="marquee__row">
-          <div class="marquee__track">
-            <span class="int-tile" aria-label="GitHub" title="GitHub"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></span>
-            <span class="int-tile" aria-label="GitLab" title="GitLab"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.6 9.6l-.03-.08-3.26-8.5a.85.85 0 0 0-.84-.54.87.87 0 0 0-.5.18.9.9 0 0 0-.3.46l-2.2 6.73H7.53L5.32 1.12a.86.86 0 0 0-.3-.46.87.87 0 0 0-1.34.36L.42 9.52l-.03.08a6.05 6.05 0 0 0 2.01 7l.01.01.03.02 4.96 3.72 2.46 1.86 1.5 1.13a1 1 0 0 0 1.22 0l1.5-1.13 2.46-1.86 4.99-3.74.01-.01a6.05 6.05 0 0 0 2.01-7z"/></svg></span>
-            <span class="int-tile" aria-label="LeetCode" title="LeetCode"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg></span>
-            <span class="int-tile" aria-label="GeeksforGeeks" title="GeeksforGeeks"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg></span>
-            <span class="int-tile" aria-label="HackerRank" title="HackerRank"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0Zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V7.057c0-.141-.116-.258-.258-.258H8.196c-.141 0-.258.115-.258.258v9.886c0 .143.115.258.258.258h1.509c.142 0 .258-.115.258-.258v-3.967h4.074v3.967c0 .143.116.258.258.258h1.509c.143 0 .258-.115.258-.258V7.057c0-.141-.115-.258-.258-.258h-1.509z"/></svg></span>
-            <span class="int-tile" aria-label="Codeforces" title="Codeforces"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="2.5" y="9" width="4.5" height="11" rx="1.4"/><rect x="9.75" y="4" width="4.5" height="16" rx="1.4"/><rect x="17" y="12" width="4.5" height="8" rx="1.4"/></svg></span>
-            <span class="int-tile" aria-label="CodeChef" title="CodeChef"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 20.5h10V19H7v1.5zM12 3c-1.3 0-2.46.62-3.2 1.58A3.5 3.5 0 0 0 4 8.1c0 1.5.95 2.78 2.28 3.28L7 17.5h10l.72-6.12A3.5 3.5 0 0 0 20 8.1a3.5 3.5 0 0 0-4.8-3.52A3.99 3.99 0 0 0 12 3z"/></svg></span>
-            <span class="int-tile" aria-label="Kaggle" title="Kaggle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.33z"/></svg></span>
-            <span class="int-tile" aria-label="Stack Overflow" title="Stack Overflow"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154Z"/></svg></span>
-            <!-- duplicate for seamless loop -->
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.6 9.6l-.03-.08-3.26-8.5a.85.85 0 0 0-.84-.54.87.87 0 0 0-.5.18.9.9 0 0 0-.3.46l-2.2 6.73H7.53L5.32 1.12a.86.86 0 0 0-.3-.46.87.87 0 0 0-1.34.36L.42 9.52l-.03.08a6.05 6.05 0 0 0 2.01 7l.01.01.03.02 4.96 3.72 2.46 1.86 1.5 1.13a1 1 0 0 0 1.22 0l1.5-1.13 2.46-1.86 4.99-3.74.01-.01a6.05 6.05 0 0 0 2.01-7z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c1.285 0 9.75 4.886 10.392 6 .645 1.115.645 10.885 0 12S13.287 24 12 24s-9.75-4.885-10.395-6c-.641-1.115-.641-10.885 0-12C2.25 4.886 10.715 0 12 0Zm2.295 6.799c-.141 0-.258.115-.258.258v3.875H9.963V7.057c0-.141-.116-.258-.258-.258H8.196c-.141 0-.258.115-.258.258v9.886c0 .143.115.258.258.258h1.509c.142 0 .258-.115.258-.258v-3.967h4.074v3.967c0 .143.116.258.258.258h1.509c.143 0 .258-.115.258-.258V7.057c0-.141-.115-.258-.258-.258h-1.509z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="2.5" y="9" width="4.5" height="11" rx="1.4"/><rect x="9.75" y="4" width="4.5" height="16" rx="1.4"/><rect x="17" y="12" width="4.5" height="8" rx="1.4"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 20.5h10V19H7v1.5zM12 3c-1.3 0-2.46.62-3.2 1.58A3.5 3.5 0 0 0 4 8.1c0 1.5.95 2.78 2.28 3.28L7 17.5h10l.72-6.12A3.5 3.5 0 0 0 20 8.1a3.5 3.5 0 0 0-4.8-3.52A3.99 3.99 0 0 0 12 3z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.825 23.859c-.022.092-.117.141-.281.141h-3.139c-.187 0-.351-.082-.492-.248l-5.178-6.589-1.448 1.374v5.111c0 .235-.117.352-.351.352H5.505c-.236 0-.354-.117-.354-.352V.353c0-.233.118-.353.354-.353h2.431c.234 0 .351.12.351.353v14.343l6.203-6.272c.165-.165.33-.246.495-.246h3.239c.144 0 .236.06.285.18.046.149.034.255-.036.315l-6.555 6.344 6.836 8.507c.095.104.117.208.07.33z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.725 0l-1.72 1.277 6.39 8.588 1.716-1.277L15.725 0zm-3.94 3.418l-1.369 1.644 8.225 6.85 1.369-1.644-8.225-6.85zm-3.15 4.465l-.905 1.94 9.702 4.517.904-1.94-9.701-4.517zm-1.85 4.86l-.44 2.093 10.473 2.201.44-2.092-10.473-2.203zM1.89 15.47V24h19.19v-8.53h-2.133v6.397H4.021v-6.396H1.89zm4.265 2.133v2.13h10.66v-2.13H6.154Z"/></svg></span>
-          </div>
-        </div>
+        <ul class="ob-connect" aria-label="Platforms to connect">
+          <li class="ob-connect__row" data-connect="GitHub">
+            <span class="ob-connect__brand">
+              <span class="ob-connect__logo ob-connect__logo--gh" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              </span>
+              <span class="ob-connect__meta">
+                <span class="ob-connect__name">GitHub</span>
+                <span class="ob-connect__hint">Repositories, commits &amp; contributions</span>
+              </span>
+            </span>
+            <button class="btn btn--ghost btn--sm ob-connect__btn" type="button">Connect</button>
+          </li>
+          <li class="ob-connect__row" data-connect="LeetCode">
+            <span class="ob-connect__brand">
+              <span class="ob-connect__logo ob-connect__logo--lc" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14.6 3 7.5 10.2a2.4 2.4 0 0 0 0 3.4L14.6 21"/><path d="M9.5 12.4h9.5"/></svg>
+              </span>
+              <span class="ob-connect__meta">
+                <span class="ob-connect__name">LeetCode</span>
+                <span class="ob-connect__hint">Problems solved &amp; contest rating</span>
+              </span>
+            </span>
+            <button class="btn btn--ghost btn--sm ob-connect__btn" type="button">Connect</button>
+          </li>
+          <li class="ob-connect__row" data-connect="GeeksforGeeks">
+            <span class="ob-connect__brand">
+              <span class="ob-connect__logo ob-connect__logo--gfg" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg>
+              </span>
+              <span class="ob-connect__meta">
+                <span class="ob-connect__name">GeeksforGeeks</span>
+                <span class="ob-connect__hint">Practice stats &amp; articles</span>
+              </span>
+            </span>
+            <button class="btn btn--ghost btn--sm ob-connect__btn" type="button">Connect</button>
+          </li>
+          <li class="ob-connect__row" data-connect="LinkedIn">
+            <span class="ob-connect__brand">
+              <span class="ob-connect__logo ob-connect__logo--in" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg>
+              </span>
+              <span class="ob-connect__meta">
+                <span class="ob-connect__name">LinkedIn</span>
+                <span class="ob-connect__hint">Experience, education &amp; network</span>
+              </span>
+            </span>
+            <button class="btn btn--ghost btn--sm ob-connect__btn" type="button">Connect</button>
+          </li>
+        </ul>
 
-        <div class="marquee__row marquee__row--reverse">
-          <div class="marquee__track">
-            <span class="int-tile" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></span>
-            <span class="int-tile" aria-label="Google" title="Google"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></span>
-            <span class="int-tile" aria-label="Coursera" title="Coursera"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 6.94A5.06 5.06 0 1 0 12 17.06 5.06 5.06 0 0 0 12 6.94z"/></svg></span>
-            <span class="int-tile" aria-label="Udemy" title="Udemy"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L5.81 3.573v3.574L12 3.573l6.19 3.574V3.573zM5.81 10.148v8.144c0 1.85.589 3.243 1.741 4.234C8.703 23.518 10.177 24 11.973 24s3.269-.482 4.448-1.474c1.179-.991 1.768-2.439 1.768-4.314v-8.064h-3.242v7.85c0 2.036-1.509 3.055-2.974 3.055-1.465 0-2.92-1.018-2.92-3.055v-7.85z"/></svg></span>
-            <span class="int-tile" aria-label="Credly" title="Credly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.3 8 11 4.6-2.7 8-6 8-11V5z"/><path d="M9 11.5 11.2 14 15.5 9"/></svg></span>
-            <span class="int-tile" aria-label="Dev.to" title="Dev.to"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zm8.56 9.62c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.56zm5.09-5.47h-2.47v1.69h1.5v1.16h-1.5v1.7h2.47v1.16h-2.81c-.65 0-.92-.21-.92-.84V9.42c0-.62.27-.83.92-.83h2.81v1.16zm4.68 5.36c-.17.43-.52.69-.93.69-.41 0-.76-.26-.93-.69-.12-.31-.83-3.41-1.5-6.51l-.05-.22h1.29l1.19 5.43 1.19-5.43h1.29l-.04.22c-.67 3.1-1.38 6.2-1.5 6.51z"/></svg></span>
-            <span class="int-tile" aria-label="Behance" title="Behance"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 4.4v15.2h7.6c1.6 0 2.86-.36 3.76-1.08.9-.72 1.36-1.78 1.36-3.18 0-.86-.2-1.58-.6-2.16-.4-.58-1-.99-1.78-1.23.56-.28.98-.64 1.26-1.08.28-.44.42-.98.42-1.62 0-1.28-.44-2.22-1.3-2.84C9.42 4.71 8.18 4.4 6.56 4.4H0zm15.06 1.5v1.48h5.76V5.9h-5.76zM3.3 6.96h2.78c.66 0 1.16.13 1.5.4.34.27.5.68.5 1.22 0 .56-.17.97-.52 1.24-.34.26-.84.39-1.5.39H3.3V6.96zm15.24 2.04c-1.5 0-2.7.46-3.6 1.38-.9.92-1.34 2.16-1.34 3.72 0 1.62.43 2.87 1.3 3.75.87.88 2.1 1.32 3.68 1.32 1.3 0 2.38-.28 3.24-.86.86-.58 1.42-1.38 1.66-2.4h-2.62c-.12.36-.34.64-.66.84-.32.2-.72.3-1.2.3-.7 0-1.24-.2-1.62-.6-.38-.4-.58-.97-.6-1.7h6.86c.04-.24.06-.5.06-.78 0-1.56-.43-2.8-1.3-3.72-.86-.92-2.04-1.38-3.52-1.38zm-.04 2.04c.62 0 1.1.17 1.46.5.36.34.56.8.6 1.4h-4.18c.06-.6.28-1.06.66-1.4.38-.33.86-.5 1.46-.5z"/></svg></span>
-            <span class="int-tile" aria-label="Dribbble" title="Dribbble"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="10.2"/><path d="M4.4 7.2c3.8 4 9.7 6 15.2 5.4M8.3 2.8c4.2 5.2 6.4 11.6 6.9 18.4M2 13.4c5.3-1.2 11.6 0 15.6 4.3"/></svg></span>
-            <!-- duplicate for seamless loop -->
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92v3.28h7.84c-.24 1.84-.853 3.187-1.787 4.133-1.147 1.147-2.933 2.4-6.053 2.4-4.827 0-8.6-3.893-8.6-8.72s3.773-8.72 8.6-8.72c2.6 0 4.507 1.027 5.907 2.347l2.307-2.307C18.747 1.44 16.133 0 12.48 0 5.867 0 .307 5.387.307 12s5.56 12 12.173 12c3.573 0 6.267-1.173 8.373-3.36 2.16-2.16 2.84-5.213 2.84-7.667 0-.76-.053-1.467-.173-2.053H12.48z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm0 6.94A5.06 5.06 0 1 0 12 17.06 5.06 5.06 0 0 0 12 6.94z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L5.81 3.573v3.574L12 3.573l6.19 3.574V3.573zM5.81 10.148v8.144c0 1.85.589 3.243 1.741 4.234C8.703 23.518 10.177 24 11.973 24s3.269-.482 4.448-1.474c1.179-.991 1.768-2.439 1.768-4.314v-8.064h-3.242v7.85c0 2.036-1.509 3.055-2.974 3.055-1.465 0-2.92-1.018-2.92-3.055v-7.85z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.3 8 11 4.6-2.7 8-6 8-11V5z"/><path d="M9 11.5 11.2 14 15.5 9"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.42 10.05c-.18-.16-.46-.23-.84-.23H6l.02 2.44.04 2.45.56-.02c.41 0 .63-.07.83-.26.24-.24.26-.36.26-2.2 0-1.91-.02-1.96-.29-2.18zM0 4.94v14.12h24V4.94H0zm8.56 9.62c-.44.58-1.06.77-2.53.77H4.71V8.53h1.4c1.67 0 2.16.18 2.6.9.27.43.29.6.32 2.57.05 2.23-.02 2.73-.47 3.56zm5.09-5.47h-2.47v1.69h1.5v1.16h-1.5v1.7h2.47v1.16h-2.81c-.65 0-.92-.21-.92-.84V9.42c0-.62.27-.83.92-.83h2.81v1.16zm4.68 5.36c-.17.43-.52.69-.93.69-.41 0-.76-.26-.93-.69-.12-.31-.83-3.41-1.5-6.51l-.05-.22h1.29l1.19 5.43 1.19-5.43h1.29l-.04.22c-.67 3.1-1.38 6.2-1.5 6.51z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M0 4.4v15.2h7.6c1.6 0 2.86-.36 3.76-1.08.9-.72 1.36-1.78 1.36-3.18 0-.86-.2-1.58-.6-2.16-.4-.58-1-.99-1.78-1.23.56-.28.98-.64 1.26-1.08.28-.44.42-.98.42-1.62 0-1.28-.44-2.22-1.3-2.84C9.42 4.71 8.18 4.4 6.56 4.4H0zm15.06 1.5v1.48h5.76V5.9h-5.76zM3.3 6.96h2.78c.66 0 1.16.13 1.5.4.34.27.5.68.5 1.22 0 .56-.17.97-.52 1.24-.34.26-.84.39-1.5.39H3.3V6.96zm15.24 2.04c-1.5 0-2.7.46-3.6 1.38-.9.92-1.34 2.16-1.34 3.72 0 1.62.43 2.87 1.3 3.75.87.88 2.1 1.32 3.68 1.32 1.3 0 2.38-.28 3.24-.86.86-.58 1.42-1.38 1.66-2.4h-2.62c-.12.36-.34.64-.66.84-.32.2-.72.3-1.2.3-.7 0-1.24-.2-1.62-.6-.38-.4-.58-.97-.6-1.7h6.86c.04-.24.06-.5.06-.78 0-1.56-.43-2.8-1.3-3.72-.86-.92-2.04-1.38-3.52-1.38zm-.04 2.04c.62 0 1.1.17 1.46.5.36.34.56.8.6 1.4h-4.18c.06-.6.28-1.06.66-1.4.38-.33.86-.5 1.46-.5z"/></svg></span>
-            <span class="int-tile" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="10.2"/><path d="M4.4 7.2c3.8 4 9.7 6 15.2 5.4M8.3 2.8c4.2 5.2 6.4 11.6 6.9 18.4M2 13.4c5.3-1.2 11.6 0 15.6 4.3"/></svg></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="container">
-        <div class="integrations__cta reveal">
-        <div class="integrations__cta reveal">
-          <a href="platform.html" class="btn btn--ghost btn--lg">Browse all integrations</a>
+        <div class="ob-actions ob-actions--split">
+          <button class="ob-skip" type="button" data-next>Skip for now</button>
+          <button class="btn btn--primary btn--lg" type="button" data-next>Continue</button>
         </div>
       </div>
     </section>
 
-    <!-- TRUST / VALUE -->
-    <section class="section page-section trust" id="trust">
-      <div class="container">
-        <header class="section__head reveal">
-          <span class="section__kicker">Built on truth</span>
-          <h2 class="section__title">Verified, not performed.</h2>
-          <p class="section__lede">
-            This isn't social media and it isn't another portfolio. It's a
-            professional career operating system — where every claim is backed by proof.
-          </p>
-        </header>
+    <!-- STEP 4 — CAREER SNAPSHOT -->
+    <section class="ob-step" data-step="4" aria-labelledby="s4-title" hidden>
+      <div class="ob-step__inner ob-step__inner--wide">
+        <span class="ob-kicker">Step 4</span>
+        <h2 class="ob-h2" id="s4-title">Tell us about your goals</h2>
+        <p class="ob-sub">A few quick choices so CareerOS can focus on what matters to you.</p>
 
-        <div class="trust__grid">
-          <div class="trust__item reveal">
-            <span class="trust__check">✓</span>
-            <h3>Verified Progress</h3>
-            <p>Activity pulled directly from your connected sources — no manual inflation.</p>
+        <div class="ob-field">
+          <h3 class="ob-field__label">Current status</h3>
+          <div class="ob-chips" role="radiogroup" aria-label="Current status">
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="status" data-value="Student">Student</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="status" data-value="Graduate">Graduate</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="status" data-value="Working Professional">Working Professional</button>
           </div>
-          <div class="trust__item reveal" data-delay="1">
-            <span class="trust__check">✓</span>
-            <h3>Verified Contributions</h3>
-            <p>Real commits, problems and reviews, attributed and time-stamped.</p>
+        </div>
+
+        <div class="ob-field">
+          <h3 class="ob-field__label">Interested domains <span class="ob-field__hint">choose any</span></h3>
+          <div class="ob-chips">
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Software Development">Software Development</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Artificial Intelligence">Artificial Intelligence</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Cybersecurity">Cybersecurity</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Data Science">Data Science</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Cloud Computing">Cloud Computing</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Electronics & Communication">Electronics &amp; Communication</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Product Management">Product Management</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="UI/UX Design">UI/UX Design</button>
           </div>
-          <div class="trust__item reveal" data-delay="2">
-            <span class="trust__check">✓</span>
-            <h3>Verified Achievements</h3>
-            <p>Certifications and milestones that hold up to recruiter scrutiny.</p>
+        </div>
+
+        <div class="ob-field">
+          <h3 class="ob-field__label">Career goal</h3>
+          <div class="ob-chips" role="radiogroup" aria-label="Career goal">
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Dream Company">Dream Company</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Higher Studies">Higher Studies</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Freelancing">Freelancing</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Startup Founder">Startup Founder</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Government Jobs">Government Jobs</button>
           </div>
+        </div>
+
+        <div class="ob-actions">
+          <button class="btn btn--primary btn--lg" type="button" data-next data-build>Continue</button>
         </div>
       </div>
     </section>
 
-    <!-- FINAL CTA -->
-    <section class="section cta" id="cta">
-      <div class="cta__photo" aria-hidden="true"></div>
-      <div class="cta__glow" aria-hidden="true"></div>
-      <div class="container">
-        <div class="cta__inner reveal">
-          <h2 class="cta__title">Start building your verified career identity.</h2>
-          <div class="hero__actions">
-            <a href="signup.html" class="btn btn--primary btn--lg">Create your CareerOS</a>
-            <a href="about.html" class="btn btn--ghost btn--lg">Why CareerOS</a>
-          </div>
+    <!-- STEP 5 — PROFILE CREATION (loading) -->
+    <section class="ob-step ob-step--loading" data-step="5" data-onenter="loading" aria-labelledby="s5-title" hidden>
+      <div class="ob-step__inner ob-loading">
+        <svg class="ob-loading__logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
+        </svg>
+        <h2 class="ob-h2" id="s5-title">Creating your CareerOS…</h2>
+        <p class="ob-loading__msg" id="obLoadingMsg">Importing achievements…</p>
+        <div class="ob-loading__bar"><span class="ob-loading__fill" id="obLoadingFill"></span></div>
+        <div class="ob-loading__pct" id="obLoadingPct">0%</div>
+      </div>
+    </section>
+
+    <!-- STEP 6 — SUCCESS -->
+    <section class="ob-step" data-step="6" aria-labelledby="s6-title" hidden>
+      <div class="ob-step__inner ob-success">
+        <span class="ob-success__badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h2 class="ob-h2" id="s6-title">Welcome to CareerOS</h2>
+        <p class="ob-sub">Your professional journey starts here.</p>
+
+        <ul class="ob-checklist">
+          <li><span class="ob-checklist__tick" aria-hidden="true">✓</span> GitHub Connected</li>
+          <li><span class="ob-checklist__tick" aria-hidden="true">✓</span> LeetCode Connected</li>
+          <li><span class="ob-checklist__tick" aria-hidden="true">✓</span> LinkedIn Connected</li>
+          <li><span class="ob-checklist__tick" aria-hidden="true">✓</span> Career Profile Created</li>
+        </ul>
+
+        <div class="ob-welcome__actions">
+          <a class="btn btn--primary btn--lg" href="../index.html">Enter Dashboard</a>
+          <a class="btn btn--ghost btn--lg" href="../resume.html">Complete Profile</a>
         </div>
       </div>
     </section>
+
   </main>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="brand brand--footer">
-          <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
-          </svg>
-          <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
-        </span>
-        <p class="footer__tagline">Your career, unified and verified.</p>
-        <div class="footer__social">
-          <a href="https://github.com/Sassyurs19" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/sasidhar-munnangi-b58671379" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg>
-          </a>
-        </div>
-        <div class="footer__trust">
-          <span class="footer__trust-label">Works with</span>
-          <ul class="footer__trust-logos" aria-label="Trusted integrations">
-            <li aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></li>
-            <li aria-label="LeetCode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 3 7.5 10.2a2.4 2.4 0 0 0 0 3.4L14.6 21"/><path d="M9.5 12.4h9.5"/></svg></li>
-            <li aria-label="GeeksforGeeks"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg></li>
-            <li aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></li>
-          </ul>
-        </div>
-      </div>
-      <nav class="footer__nav" aria-label="Footer navigation">
-        <span class="footer__nav-title">Explore</span>
-        <a href="platform.html">Platform</a>
-        <a href="resume.html">Resume</a>
-        <a href="about.html">About</a>
-        <a href="mailto:sassyurs19@gmail.com">Contact</a>
-      </nav>
-    </div>
-    <div class="container footer__bottom">
-      <p class="footer__note">© 2026 CareerOS · Progress leaves proof.</p>
-    </div>
-  </footer>
-
-  <script src="js/app.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>

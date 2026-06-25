@@ -2166,3 +2166,94 @@ html { scroll-behavior: smooth; }
   .gh-input { transition: none; }
   .gh-modal__card { transform: none; }
 }
+
+
+
+/* ============================================================
+   GOOGLE SIGN-IN — account chooser + avatar
+   ============================================================ */
+.g-modal__body {
+  margin-top: 4px;
+}
+.g-account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.g-account-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 12px 14px;
+  border: 0;
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+.g-account-row:hover,
+.g-account-row:focus-visible {
+  background: rgba(255, 255, 255, 0.06);
+  outline: none;
+}
+.g-account-row--other {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0 0 10px 10px;
+  margin-top: 2px;
+}
+.g-account-row__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+.g-account-row__name {
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.g-account-row__email {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.g-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.05rem;
+  line-height: 1;
+}
+.g-avatar--other {
+  background: rgba(255, 255, 255, 0.12);
+  font-size: 1.4rem;
+  font-weight: 400;
+}
+.g-avatar--lg {
+  width: 64px;
+  height: 64px;
+  flex-basis: 64px;
+  font-size: 1.6rem;
+}
+.g-form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+}
+.g-modal__sub {
+  text-align: center;
+}

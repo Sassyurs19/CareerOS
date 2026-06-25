@@ -1045,3 +1045,386 @@
     init();
   }
 })();
+
+
+
+/* ============================================================
+   GOOGLE SIGN-IN — simulated account chooser (no backend yet).
+   Mirrors the GitHub module: localStorage-backed, element-guarded,
+   accessible modal. Because there is no OAuth server, openChooser()
+   presents a Google-styled "Choose an account" picker that completes
+   the sign-in locally and redirects to the page named in the body's
+   [data-google-redirect] attribute (default: dashboard.html).
+
+   Public API:
+     CareerOS.google.connect(account)  -> Promise<profile>
+     CareerOS.google.get()             -> profile | null
+     CareerOS.google.disconnect()      -> void
+     CareerOS.google.openChooser(onDone)
+   ============================================================ */
+(function () {
+  "use strict";
+
+  var STORE_KEY = "careeros.google";
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  var CareerOS = (window.CareerOS = window.CareerOS || {});
+
+  /* Demo accounts shown in the chooser. */
+  var DEMO_ACCOUNTS = [
+    { name: "Poornima Munnangi", email: "poornimamunnangi@gmail.com", color: "1A73E8" },
+    { name: "Alex Rivera", email: "alex.rivera@gmail.com", color: "34A853" }
+  ];
+
+  var AVATAR_COLORS = ["1A73E8", "34A853", "EA4335", "FBBC05", "7B1FA2", "00897B"];
+
+  /* ---------- escaping ---------- */
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  /* ---------- storage ---------- */
+  function get() {
+    try {
+      var raw = localStorage.getItem(STORE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+  function save(data) {
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify(data));
+    } catch (e) {}
+  }
+  function disconnect() {
+    try {
+      localStorage.removeItem(STORE_KEY);
+    } catch (e) {}
+    reflectGoogle();
+    renderGoogleDashboard();
+  }
+
+  /* ---------- helpers ---------- */
+  function isEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+  function colorFor(email) {
+    var sum = 0;
+    for (var i = 0; i < email.length; i++) sum += email.charCodeAt(i);
+    return AVATAR_COLORS[sum % AVATAR_COLORS.length];
+  }
+
+  /* ---------- connect ---------- */
+  function connect(account) {
+    account = account || {};
+    var email = (account.email || "").trim();
+    if (!isEmail(email)) {
+      return Promise.reject(new Error("Please enter a valid email address."));
+    }
+    var name = (account.name || "").trim() || email.split("@")[0];
+    var profile = {
+      email: email,
+      name: name,
+      avatar_initial: (name.charAt(0) || email.charAt(0) || "?").toUpperCase(),
+      avatar_color: account.color || colorFor(email),
+      connected_at: Date.now()
+    };
+    save(profile);
+    reflectGoogle();
+    renderGoogleDashboard();
+    return Promise.resolve(profile);
+  }
+
+  CareerOS.google = {
+    connect: connect,
+    get: get,
+    disconnect: disconnect,
+    openChooser: openChooser
+  };
+
+  /* ---------- accessible chooser modal ---------- */
+  var lastFocused = null;
+
+  function openChooser(onDone) {
+    if (document.getElementById("gAuthModal")) return;
+    lastFocused = document.activeElement;
+
+    var overlay = document.createElement("div");
+    overlay.className = "gh-modal g-modal";
+    overlay.id = "gAuthModal";
+    overlay.setAttribute("role", "dialog");
+    overlay.setAttribute("aria-modal", "true");
+    overlay.setAttribute("aria-labelledby", "gAuthTitle");
+
+    var googleLogo =
+      '<span class="g-modal__logo" aria-hidden="true">' +
+        '<svg viewBox="0 0 24 24" width="28" height="28">' +
+          '<path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>' +
+          '<path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.99.66-2.26 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>' +
+          '<path fill="#FBBC05" d="M5.84 14.1a6.6 6.6 0 0 1 0-4.2V7.06H2.18a11 11 0 0 0 0 9.88l3.66-2.84z"/>' +
+          '<path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>' +
+        '</svg>' +
+      '</span>';
+
+    overlay.innerHTML =
+      '<div class="gh-modal__card g-modal__card" role="document">' +
+        '<button class="gh-modal__close" type="button" aria-label="Close">&times;</button>' +
+        googleLogo +
+        '<h2 class="gh-modal__title g-modal__title" id="gAuthTitle">Choose an account</h2>' +
+        '<p class="gh-modal__sub g-modal__sub">to continue to CareerOS</p>' +
+        '<div class="g-modal__body" data-g-body></div>' +
+        '<p class="gh-error" id="gAuthError" role="alert" hidden></p>' +
+      '</div>';
+
+    document.body.appendChild(overlay);
+    document.body.style.overflow = "hidden";
+    if (!reduce) {
+      requestAnimationFrame(function () {
+        overlay.classList.add("is-open");
+      });
+    } else {
+      overlay.classList.add("is-open");
+    }
+
+    var card = overlay.querySelector(".gh-modal__card");
+    var bodyEl = overlay.querySelector("[data-g-body]");
+    var errEl = overlay.querySelector("#gAuthError");
+
+    function showError(msg) {
+      errEl.textContent = msg;
+      errEl.hidden = false;
+    }
+    function clearError() {
+      errEl.hidden = true;
+    }
+
+    function close() {
+      overlay.classList.remove("is-open");
+      document.removeEventListener("keydown", onKey, true);
+      window.setTimeout(function () {
+        if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        document.body.style.overflow = "";
+        if (lastFocused && lastFocused.focus) {
+          try { lastFocused.focus(); } catch (e) {}
+        }
+      }, reduce ? 0 : 220);
+    }
+
+    function finish(account) {
+      clearError();
+      card.classList.add("is-busy");
+      connect(account)
+        .then(function (data) {
+          var sub = overlay.querySelector(".g-modal__sub");
+          if (sub) sub.textContent = "Signing you in…";
+          window.setTimeout(function () {
+            close();
+            if (typeof onDone === "function") onDone(data);
+          }, reduce ? 0 : 600);
+        })
+        .catch(function (err) {
+          card.classList.remove("is-busy");
+          showError(err.message || "Something went wrong. Please try again.");
+        });
+    }
+
+    /* ----- chooser (account list) view ----- */
+    function renderChooser() {
+      clearError();
+      var rows = DEMO_ACCOUNTS.map(function (a, i) {
+        var initial = esc((a.name.charAt(0) || a.email.charAt(0)).toUpperCase());
+        return (
+          '<button class="g-account-row" type="button" data-g-pick="' + i + '">' +
+            '<span class="g-avatar" style="background:#' + esc(a.color) + '" aria-hidden="true">' + initial + '</span>' +
+            '<span class="g-account-row__meta">' +
+              '<span class="g-account-row__name">' + esc(a.name) + '</span>' +
+              '<span class="g-account-row__email">' + esc(a.email) + '</span>' +
+            '</span>' +
+          '</button>'
+        );
+      }).join("");
+
+      rows +=
+        '<button class="g-account-row g-account-row--other" type="button" data-g-other>' +
+          '<span class="g-avatar g-avatar--other" aria-hidden="true">+</span>' +
+          '<span class="g-account-row__meta">' +
+            '<span class="g-account-row__name">Use another account</span>' +
+          '</span>' +
+        '</button>';
+
+      bodyEl.innerHTML = '<div class="g-account-list">' + rows + '</div>';
+
+      bodyEl.querySelectorAll("[data-g-pick]").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var idx = parseInt(btn.getAttribute("data-g-pick"), 10);
+          finish(DEMO_ACCOUNTS[idx]);
+        });
+      });
+      var other = bodyEl.querySelector("[data-g-other]");
+      if (other) other.addEventListener("click", renderForm);
+    }
+
+    /* ----- "use another account" form view ----- */
+    function renderForm() {
+      clearError();
+      bodyEl.innerHTML =
+        '<div class="g-form">' +
+          '<label class="gh-modal__label" for="gName">Full name</label>' +
+          '<input class="gh-input" id="gName" type="text" autocomplete="name" placeholder="Your name" />' +
+          '<label class="gh-modal__label" for="gEmail">Email</label>' +
+          '<input class="gh-input" id="gEmail" type="email" inputmode="email" autocomplete="email" spellcheck="false" placeholder="you@gmail.com" />' +
+          '<div class="gh-modal__actions">' +
+            '<button class="btn btn--ghost btn--sm" type="button" data-g-back>Back</button>' +
+            '<button class="btn btn--primary btn--sm" type="button" data-g-submit>Continue</button>' +
+          '</div>' +
+        '</div>';
+
+      var nameInput = bodyEl.querySelector("#gName");
+      var emailInput = bodyEl.querySelector("#gEmail");
+      try { emailInput.focus(); } catch (e) {}
+
+      function submit() {
+        var email = emailInput.value.trim();
+        if (!isEmail(email)) {
+          showError("Please enter a valid email address.");
+          emailInput.focus();
+          return;
+        }
+        finish({ name: nameInput.value, email: email });
+      }
+
+      bodyEl.querySelector("[data-g-submit]").addEventListener("click", submit);
+      bodyEl.querySelector("[data-g-back]").addEventListener("click", renderChooser);
+      [nameInput, emailInput].forEach(function (inp) {
+        inp.addEventListener("input", clearError);
+        inp.addEventListener("keydown", function (e) {
+          if (e.key === "Enter") {
+            e.preventDefault();
+            submit();
+          }
+        });
+      });
+    }
+
+    renderChooser();
+
+    overlay.querySelector(".gh-modal__close").addEventListener("click", close);
+    overlay.addEventListener("mousedown", function (e) {
+      if (e.target === overlay) close();
+    });
+
+    /* keyboard: Escape closes, Tab is trapped inside the dialog */
+    function onKey(e) {
+      if (e.key === "Escape") {
+        e.preventDefault();
+        close();
+        return;
+      }
+      if (e.key === "Tab") {
+        var f = overlay.querySelectorAll(
+          'button:not([disabled]), input:not([disabled])'
+        );
+        if (!f.length) return;
+        var first = f[0];
+        var last = f[f.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    }
+    document.addEventListener("keydown", onKey, true);
+  }
+
+  /* ---------- reflect connected state on connect buttons ---------- */
+  function reflectGoogle() {
+    var data = get();
+    document.querySelectorAll("[data-google-connect]").forEach(function (btn) {
+      if (!btn.getAttribute("data-google-label")) {
+        btn.setAttribute("data-google-label", btn.textContent.trim());
+      }
+      if (data) {
+        btn.classList.add("is-connected");
+        btn.textContent = "Signed in ✓ " + data.email;
+      } else {
+        btn.classList.remove("is-connected");
+        btn.textContent = btn.getAttribute("data-google-label");
+      }
+    });
+  }
+
+  /* ---------- dashboard rendering ---------- */
+  function renderGoogleDashboard() {
+    var mount = document.querySelector("[data-google-dashboard]");
+    if (!mount) return;
+    var d = get();
+
+    if (!d) {
+      mount.innerHTML =
+        '<div class="dash-panel__head">' +
+          '<h2 class="dash-panel__title">Google</h2>' +
+        '</div>' +
+        '<div class="gh-empty">' +
+          '<p class="gh-empty__txt">Sign in with Google to surface your verified identity here.</p>' +
+          '<button class="btn btn--primary btn--sm" type="button" data-google-connect data-google-label="Continue with Google">Continue with Google</button>' +
+        '</div>';
+      reflectGoogle();
+      return;
+    }
+
+    mount.innerHTML =
+      '<div class="dash-panel__head">' +
+        '<h2 class="dash-panel__title">Google</h2>' +
+        '<div class="gh-card__actions">' +
+          '<button class="dash-panel__link" type="button" data-google-disconnect>Disconnect</button>' +
+        '</div>' +
+      '</div>' +
+      '<div class="gh-card__profile">' +
+        '<span class="g-avatar g-avatar--lg" style="background:#' + esc(d.avatar_color) + '" aria-hidden="true">' + esc(d.avatar_initial) + '</span>' +
+        '<div class="gh-card__meta">' +
+          '<span class="gh-card__name">' + esc(d.name) + '</span>' +
+          '<span class="gh-card__handle">' + esc(d.email) + '</span>' +
+          '<p class="gh-card__bio">Connected via Google</p>' +
+        '</div>' +
+      '</div>';
+  }
+
+  /* ---------- global delegated triggers ---------- */
+  document.addEventListener("click", function (e) {
+    var disc = e.target.closest("[data-google-disconnect]");
+    if (disc) {
+      e.preventDefault();
+      disconnect();
+      return;
+    }
+    var trigger = e.target.closest("[data-google-connect]");
+    if (trigger) {
+      e.preventDefault();
+      openChooser(function () {
+        var redirect = document.body.getAttribute("data-google-redirect");
+        if (redirect) {
+          window.location.href = redirect;
+        } else if (!document.querySelector("[data-google-dashboard]")) {
+          window.location.href = "dashboard.html";
+        }
+      });
+    }
+  });
+
+  /* ---------- init on load ---------- */
+  function init() {
+    reflectGoogle();
+    renderGoogleDashboard();
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
