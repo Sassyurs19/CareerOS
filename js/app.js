@@ -425,7 +425,20 @@
       if (step < loadingMessages.length) {
         window.setTimeout(update, perMsg);
       } else {
-        window.setTimeout(goNext, reduce ? 250 : 700);
+        // Advance to the success step. If there is no next step (misconfigured
+        // deck), fall back to the last step / a step marked as success so the
+        // flow never stays stuck on "Importing achievements…".
+        window.setTimeout(function () {
+          if (current < total - 1) {
+            goNext();
+          } else {
+            var successStep = root.querySelector(".ob-success");
+            if (successStep) {
+              var idx = steps.indexOf(successStep.closest(".ob-step"));
+              if (idx > -1 && idx !== current) show(idx);
+            }
+          }
+        }, reduce ? 250 : 700);
       }
     }
     update();
