@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050505" />
+  <title>CareerOS — Your Professional Operating System</title>
+  <meta name="description" content="One verified profile for every proof of your work. Connect GitHub, LeetCode, LinkedIn, projects and certifications into a single career identity." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- NAVBAR -->
+  <header class="nav is-scrolled" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="CareerOS home">
+        <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
+        </svg>
+        <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="platform.html" class="nav__link">Platform</a>
+        <a href="resume.html" class="nav__link">Resume</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="signin.html" class="nav__link nav__signin">Sign In</a>
+        <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="hero__glow hero__glow--1"></div>
+        <div class="hero__glow hero__glow--2"></div>
+        <div class="hero__grid"></div>
+        <div class="hero__beam"></div>
+      </div>
+
+      <div class="container hero__inner">
+        <span class="eyebrow">Your Career, Operationalised</span>
+        <h1 class="hero__title">One profile. <span class="hero__title-accent">Every proof.</span></h1>
+        <p class="hero__desc">
+          CareerOS unifies your code, projects, certifications and achievements into a single
+          verified professional identity — automatically kept in sync with the platforms you
+          already use.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary btn--lg" href="signup.html">Get Started — It's Free</a>
+          <a class="btn btn--ghost btn--lg" href="platform.html">Explore the Platform</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="features">
+      <div class="container">
+        <div class="cta">
+          <div class="cta__inner">
+            <h2 class="cta__title">Ready to build your CareerOS?</h2>
+            <p class="hero__desc">
+              Join developers, students and professionals turning their work into a verified
+              career story.
+            </p>
+            <div class="hero__actions">
+              <a class="btn btn--primary btn--lg" href="signup.html">Create Free Account</a>
+              <a class="btn btn--ghost btn--lg" href="signin.html">Sign In</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
+        <p class="footer__tagline">Your professional operating system.</p>
+      </div>
+      <nav class="footer__nav" aria-label="Footer">
+        <a href="platform.html" class="footer__link">Platform</a>
+        <a href="resume.html" class="footer__link">Resume</a>
+        <a href="about.html" class="footer__link">About</a>
+        <a href="signin.html" class="footer__link">Sign In</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__note">&copy; 2026 CareerOS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
