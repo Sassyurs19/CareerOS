@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050505" />
+  <title>Resume — CareerOS</title>
+  <meta name="description" content="What you build, remembered. Your resume evolves automatically as you grow — auto-synced, verified and export-ready." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="nav is-scrolled" id="nav">
+    <div class="container nav__inner">
+      <a class="brand" href="index.html" aria-label="CareerOS home">
+        <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
+        </svg>
+        <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="platform.html" class="nav__link">Platform</a>
+        <a href="resume.html" class="nav__link nav__signin">Resume</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="signin.html" class="nav__link nav__signin">Sign In</a>
+        <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="platform.html" class="mobile-menu__link">Platform</a>
+      <a href="resume.html" class="mobile-menu__link">Resume</a>
+      <a href="about.html" class="mobile-menu__link">About</a>
+      <a href="signin.html" class="mobile-menu__link">Sign In</a>
+      <a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>
+    </nav>
+  </div>
+
+  <main>
+    <div class="container">
+      <div class="pagebar reveal">
+        <a href="index.html" class="pagebar__link pagebar__arrow-only" aria-label="Back to home"><span class="pagebar__arrow">←</span></a>
+      </div>
+    </div>
+
+    <section class="section page-section resume" id="resume">
+      <div class="container resume__grid">
+        <div class="resume__copy reveal">
+          <span class="section__kicker">Always current</span>
+          <h2 class="section__title">What you build, remembered.</h2>
+          <p class="section__lede">
+            Your resume evolves automatically as you grow. Ship a project, solve
+            a problem, earn a certificate — CareerOS records the proof and keeps
+            your story up to date.
+          </p>
+          <ul class="resume__points">
+            <li>Auto-synced from your connected sources</li>
+            <li>Verified achievements, never inflated</li>
+            <li>Export-ready, recruiter-friendly layout</li>
+          </ul>
+        </div>
+
+        <div class="resume__preview reveal" data-delay="1">
+          <article class="doc" aria-label="Resume preview">
+            <header class="doc__head">
+              <div>
+                <h3 class="doc__name">Aarav Mehta</h3>
+                <p class="doc__role">Software Engineer · Backend &amp; Systems</p>
+              </div>
+              <span class="doc__score">Career Score <b>842</b></span>
+            </header>
+            <div class="doc__divider"></div>
+
+            <section class="doc__block">
+              <h4>Experience</h4>
+              <div class="doc__row">
+                <span class="doc__line doc__line--w70"></span>
+                <span class="doc__line doc__line--w40 doc__muted"></span>
+              </div>
+              <div class="doc__row">
+                <span class="doc__line doc__line--w90"></span>
+                <span class="doc__line doc__line--w55 doc__muted"></span>
+              </div>
+            </section>
+
+            <section class="doc__block">
+              <h4>Projects</h4>
+              <div class="doc__tags">
+                <span class="doc__tag">Distributed cache</span>
+                <span class="doc__tag">Realtime API</span>
+                <span class="doc__tag">CLI toolkit</span>
+              </div>
+            </section>
+
+            <section class="doc__block">
+              <h4>Verified Stats</h4>
+              <div class="doc__stats">
+                <div class="doc__stat"><b>1.2k</b><span>Contributions</span></div>
+                <div class="doc__stat"><b>430</b><span>Problems</span></div>
+                <div class="doc__stat"><b>12</b><span>Certificates</span></div>
+              </div>
+            </section>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="brand brand--footer">
+          <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
+          </svg>
+          <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
+        </span>
+        <p class="footer__tagline">Your career, unified and verified.</p>
+        <div class="footer__social">
+          <a href="https://github.com/Sassyurs19" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/sasidhar-munnangi-b58671379" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg>
+          </a>
+        </div>
+        <div class="footer__trust">
+          <span class="footer__trust-label">Works with</span>
+          <ul class="footer__trust-logos" aria-label="Trusted integrations">
+            <li aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></li>
+            <li aria-label="LeetCode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 3 7.5 10.2a2.4 2.4 0 0 0 0 3.4L14.6 21"/><path d="M9.5 12.4h9.5"/></svg></li>
+            <li aria-label="GeeksforGeeks"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg></li>
+            <li aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></li>
+          </ul>
+        </div>
+      </div>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <span class="footer__nav-title">Explore</span>
+        <a href="platform.html">Platform</a>
+        <a href="resume.html">Resume</a>
+        <a href="about.html">About</a>
+        <a href="mailto:sassyurs19@gmail.com">Contact</a>
+      </nav>
+    </div>
+    <div class="container footer__bottom">
+      <p class="footer__note">© 2025 CareerOS · Progress leaves proof.</p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
