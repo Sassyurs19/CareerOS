@@ -36,8 +36,10 @@
         <a href="platform.html" class="nav__link">Platform</a>
         <a href="resume.html" class="nav__link">Resume</a>
         <a href="about.html" class="nav__link">About</a>
-        <a href="signin.html" class="nav__link nav__signin">Sign In</a>
-        <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
+        <span class="nav__auth" data-google-navauth data-nav-variant="desktop">
+          <a href="signin.html" class="nav__link nav__signin">Sign In</a>
+          <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
+        </span>
       </nav>
 
       <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -51,8 +53,10 @@
       <a href="platform.html" class="mobile-menu__link">Platform</a>
       <a href="resume.html" class="mobile-menu__link">Resume</a>
       <a href="about.html" class="mobile-menu__link">About</a>
-      <a href="signin.html" class="mobile-menu__link">Sign In</a>
-      <a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>
+      <span data-google-navauth data-nav-variant="mobile">
+        <a href="signin.html" class="mobile-menu__link">Sign In</a>
+        <a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>
+      </span>
     </nav>
   </div>
 
@@ -64,7 +68,7 @@
         <div class="dash-hero__photo" aria-hidden="true"></div>
         <div class="dash-hero__inner">
           <span class="dash-hero__kicker">Your verified workspace</span>
-          <h1 class="dash-hero__title">Welcome back, <span>Sasidhar</span></h1>
+          <h1 class="dash-hero__title">Welcome back, <span data-google-name>Sasidhar</span></h1>
           <p class="dash-hero__sub">Everything you've built — pulled from your connected sources, verified, and kept in sync automatically.</p>
         </div>
       </section>

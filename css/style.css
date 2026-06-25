@@ -2248,6 +2248,12 @@ html { scroll-behavior: smooth; }
   flex-basis: 64px;
   font-size: 1.6rem;
 }
+.g-avatar-img {
+  object-fit: cover;
+  border-radius: 50%;
+  background: transparent;
+  padding: 0;
+}
 .g-form {
   display: flex;
   flex-direction: column;
@@ -2256,4 +2262,39 @@ html { scroll-behavior: smooth; }
 }
 .g-modal__sub {
   text-align: center;
+}
+
+
+
+/* ---------- navbar identity chip (signed-in Google user) ---------- */
+.nav-user {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.nav-user__avatar {
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  font-size: 0.85rem;
+}
+.nav-user__name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.nav-user__signout {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px 6px;
+  font: inherit;
+}
+.mobile-menu__links .nav-user {
+  flex-wrap: wrap;
+  gap: 10px;
 }

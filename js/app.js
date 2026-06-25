@@ -1068,6 +1068,18 @@
   var STORE_KEY = "careeros.google";
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* ---------------------------------------------------------------
+     REAL GOOGLE OAUTH (Google Identity Services).
+     Paste your OAuth Web Client ID from the Google Cloud Console
+     here (e.g. "1234567890-abcd.apps.googleusercontent.com").
+     Leave it empty ("") to use the local simulated account chooser.
+     --------------------------------------------------------------- */
+  var GOOGLE_CLIENT_ID = "510895472167-aorcvv3tivu7derq4krdbvpm9868129b.apps.googleusercontent.com";
+
+  function googleConfigured() {
+    return !!GOOGLE_CLIENT_ID && window.google && window.google.accounts && window.google.accounts.oauth2;
+  }
+
   var CareerOS = (window.CareerOS = window.CareerOS || {});
 
   /* Demo accounts shown in the chooser. */
@@ -1105,6 +1117,8 @@
     } catch (e) {}
     reflectGoogle();
     renderGoogleDashboard();
+    renderGoogleGreeting();
+    renderGoogleNav();
   }
 
   /* ---------- helpers ---------- */
@@ -1135,6 +1149,8 @@
     save(profile);
     reflectGoogle();
     renderGoogleDashboard();
+    renderGoogleGreeting();
+    renderGoogleNav();
     return Promise.resolve(profile);
   }
 
@@ -1148,7 +1164,83 @@
   /* ---------- accessible chooser modal ---------- */
   var lastFocused = null;
 
+  /* ---------- real Google OAuth (GIS) helpers ---------- */
+  var tokenClient = null;
+  var pendingOnDone = null;
+
+  function realError(msg) {
+    var errEl = document.getElementById("gAuthError");
+    if (errEl) {
+      errEl.textContent = msg;
+      errEl.hidden = false;
+    } else {
+      try { console.warn("[Google sign-in] " + msg); } catch (e) {}
+    }
+  }
+
+  function handleTokenResponse(resp) {
+    if (!resp || resp.error || !resp.access_token) {
+      realError("Google sign-in was cancelled or didn't complete. Please try again.");
+      return;
+    }
+    fetch("https://www.googleapis.com/oauth2/v3/userinfo", {
+      headers: { Authorization: "Bearer " + resp.access_token }
+    })
+      .then(function (res) {
+        if (!res.ok) throw new Error("userinfo " + res.status);
+        return res.json();
+      })
+      .then(function (info) {
+        var email = info.email || "";
+        var name = info.name || email;
+        var profile = {
+          email: email,
+          name: name,
+          picture: info.picture || "",
+          avatar_initial: (name || email || "?").charAt(0).toUpperCase(),
+          avatar_color: colorFor(email || name || "?"),
+          connected_at: Date.now()
+        };
+        save(profile);
+        reflectGoogle();
+        renderGoogleDashboard();
+        renderGoogleGreeting();
+        renderGoogleNav();
+        var done = pendingOnDone;
+        pendingOnDone = null;
+        window.setTimeout(function () {
+          if (typeof done === "function") done(profile);
+        }, reduce ? 0 : 500);
+      })
+      .catch(function () {
+        realError("We couldn't fetch your Google profile. Please try again.");
+      });
+  }
+
+  function startRealFlow(onDone) {
+    pendingOnDone = onDone;
+    try {
+      if (!tokenClient) {
+        tokenClient = window.google.accounts.oauth2.initTokenClient({
+          client_id: GOOGLE_CLIENT_ID,
+          scope: "openid email profile",
+          callback: handleTokenResponse
+        });
+      }
+      tokenClient.requestAccessToken();
+    } catch (e) {
+      pendingOnDone = null;
+      realError("Google sign-in is unavailable right now. Please try again.");
+    }
+  }
+
   function openChooser(onDone) {
+    /* Real Google OAuth when a Client ID is configured and GIS has loaded. */
+    if (googleConfigured()) {
+      startRealFlow(onDone);
+      return;
+    }
+    /* Otherwise fall back to the local simulated account chooser. */
     if (document.getElementById("gAuthModal")) return;
     lastFocused = document.activeElement;
 
@@ -1386,7 +1478,9 @@
         '</div>' +
       '</div>' +
       '<div class="gh-card__profile">' +
-        '<span class="g-avatar g-avatar--lg" style="background:#' + esc(d.avatar_color) + '" aria-hidden="true">' + esc(d.avatar_initial) + '</span>' +
+        (d.picture
+          ? '<img class="g-avatar g-avatar--lg g-avatar-img" src="' + esc(d.picture) + '" alt="" width="64" height="64" loading="lazy" referrerpolicy="no-referrer" />'
+          : '<span class="g-avatar g-avatar--lg" style="background:#' + esc(d.avatar_color) + '" aria-hidden="true">' + esc(d.avatar_initial) + '</span>') +
         '<div class="gh-card__meta">' +
           '<span class="gh-card__name">' + esc(d.name) + '</span>' +
           '<span class="gh-card__handle">' + esc(d.email) + '</span>' +
@@ -1418,9 +1512,87 @@
   });
 
   /* ---------- init on load ---------- */
+  function renderGoogleGreeting() {
+    var nodes = document.querySelectorAll("[data-google-name]");
+    if (!nodes.length) return;
+    var d = get();
+    if (!d) return;
+    var first = "";
+    if (d.name && String(d.name).trim()) {
+      first = String(d.name).trim().split(/\s+/)[0];
+    } else if (d.email) {
+      first = String(d.email).split("@")[0];
+    }
+    if (!first) return;
+    nodes.forEach(function (el) {
+      el.textContent = esc(first);
+    });
+  }
+
+  /* ---------- navbar identity chip ---------- */
+  function renderGoogleNav() {
+    var mounts = document.querySelectorAll("[data-google-navauth]");
+    if (!mounts.length) return;
+    var d = get();
+
+    mounts.forEach(function (mount) {
+      var variant = mount.getAttribute("data-nav-variant") || "desktop";
+
+      /* Signed out: restore the default Sign In / Get Started links. */
+      if (!d) {
+        if (variant === "mobile") {
+          mount.innerHTML =
+            '<a href="signin.html" class="mobile-menu__link">Sign In</a>' +
+            '<a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>';
+        } else {
+          mount.innerHTML =
+            '<a href="signin.html" class="nav__link nav__signin">Sign In</a>' +
+            '<a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>';
+        }
+        return;
+      }
+
+      /* Signed in: show an avatar chip + sign-out control. */
+      var avatar = d.picture
+        ? '<img class="g-avatar nav-user__avatar g-avatar-img" src="' + esc(d.picture) + '" alt="" width="28" height="28" loading="lazy" referrerpolicy="no-referrer" />'
+        : '<span class="g-avatar nav-user__avatar" style="background:#' + esc(d.avatar_color) + '" aria-hidden="true">' + esc(d.avatar_initial) + '</span>';
+
+      mount.innerHTML =
+        '<span class="nav-user">' +
+          avatar +
+          '<span class="nav-user__name">' + esc(d.name) + '</span>' +
+          '<button class="dash-panel__link nav-user__signout" type="button" data-google-disconnect>Sign out</button>' +
+        '</span>';
+    });
+  }
+
   function init() {
+    /* Auth guard: if already signed in, never show the sign-in/sign-up UI. */
+    var profile = get();
+    if (profile) {
+      var redirectTarget = document.body.getAttribute("data-google-redirect") || "dashboard.html";
+      var isAuthPage =
+        (document.body.hasAttribute("data-google-redirect") && !document.querySelector("[data-google-dashboard]")) ||
+        /\/(signin|signup)\.html$/i.test(window.location.pathname);
+      if (isAuthPage) {
+        window.location.replace(redirectTarget);
+        return;
+      }
+    }
+    /* Reverse auth guard: protect the dashboard — signed-out users can't view it. */
+    if (!profile) {
+      var isDashboardPage =
+        !!document.querySelector("[data-google-dashboard]") ||
+        /\/dashboard\.html$/i.test(window.location.pathname);
+      if (isDashboardPage) {
+        window.location.replace("signin.html");
+        return;
+      }
+    }
     reflectGoogle();
     renderGoogleDashboard();
+    renderGoogleGreeting();
+    renderGoogleNav();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
