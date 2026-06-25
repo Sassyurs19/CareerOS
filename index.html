@@ -4,19 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#050505" />
-  <title>CareerOS — Your Career Operating System</title>
-  <meta name="description" content="CareerOS is a professional career operating system that unifies your projects, coding profiles, achievements and certifications into one verified profile." />
+  <title>Create Your CareerOS — Onboarding</title>
+  <meta name="description" content="Set up your CareerOS — a single professional operating system for your projects, coding profiles, achievements, certifications and career progress." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
-  <header class="nav" id="nav">
-    <div class="container nav__inner">
-      <a class="brand" href="index.html" aria-label="CareerOS home">
+  <!-- Architectural background (matches homepage) -->
+  <div class="ob-bg" aria-hidden="true">
+    <div class="ob-bg__glow ob-bg__glow--1"></div>
+    <div class="ob-bg__glow ob-bg__glow--2"></div>
+    <div class="ob-bg__grid"></div>
+    <div class="ob-bg__beam"></div>
+  </div>
+
+  <!-- TOP BAR: brand + progress -->
+  <header class="ob-top">
+    <div class="ob-top__inner">
+      <button class="ob-back" id="obBack" type="button" aria-label="Go back" hidden>
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M15 5 L8 12 L15 19" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <a class="brand" href="../index.html" aria-label="CareerOS home">
         <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
@@ -24,147 +39,229 @@
         <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
       </a>
 
-      <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="platform.html" class="nav__link">Platform</a>
-        <a href="resume.html" class="nav__link">Resume</a>
-        <a href="about.html" class="nav__link">About</a>
-        <a href="signin.html" class="nav__link nav__signin">Sign In</a>
-        <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
-      </nav>
-
-      <button class="nav__toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-        <span></span><span></span><span></span>
-      </button>
+      <div class="ob-steps" id="obSteps" aria-hidden="true"></div>
     </div>
+    <div class="ob-progress"><span class="ob-progress__fill" id="obProgressFill"></span></div>
   </header>
 
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
-    <nav class="mobile-menu__links" aria-label="Mobile">
-      <a href="platform.html" class="mobile-menu__link">Platform</a>
-      <a href="resume.html" class="mobile-menu__link">Resume</a>
-      <a href="about.html" class="mobile-menu__link">About</a>
-      <a href="signin.html" class="mobile-menu__link">Sign In</a>
-      <a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>
-    </nav>
-  </div>
+  <main class="ob-main" id="obMain">
 
-  <main>
-    <!-- HERO -->
-    <section class="hero" id="hero">
-      <div class="hero__bg" aria-hidden="true">
-        <div class="hero__photo"></div>
-        <div class="hero__glow hero__glow--1"></div>
-        <div class="hero__glow hero__glow--2"></div>
-        <div class="hero__grid"></div>
-        <div class="hero__beam"></div>
+    <!-- STEP 1 — WELCOME -->
+    <section class="ob-step is-active" data-step="1" aria-labelledby="s1-title">
+      <div class="ob-step__inner ob-welcome">
+        <span class="eyebrow">Welcome to CareerOS</span>
+        <h1 class="ob-h1" id="s1-title">Create Your CareerOS</h1>
+        <p class="ob-sub">Build your professional identity from the work you've already done.</p>
+        <p class="ob-desc">Connect the platforms where your achievements already exist.</p>
+
+        <div class="ob-welcome__actions">
+          <button class="btn btn--primary btn--lg ob-oauth" type="button" data-next>
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ob-oauth__icon">
+              <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.27-4.74 3.27-8.1z"/>
+              <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.65l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84A11 11 0 0 0 12 23z"/>
+              <path fill="#FBBC05" d="M5.84 14.11a6.6 6.6 0 0 1 0-4.22V7.05H2.18a11 11 0 0 0 0 9.9l3.66-2.84z"/>
+              <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1A11 11 0 0 0 2.18 7.05l3.66 2.84C6.71 7.31 9.14 5.38 12 5.38z"/>
+            </svg>
+            Continue with Google
+          </button>
+          <button class="btn btn--ghost btn--lg ob-oauth" type="button" data-next>
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="ob-oauth__icon">
+              <path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/>
+            </svg>
+            Continue with GitHub
+          </button>
+        </div>
+        <p class="ob-fineprint">By continuing you agree to the CareerOS Terms &amp; Privacy Policy.</p>
       </div>
+    </section>
 
-      <div class="container">
-        <div class="hero__inner reveal">
-          <h1 class="hero__title">
-            Your career,<br />
-            <span class="hero__title-accent">unified and verified.</span>
-          </h1>
-          <p class="hero__desc">
-            CareerOS is a single professional operating system for your projects,
-            coding profiles, achievements and certifications — every claim backed
-            by proof, kept in sync automatically.
-          </p>
-          <div class="hero__actions">
-            <a href="signup.html" class="btn btn--primary btn--lg">Get Started</a>
-            <a href="platform.html" class="btn btn--ghost btn--lg">See how it works</a>
-          </div>
+    <!-- STEP 2 — USER TYPE -->
+    <section class="ob-step" data-step="2" aria-labelledby="s2-title" hidden>
+      <div class="ob-step__inner">
+        <span class="ob-kicker">Step 2</span>
+        <h2 class="ob-h2" id="s2-title">What best describes you?</h2>
+        <p class="ob-sub">We'll tailor your CareerOS to fit where you are right now.</p>
+
+        <div class="ob-cards ob-cards--type" role="radiogroup" aria-label="User type">
+          <button class="ob-card" type="button" role="radio" aria-checked="false" data-single="userType" data-value="Student">
+            <span class="ob-card__icon" aria-hidden="true">🎓</span>
+            <span class="ob-card__title">Student</span>
+            <span class="ob-card__desc">Learning, building skills and projects.</span>
+          </button>
+          <button class="ob-card" type="button" role="radio" aria-checked="false" data-single="userType" data-value="Job Seeker">
+            <span class="ob-card__icon" aria-hidden="true">🔍</span>
+            <span class="ob-card__title">Job Seeker</span>
+            <span class="ob-card__desc">Actively looking for the next role.</span>
+          </button>
+          <button class="ob-card" type="button" role="radio" aria-checked="false" data-single="userType" data-value="Developer">
+            <span class="ob-card__icon" aria-hidden="true">⌨️</span>
+            <span class="ob-card__title">Developer</span>
+            <span class="ob-card__desc">Shipping code and solving problems.</span>
+          </button>
+          <button class="ob-card" type="button" role="radio" aria-checked="false" data-single="userType" data-value="Professional">
+            <span class="ob-card__icon" aria-hidden="true">💼</span>
+            <span class="ob-card__title">Professional</span>
+            <span class="ob-card__desc">Growing an established career.</span>
+          </button>
+        </div>
+
+        <div class="ob-actions">
+          <button class="btn btn--primary btn--lg ob-continue" type="button" data-next data-requires="userType" disabled>Continue</button>
         </div>
       </div>
     </section>
 
-    <!-- FEATURE BAND -->
-    <section class="section page-section features" id="features">
-      <div class="container">
-        <header class="section__head reveal">
-          <span class="section__kicker">Built on truth</span>
-          <h2 class="section__title">Verified, not performed.</h2>
-          <p class="section__lede">
-            This is not social media. It is a professional career operating
-            system — where everything on your profile is real, current, and
-            backed by the original source.
-          </p>
-        </header>
+    <!-- STEP 3 — CONNECT YOUR ECOSYSTEM -->
+    <section class="ob-step" data-step="3" aria-labelledby="s3-title" hidden>
+      <div class="ob-step__inner">
+        <span class="ob-kicker">Step 3</span>
+        <h2 class="ob-h2" id="s3-title">Connect Your Ecosystem</h2>
+        <p class="ob-sub">Import your achievements automatically.</p>
 
-        <div class="trust__grid">
-          <div class="trust__item reveal">
-            <span class="trust__check">✓</span>
-            <h3>Verified Progress</h3>
-            <p>Activity pulled directly from your connected sources — no manual inflation.</p>
-          </div>
-          <div class="trust__item reveal" data-delay="1">
-            <span class="trust__check">✓</span>
-            <h3>Verified Contributions</h3>
-            <p>Real commits, problems and reviews, attributed and time-stamped.</p>
-          </div>
-          <div class="trust__item reveal" data-delay="2">
-            <span class="trust__check">✓</span>
-            <h3>Verified Achievements</h3>
-            <p>Certifications and milestones that hold up to recruiter scrutiny.</p>
-          </div>
+        <ul class="ob-connect" aria-label="Platforms to connect">
+          <li class="ob-connect__row" data-connect="GitHub">
+            <span class="ob-connect__brand">
+              <span class="ob-connect__logo ob-connect__logo--gh" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              </span>
+              <span class="ob-connect__meta">
+                <span class="ob-connect__name">GitHub</span>
+                <span class="ob-connect__hint">Repositories, commits &amp; contributions</span>
+              </span>
+            </span>
+            <button class="btn btn--ghost btn--sm ob-connect__btn" type="button">Connect</button>
+          </li>
+          <li class="ob-connect__row" data-connect="LeetCode">
+            <span class="ob-connect__brand">
+              <span class="ob-connect__logo ob-connect__logo--lc" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M14.6 3 7.5 10.2a2.4 2.4 0 0 0 0 3.4L14.6 21"/><path d="M9.5 12.4h9.5"/></svg>
+              </span>
+              <span class="ob-connect__meta">
+                <span class="ob-connect__name">LeetCode</span>
+                <span class="ob-connect__hint">Problems solved &amp; contest rating</span>
+              </span>
+            </span>
+            <button class="btn btn--ghost btn--sm ob-connect__btn" type="button">Connect</button>
+          </li>
+          <li class="ob-connect__row" data-connect="GeeksforGeeks">
+            <span class="ob-connect__brand">
+              <span class="ob-connect__logo ob-connect__logo--gfg" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg>
+              </span>
+              <span class="ob-connect__meta">
+                <span class="ob-connect__name">GeeksforGeeks</span>
+                <span class="ob-connect__hint">Practice stats &amp; articles</span>
+              </span>
+            </span>
+            <button class="btn btn--ghost btn--sm ob-connect__btn" type="button">Connect</button>
+          </li>
+          <li class="ob-connect__row" data-connect="LinkedIn">
+            <span class="ob-connect__brand">
+              <span class="ob-connect__logo ob-connect__logo--in" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg>
+              </span>
+              <span class="ob-connect__meta">
+                <span class="ob-connect__name">LinkedIn</span>
+                <span class="ob-connect__hint">Experience, education &amp; network</span>
+              </span>
+            </span>
+            <button class="btn btn--ghost btn--sm ob-connect__btn" type="button">Connect</button>
+          </li>
+        </ul>
+
+        <div class="ob-actions ob-actions--split">
+          <button class="ob-skip" type="button" data-next>Skip for now</button>
+          <button class="btn btn--primary btn--lg" type="button" data-next>Continue</button>
         </div>
       </div>
     </section>
 
-    <!-- CTA BAND -->
-    <section class="section page-section trust" id="cta">
-      <div class="container">
-        <header class="section__head reveal">
-          <span class="section__kicker">One profile, one link</span>
-          <h2 class="section__title">Everything you've built, in one place.</h2>
-          <p class="section__lede">
-            Connect your accounts once. CareerOS organises your commits, solved
-            problems, projects and certificates into a unified verified profile
-            and a recruiter-ready resume — always up to date.
-          </p>
-        </header>
+    <!-- STEP 4 — CAREER SNAPSHOT -->
+    <section class="ob-step" data-step="4" aria-labelledby="s4-title" hidden>
+      <div class="ob-step__inner ob-step__inner--wide">
+        <span class="ob-kicker">Step 4</span>
+        <h2 class="ob-h2" id="s4-title">Tell us about your goals</h2>
+        <p class="ob-sub">A few quick choices so CareerOS can focus on what matters to you.</p>
 
-        <div class="hero__actions">
-          <a href="signup.html" class="btn btn--primary btn--lg">Create your CareerOS</a>
-          <a href="signin.html" class="btn btn--ghost btn--lg">Sign In</a>
+        <div class="ob-field">
+          <h3 class="ob-field__label">Current status</h3>
+          <div class="ob-chips" role="radiogroup" aria-label="Current status">
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="status" data-value="Student">Student</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="status" data-value="Graduate">Graduate</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="status" data-value="Working Professional">Working Professional</button>
+          </div>
+        </div>
+
+        <div class="ob-field">
+          <h3 class="ob-field__label">Interested domains <span class="ob-field__hint">choose any</span></h3>
+          <div class="ob-chips">
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Software Development">Software Development</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Artificial Intelligence">Artificial Intelligence</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Cybersecurity">Cybersecurity</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Data Science">Data Science</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Cloud Computing">Cloud Computing</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Electronics & Communication">Electronics &amp; Communication</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="Product Management">Product Management</button>
+            <button class="ob-chip" type="button" aria-pressed="false" data-multi="domains" data-value="UI/UX Design">UI/UX Design</button>
+          </div>
+        </div>
+
+        <div class="ob-field">
+          <h3 class="ob-field__label">Career goal</h3>
+          <div class="ob-chips" role="radiogroup" aria-label="Career goal">
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Dream Company">Dream Company</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Higher Studies">Higher Studies</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Freelancing">Freelancing</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Startup Founder">Startup Founder</button>
+            <button class="ob-chip" type="button" role="radio" aria-checked="false" data-single="goal" data-value="Government Jobs">Government Jobs</button>
+          </div>
+        </div>
+
+        <div class="ob-actions">
+          <button class="btn btn--primary btn--lg" type="button" data-next data-build>Continue</button>
         </div>
       </div>
     </section>
+
+    <!-- STEP 5 — PROFILE CREATION (loading) -->
+    <section class="ob-step ob-step--loading" data-step="5" data-onenter="loading" aria-labelledby="s5-title" hidden>
+      <div class="ob-step__inner ob-loading">
+        <svg class="ob-loading__logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
+        </svg>
+        <h2 class="ob-h2" id="s5-title">Creating your CareerOS…</h2>
+        <p class="ob-loading__msg" id="obLoadingMsg">Importing achievements…</p>
+        <div class="ob-loading__bar"><span class="ob-loading__fill" id="obLoadingFill"></span></div>
+        <div class="ob-loading__pct" id="obLoadingPct">0%</div>
+      </div>
+    </section>
+
+    <!-- STEP 6 — SUCCESS -->
+    <section class="ob-step" data-step="6" aria-labelledby="s6-title" hidden>
+      <div class="ob-step__inner ob-success">
+        <span class="ob-success__badge" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5 L10 17.5 L19 7" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <h2 class="ob-h2" id="s6-title">Welcome to CareerOS</h2>
+        <p class="ob-sub">Your professional journey starts here.</p>
+
+        <ul class="ob-checklist">
+          <li><span class="ob-checklist__tick" aria-hidden="true">✓</span> GitHub Connected</li>
+          <li><span class="ob-checklist__tick" aria-hidden="true">✓</span> LeetCode Connected</li>
+          <li><span class="ob-checklist__tick" aria-hidden="true">✓</span> LinkedIn Connected</li>
+          <li><span class="ob-checklist__tick" aria-hidden="true">✓</span> Career Profile Created</li>
+        </ul>
+
+        <div class="ob-welcome__actions">
+          <a class="btn btn--primary btn--lg" href="../index.html">Enter Dashboard</a>
+          <a class="btn btn--ghost btn--lg" href="../resume.html">Complete Profile</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="footer">
-    <div class="container footer__inner">
-      <div class="footer__brand">
-        <span class="brand brand--footer">
-          <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
-          </svg>
-          <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
-        </span>
-        <p class="footer__tagline">Your career, unified and verified.</p>
-        <div class="footer__social">
-          <a href="https://github.com/Sassyurs19" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="GitHub">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/sasidhar-munnangi-b58671379" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="LinkedIn">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg>
-          </a>
-        </div>
-      </div>
-      <nav class="footer__nav" aria-label="Footer navigation">
-        <span class="footer__nav-title">Explore</span>
-        <a href="platform.html">Platform</a>
-        <a href="resume.html">Resume</a>
-        <a href="about.html">About</a>
-        <a href="mailto:sassyurs19@gmail.com">Contact</a>
-      </nav>
-    </div>
-    <div class="container footer__bottom">
-      <p class="footer__note">© 2026 CareerOS · Progress leaves proof.</p>
-    </div>
-  </footer>
-
-  <script src="js/app.js"></script>
+  <script src="../js/app.js"></script>
 </body>
 </html>
