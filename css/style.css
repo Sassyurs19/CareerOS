@@ -866,46 +866,43 @@ img, svg { display: block; max-width: 100%; }
   display: grid;
   place-items: center;
   background:
-    radial-gradient(ellipse 60% 50% at 50% 45%, rgba(255,255,255,0.06), transparent 70%),
+    linear-gradient(180deg, rgba(5,5,5,0.82), rgba(5,5,5,0.92)),
+    url(../assets/loader-bg.png) center / cover no-repeat,
     var(--bg);
   transition: opacity 0.6s var(--ease), visibility 0.6s var(--ease);
 }
 .loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
 
 .loader__core {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 22px;
+  gap: 20px;
 }
 .loader__logo {
   width: 46px; height: 46px;
-  filter: drop-shadow(0 6px 18px rgba(255,255,255,0.22));
-  animation: loaderLogoPulse 2s ease-in-out infinite;
-}
-@keyframes loaderLogoPulse {
-  0%, 100% { opacity: 0.85; transform: translateY(0); }
-  50%      { opacity: 1; transform: translateY(-3px); }
-}
-@keyframes metalSheen {
-  0%   { background-position: 180% 0; }
-  100% { background-position: -80% 0; }
+  filter: drop-shadow(0 4px 16px rgba(255,255,255,0.18));
+  opacity: 0.96;
 }
 
 .loader__name {
+  position: relative;
   font-family: var(--font-head);
   font-weight: 600;
-  font-size: 1.4rem;
-  letter-spacing: -0.02em;
-  background: linear-gradient(100deg, #8a8a93 0%, #ffffff 45%, #8a8a93 90%);
-  background-size: 220% auto;
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  animation: metalText 2.6s linear infinite;
+  font-size: 1.45rem;
+  letter-spacing: -0.01em;
+  color: #f4f4f6;
+  background: linear-gradient(100deg, #f4f4f6 0%, #f4f4f6 38%, #ffffff 50%, #f4f4f6 62%, #f4f4f6 100%);
+  background-size: 250% auto;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: loaderSheen 2.8s ease-in-out infinite;
 }
 .loader__name b { font-weight: 700; }
-@keyframes metalText {
-  0%   { background-position: 200% center; }
-  100% { background-position: -60% center; }
+@keyframes loaderSheen {
+  0%   { background-position: 160% center; }
+  60%, 100% { background-position: -60% center; }
 }
 
 .loader__tagline {
@@ -1558,4 +1555,58 @@ img, svg { display: block; max-width: 100%; }
 @media (prefers-reduced-motion: reduce) {
   .ob-step__inner, .ob-success__badge, .ob-checklist li { animation: none !important; opacity: 1 !important; transform: none !important; }
   .ob-loading__logo { animation: none !important; }
+}
+
+
+
+/* ============================================================
+   MOBILE FIXES — overflow guards, fluid scaling, tap targets
+   (surgical additions; existing styles/fonts unchanged)
+   ============================================================ */
+html { overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
+img, svg, video, canvas { max-width: 100%; }
+
+/* Keep decorative hero glows from forcing side-scroll */
+.hero, .hero__bg { overflow: hidden; max-width: 100%; }
+
+@media (max-width: 720px) {
+  /* Brand wordmark scales so it never pushes the hamburger off-screen */
+  .brand__name { font-size: 1.08rem; }
+  .nav__inner { gap: 10px; }
+
+  /* Stat cards / cards must not hold a min-width wider than the viewport */
+  .stat { min-width: 0; width: 100%; }
+
+  /* Comfortable headings + spacing on phones */
+  .hero__title { font-size: clamp(2rem, 9vw, 2.8rem); }
+  .hero__desc { font-size: 1rem; }
+  .cta__title { font-size: clamp(1.5rem, 6vw, 2rem); }
+  .platform-intro { padding-top: 104px; }
+  .prose p { font-size: 1rem; }
+}
+
+@media (max-width: 600px) {
+  /* Full-width, comfortable tap targets for all CTAs */
+  .hero__actions { flex-direction: column; align-items: stretch; }
+  .hero__actions .btn,
+  .cta .btn { width: 100%; }
+  .btn { min-height: 46px; }
+
+  /* Sources wrap tightly instead of overflowing */
+  .sources { gap: 12px 18px; }
+}
+
+@media (max-width: 520px) {
+  .container { padding: 0 16px; }
+  .footer__nav { flex-wrap: wrap; gap: 14px 20px; }
+}
+
+@media (max-width: 400px) {
+  .brand__name { font-size: 1rem; }
+  .hero__title { font-size: clamp(1.75rem, 9vw, 2.2rem); }
+  .loader__name { font-size: 1.25rem; }
+  .loader__bar { width: 150px; }
+  /* Onboarding CTA min-widths must not exceed the screen */
+  .ob-actions .btn { min-width: 0; width: 100%; }
 }

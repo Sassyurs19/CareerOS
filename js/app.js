@@ -22,15 +22,47 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  /* ---------- 2. Mobile menu toggle ---------- */
+  /* ---------- 2. Mobile menu (built dynamically from #navLinks) ---------- */
   var toggle = document.getElementById("navToggle");
   var menu = document.getElementById("mobileMenu");
+  var header = document.getElementById("nav");
+  var navLinks = document.getElementById("navLinks");
+
+  // No page ships a #mobileMenu element — build one from the existing nav links
+  // so the hamburger works on every page without editing each HTML file.
+  if (!menu && navLinks && header) {
+    menu = document.createElement("div");
+    menu.className = "mobile-menu";
+    menu.id = "mobileMenu";
+    menu.setAttribute("aria-hidden", "true");
+
+    var list = document.createElement("nav");
+    list.className = "mobile-menu__links";
+    list.setAttribute("aria-label", "Mobile");
+
+    Array.prototype.forEach.call(navLinks.querySelectorAll("a"), function (a) {
+      var link = document.createElement("a");
+      link.href = a.getAttribute("href");
+      link.textContent = a.textContent.trim();
+      // The "Get Started" CTA keeps its primary-button styling.
+      if (a.classList.contains("btn--primary")) {
+        link.className = "btn btn--primary btn--lg mobile-menu__cta";
+      } else {
+        link.className = "mobile-menu__link";
+      }
+      list.appendChild(link);
+    });
+
+    menu.appendChild(list);
+    header.insertAdjacentElement("afterend", menu);
+  }
 
   function setMenu(open) {
     if (!toggle || !menu) return;
     toggle.classList.toggle("is-open", open);
     menu.classList.toggle("is-open", open);
     toggle.setAttribute("aria-expanded", String(open));
+    toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
     menu.setAttribute("aria-hidden", String(!open));
     document.body.style.overflow = open ? "hidden" : "";
   }
@@ -98,7 +130,7 @@
         '<path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
         '<circle cx="20.5" cy="5" r="2" fill="#ffffff"/>' +
       '</svg>' +
-      '<div class="loader__name">Career<b>OS</b></div>' +
+      '<div class="loader__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</div>' +
       '<div class="loader__bar"><span class="loader__bar-fill" id="loaderFill"></span></div>' +
       '<div class="loader__pct" id="loaderPct">0%</div>' +
     '</div>';
