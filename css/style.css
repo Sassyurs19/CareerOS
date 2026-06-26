@@ -1611,13 +1611,11 @@ img, svg, video, canvas { max-width: 100%; }
 .dash-bg__photo {
   position: absolute; inset: 0;
   background-image:
-    linear-gradient(to bottom, rgba(5,5,5,0.82) 0%, rgba(5,5,5,0.9) 55%, var(--bg) 100%),
-    url("../assets/dashboard-bg.png");
-  background-size: cover, cover;
-  background-position: center, center 30%;
+    linear-gradient(to bottom, rgba(5,5,5,0.82) 0%, rgba(5,5,5,0.9) 55%, var(--bg) 100%);
+  background-size: cover;
+  background-position: center;
   background-repeat: no-repeat;
-  filter: grayscale(100%) contrast(1.05);
-  opacity: 0.55;
+  opacity: 1;
 }
 .dash-bg__glow {
   position: absolute; width: 560px; height: 560px; top: -200px; left: 50%;
@@ -1689,7 +1687,7 @@ img, svg, video, canvas { max-width: 100%; }
 
 /* Content grid + panels */
 .dash-grid {
-  display: grid; grid-template-columns: 2fr 1fr; gap: 24px; align-items: start;
+  display: grid; grid-template-columns: 1fr; gap: 24px; align-items: start;
 }
 .dash-col { display: grid; gap: 24px; }
 .dash-panel {
