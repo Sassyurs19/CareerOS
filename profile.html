@@ -13,7 +13,7 @@
 
   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body>
+<body class="app-page app-profile" data-app-page>
   <!-- Architectural background -->
   <div class="dash-bg" aria-hidden="true">
     <div class="dash-bg__photo"></div>
@@ -24,7 +24,7 @@
   <!-- NAVBAR -->
   <header class="nav is-scrolled" id="nav">
     <div class="container nav__inner">
-      <a class="brand" href="index.html" aria-label="CareerOS home">
+      <a class="brand" href="dashboard.html" aria-label="CareerOS home">
         <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
           <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
@@ -36,7 +36,6 @@
         <a href="dashboard.html" class="nav__link">Dashboard</a>
         <a href="platform.html" class="nav__link">Platform</a>
         <a href="resume.html" class="nav__link">Resume</a>
-        <a href="about.html" class="nav__link">About</a>
         <span class="nav__auth" data-google-navauth data-nav-variant="desktop">
           <a href="signin.html" class="nav__link nav__signin">Sign In</a>
           <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
@@ -54,7 +53,6 @@
       <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
       <a href="platform.html" class="mobile-menu__link">Platform</a>
       <a href="resume.html" class="mobile-menu__link">Resume</a>
-      <a href="about.html" class="mobile-menu__link">About</a>
       <span data-google-navauth data-nav-variant="mobile">
         <a href="signin.html" class="mobile-menu__link">Sign In</a>
         <a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>
@@ -64,7 +62,6 @@
 
 
 
-  <main class="dash">
   <main class="dash">
     <div class="container">
 
@@ -239,8 +236,6 @@
 
     </div>
   </main>
-
-  <footer class="footer">
 
   <footer class="footer">
     <div class="container footer__inner">

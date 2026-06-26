@@ -141,130 +141,59 @@
 
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+  /* Minimal CareerOS loader: the logo mark fills left→right in the brand
+     accent, then the "CareerOS" wordmark fades in. No spinner, no percentage,
+     no rotating taglines. Total ≈ 1000ms (≈500ms when reduced motion). */
   var loader = document.createElement("div");
-  loader.className = "loader";
+  loader.className = "loaderx";
   loader.id = "careerLoader";
   loader.setAttribute("role", "status");
   loader.setAttribute("aria-label", "Loading CareerOS");
   loader.innerHTML =
-    '<div class="loader__core">' +
-      '<svg class="loader__logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
-        '<path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
-        '<circle cx="20.5" cy="5" r="2" fill="#ffffff"/>' +
+    '<div class="loaderx__core">' +
+      '<svg class="loaderx__logo" viewBox="0 0 24 24" fill="none" aria-hidden="true">' +
+        '<path class="loaderx__track" d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<path class="loaderx__draw" d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '<circle class="loaderx__dot" cx="20.5" cy="5" r="2"/>' +
       '</svg>' +
-      '<div class="loader__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</div>' +
-      '<div class="loader__tagline" id="loaderTag">Initializing…</div>' +
-      '<div class="loader__bar"><span class="loader__bar-fill" id="loaderFill"></span></div>' +
-      '<div class="loader__pct" id="loaderPct">0%</div>' +
+      '<div class="loaderx__word">CareerOS</div>' +
     '</div>';
 
+  var style = document.createElement("style");
+  style.id = "loaderxStyle";
+  style.textContent = [
+    '.loaderx{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;background:#0b0d12;transition:opacity .45s ease;}',
+    '.loaderx.is-hidden{opacity:0;pointer-events:none;}',
+    '.loaderx__core{display:flex;flex-direction:column;align-items:center;gap:14px;}',
+    '.loaderx__logo{width:64px;height:64px;}',
+    '.loaderx__track{stroke:rgba(255,255,255,.14);}',
+    '.loaderx__draw{stroke:var(--accent,#ffffff);stroke-dasharray:28;stroke-dashoffset:28;}',
+    '.loaderx__dot{fill:var(--accent,#ffffff);opacity:0;}',
+    '.loaderx__word{font-family:inherit;font-weight:700;letter-spacing:.04em;font-size:20px;color:var(--accent,#ffffff);opacity:0;}',
+    '@keyframes lx-draw{to{stroke-dashoffset:0;}}',
+    '@keyframes lx-fade{to{opacity:1;}}',
+    '.loaderx:not(.reduced) .loaderx__draw{animation:lx-draw .6s ease forwards;}',
+    '.loaderx:not(.reduced) .loaderx__dot{animation:lx-fade .25s ease .55s forwards;}',
+    '.loaderx:not(.reduced) .loaderx__word{animation:lx-fade .35s ease .6s forwards;}',
+    '.loaderx.reduced .loaderx__draw{stroke-dashoffset:0;}',
+    '.loaderx.reduced .loaderx__dot,.loaderx.reduced .loaderx__word{opacity:1;}'
+  ].join("");
+
   function mount() {
+    if (reduce) loader.classList.add("reduced");
+    document.head.appendChild(style);
     document.body.appendChild(loader);
     document.body.style.overflow = "hidden";
 
-    var fill = document.getElementById("loaderFill");
-    var pctEl = document.getElementById("loaderPct");
-    var tagEl = document.getElementById("loaderTag");
-
-    /* Rotating status messages keep the loader feeling alive. */
-    var loaderTags = [
-      "Initializing…",
-      "Connecting your ecosystem…",
-      "Verifying achievements…",
-      "Syncing your profile…",
-      "Almost there…"
-    ];
-    var tagIdx = 0;
-    var tagIv = window.setInterval(function () {
-      if (!tagEl) { window.clearInterval(tagIv); return; }
-      tagIdx = (tagIdx + 1) % loaderTags.length;
-      tagEl.style.opacity = "0";
+    var hold = reduce ? 500 : 1050;
+    window.setTimeout(function () {
+      loader.classList.add("is-hidden");
+      document.body.style.overflow = "";
       window.setTimeout(function () {
-        tagEl.textContent = loaderTags[tagIdx];
-        tagEl.style.opacity = "";
-      }, reduce ? 0 : 220);
-    }, reduce ? 600 : 900);
-
-    /* Adaptive hold: derived from the Network Information API when present,
-       otherwise from actual page-load timing. Never a fixed 3s. */
-    var conn =
-      navigator.connection ||
-      navigator.mozConnection ||
-      navigator.webkitConnection;
-
-    var hold;            // target hold duration in ms
-    var useLoadEvent = false;
-
-    if (reduce) {
-      hold = 450;        // minimal motion
-    } else if (conn) {
-      if (conn.saveData) {
-        hold = 1500;     // Data Saver on → keep it brief but present
-      } else {
-        switch (conn.effectiveType) {
-          case "slow-2g":
-          case "2g":
-            hold = 2000;
-            break;
-          case "3g":
-            hold = 1000;
-            break;
-          case "4g":
-            hold = conn.downlink && conn.downlink >= 5 ? 300 : 550;
-            break;
-          default:
-            hold = 700;
-        }
-      }
-    } else {
-      // No Network Information API → hide as soon as the page is ready,
-      // bounded to a sensible 600–1800ms window.
-      useLoadEvent = true;
-      hold = 1800;       // ceiling
-    }
-
-    var MIN_HOLD = reduce ? 350 : 600;
-    var start = performance.now();
-    var done = false;
-
-    function finish() {
-      if (done) return;
-      done = true;
-      if (pctEl) pctEl.textContent = "100%";
-      if (fill) fill.style.width = "100%";
-      window.setTimeout(function () {
-        loader.classList.add("is-hidden");
-        document.body.style.overflow = "";
-        window.setTimeout(function () {
-          if (loader.parentNode) loader.parentNode.removeChild(loader);
-        }, 700);
-      }, 120);
-    }
-
-    // Percentage + bar ramp, kept in sync with the resolved hold.
-    function tick(now) {
-      if (done) return;
-      var pct = Math.min(99, Math.round(((now - start) / hold) * 100));
-      if (pctEl) pctEl.textContent = pct + "%";
-      if (fill) fill.style.width = pct + "%";
-      if (now - start >= hold) {
-        finish();
-      } else {
-        requestAnimationFrame(tick);
-      }
-    }
-    requestAnimationFrame(tick);
-
-    // Fallback path: resolve on real page load, respecting the minimum floor.
-    if (useLoadEvent) {
-      var onReady = function () {
-        var elapsed = performance.now() - start;
-        if (elapsed >= MIN_HOLD) finish();
-        else window.setTimeout(finish, MIN_HOLD - elapsed);
-      };
-      if (document.readyState === "complete") onReady();
-      else window.addEventListener("load", onReady, { once: true });
-    }
+        if (loader.parentNode) loader.parentNode.removeChild(loader);
+        if (style.parentNode) style.parentNode.removeChild(style);
+      }, 480);
+    }, hold);
   }
 
   if (document.body) {
@@ -278,6 +207,7 @@
 
 
 /* ============================================================
+
    AUTH MODULE — powers signup.html (multi-step) and
    signin.html (OAuth + email → OTP). Element-guarded so the
    marketing pages are completely unaffected.
@@ -1665,24 +1595,41 @@
   });
 
   function init() {
-    /* Auth guard: if already signed in, never show the sign-in/sign-up UI. */
+    /* ============================================================
+       PUBLIC / APP AUTHENTICATION BOUNDARY
+       Classify the current page, then enforce a hard separation:
+       - signed-in users never see the auth screens OR the public
+         marketing site during internal navigation;
+       - signed-out users can never open an application page.
+       ============================================================ */
     var profile = get();
+    var path = window.location.pathname;
+
+    var isAppPage =
+      !!document.querySelector("[data-google-dashboard]") ||
+      document.body.hasAttribute("data-app-page") ||
+      /\/(dashboard|profile|resume|platform|roadmap|career-analysis)\.html$/i.test(path);
+
+    var isAuthPage =
+      (document.body.hasAttribute("data-google-redirect") && !isAppPage) ||
+      /\/(signin|signup)\.html$/i.test(path);
+
+    var isMarketingPage =
+      /\/(index|about)\.html$/i.test(path) ||
+      path === "/" ||
+      /\/$/.test(path);
+
     if (profile) {
+      /* Signed in → stay inside the application. Bounce the auth screens
+         and any public marketing page back into the workspace. */
       var redirectTarget = document.body.getAttribute("data-google-redirect") || "dashboard.html";
-      var isAuthPage =
-        (document.body.hasAttribute("data-google-redirect") && !document.querySelector("[data-google-dashboard]")) ||
-        /\/(signin|signup)\.html$/i.test(window.location.pathname);
-      if (isAuthPage) {
+      if (isAuthPage || isMarketingPage) {
         window.location.replace(redirectTarget);
         return;
       }
-    }
-    /* Reverse auth guard: protect the dashboard — signed-out users can't view it. */
-    if (!profile) {
-      var isDashboardPage =
-        !!document.querySelector("[data-google-dashboard]") ||
-        /\/dashboard\.html$/i.test(window.location.pathname);
-      if (isDashboardPage) {
+    } else {
+      /* Signed out → protect every application page. */
+      if (isAppPage) {
         window.location.replace("signin.html");
         return;
       }
