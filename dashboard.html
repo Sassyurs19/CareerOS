@@ -63,46 +63,129 @@
   </div>
 
   <main class="dash">
+  <main class="dash">
     <div class="container">
 
-      <!-- WELCOME HEADER -->
-      <section class="dash-hero reveal">
-        <div class="dash-hero__photo" aria-hidden="true"></div>
-        <div class="dash-hero__inner">
-          <span class="dash-hero__kicker">Your verified workspace</span>
-          <h1 class="dash-hero__title">Welcome back, <span data-google-name>Sasidhar</span></h1>
-          <p class="dash-hero__sub">Everything you've built — pulled from your connected sources, verified, and kept in sync automatically.</p>
+      <!-- AI CAREER COPILOT HERO -->
+      <section class="copilot reveal">
+        <div class="copilot__bg" aria-hidden="true"></div>
+        <div class="copilot__head">
+          <div>
+            <span class="copilot__kicker">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.8"/></svg>
+              Career Copilot
+            </span>
+            <h1 class="copilot__greeting">Good to see you, <span data-google-name>there</span> <span class="copilot__wave" aria-hidden="true">👋</span></h1>
+            <p class="copilot__sub">Here's your guided path to becoming career-ready. Work through today's focus and CareerOS keeps everything in sync.</p>
+          </div>
+        </div>
+
+        <div class="copilot__focus">
+          <div class="copilot__focus-head">
+            <h2 class="copilot__focus-title">Today's Focus</h2>
+            <span class="copilot__focus-note">Personalized guidance</span>
+          </div>
+          <ul class="copilot__tasks">
+            <li class="copilot__task">
+              <span class="copilot__task-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></span>
+              <span class="copilot__task-txt"><strong>Complete your AI Profile Analysis</strong><span>Let CareerOS understand your current level.</span></span>
+              <a class="copilot__task-go" href="profile.html" aria-label="Go">›</a>
+            </li>
+            <li class="copilot__task">
+              <span class="copilot__task-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></span>
+              <span class="copilot__task-txt"><strong>Connect your developer accounts</strong><span>Import achievements from GitHub & more.</span></span>
+              <a class="copilot__task-go" href="platform.html" aria-label="Go">›</a>
+            </li>
+            <li class="copilot__task">
+              <span class="copilot__task-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></span>
+              <span class="copilot__task-txt"><strong>Generate your resume</strong><span>Build an ATS-friendly resume from verified data.</span></span>
+              <a class="copilot__task-go" href="resume.html" aria-label="Go">›</a>
+            </li>
+            <li class="copilot__task">
+              <span class="copilot__task-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></span>
+              <span class="copilot__task-txt"><strong>Continue your career roadmap</strong><span>Follow your personalized learning plan.</span></span>
+              <a class="copilot__task-go" href="platform.html" aria-label="Go">›</a>
+            </li>
+          </ul>
         </div>
       </section>
 
-      <!-- STAT CARDS -->
-      <section class="dash-stats">
-        <div class="dash-stat reveal">
-          <div class="dash-stat__label">Verified Projects</div>
-          <div class="dash-stat__value">12</div>
-          <div class="dash-stat__meta is-up">+2 this month</div>
+      <!-- CAREER READINESS + SKILL GAP -->
+      <div class="dash-grid dash-grid--top">
+        <div class="dash-col">
+
+          <!-- CAREER READINESS -->
+          <section class="dash-panel readiness reveal">
+            <div class="dash-panel__head">
+              <h2 class="dash-panel__title">Career Readiness</h2>
+            </div>
+            <div class="readiness__body">
+              <div class="readiness__ring" aria-hidden="true">
+                <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="50" class="readiness__ring-track"/><circle cx="60" cy="60" r="50" class="readiness__ring-fill"/></svg>
+                <span class="readiness__ring-label">—</span>
+              </div>
+              <div class="readiness__copy">
+                <p class="readiness__lead">Complete your profile to generate your Career Readiness Score.</p>
+                <p class="readiness__hint">Once your profile and platforms are connected, CareerOS will calculate an AI-powered readiness score here.</p>
+                <a href="profile.html" class="btn btn--primary btn--sm">Complete Profile</a>
+              </div>
+            </div>
+          </section>
+
+          <!-- SKILL GAP ANALYSIS -->
+          <section class="dash-panel skillgap reveal">
+            <div class="dash-panel__head">
+              <h2 class="dash-panel__title">Skill Gap Analysis</h2>
+              <span class="dash-panel__tag">AI</span>
+            </div>
+            <ul class="skillgap__list">
+              <li class="skillgap__row"><span class="skillgap__name">Programming</span><span class="skillgap__state">Waiting for AI analysis…</span></li>
+              <li class="skillgap__row"><span class="skillgap__name">Core Subjects</span><span class="skillgap__state">Waiting for AI analysis…</span></li>
+              <li class="skillgap__row"><span class="skillgap__name">Projects</span><span class="skillgap__state">Waiting for AI analysis…</span></li>
+              <li class="skillgap__row"><span class="skillgap__name">Communication</span><span class="skillgap__state">Waiting for AI analysis…</span></li>
+              <li class="skillgap__row"><span class="skillgap__name">Interview Preparation</span><span class="skillgap__state">Waiting for AI analysis…</span></li>
+            </ul>
+          </section>
+
         </div>
-        <div class="dash-stat reveal" data-delay="1">
-          <div class="dash-stat__label">Profiles Connected</div>
-          <div class="dash-stat__value">4</div>
-          <div class="dash-stat__meta">of 6 sources</div>
+
+        <div class="dash-col">
+
+          <!-- CAREER TIMELINE -->
+          <section class="dash-panel ctimeline reveal" data-delay="1" data-career-timeline>
+            <div class="dash-panel__head">
+              <h2 class="dash-panel__title">Your Career Timeline</h2>
+            </div>
+            <ol class="ctimeline__list">
+              <li class="ctimeline__step is-done" data-step="account">
+                <span class="ctimeline__node"></span>
+                <span class="ctimeline__label">Account Created</span>
+              </li>
+              <li class="ctimeline__step" data-step="profile">
+                <span class="ctimeline__node"></span>
+                <span class="ctimeline__label">Profile Completed</span>
+              </li>
+              <li class="ctimeline__step" data-step="platforms">
+                <span class="ctimeline__node"></span>
+                <span class="ctimeline__label">Connect Platforms</span>
+              </li>
+              <li class="ctimeline__step" data-step="resume">
+                <span class="ctimeline__node"></span>
+                <span class="ctimeline__label">Generate Resume</span>
+              </li>
+              <li class="ctimeline__step" data-step="analysis">
+                <span class="ctimeline__node"></span>
+                <span class="ctimeline__label">Complete AI Analysis</span>
+              </li>
+              <li class="ctimeline__step" data-step="ready">
+                <span class="ctimeline__node"></span>
+                <span class="ctimeline__label">Career Ready</span>
+              </li>
+            </ol>
+          </section>
+
         </div>
-        <div class="dash-stat reveal" data-delay="2">
-          <div class="dash-stat__label">Achievements</div>
-          <div class="dash-stat__value">28</div>
-          <div class="dash-stat__meta is-up">+5 verified</div>
-        </div>
-        <div class="dash-stat reveal" data-delay="3">
-          <div class="dash-stat__label">Certifications</div>
-          <div class="dash-stat__value">7</div>
-          <div class="dash-stat__meta">all current</div>
-        </div>
-        <div class="dash-stat reveal" data-delay="4">
-          <div class="dash-stat__label">Career Score</div>
-          <div class="dash-stat__value">842</div>
-          <div class="dash-stat__meta is-up">+34 pts</div>
-        </div>
-      </section>
+      </div>
 
       <!-- CONTENT GRID -->
       <div class="dash-grid">
@@ -118,49 +201,22 @@
           <section class="dash-panel reveal">
             <div class="dash-panel__head">
               <h2 class="dash-panel__title">Recent Activity</h2>
-              <a class="dash-panel__link" href="platform.html">View all</a>
             </div>
-            <ul class="dash-activity">
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Pushed 8 commits to <strong>careeros-web</strong> on GitHub
-                  <span class="dash-activity__time">2 hours ago · verified</span>
-                </span>
-              </li>
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Solved <strong>3 hard problems</strong> on LeetCode
-                  <span class="dash-activity__time">Yesterday · verified</span>
-                </span>
-              </li>
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Earned <strong>AWS Cloud Practitioner</strong> certification
-                  <span class="dash-activity__time">3 days ago · verified</span>
-                </span>
-              </li>
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Published a new project — <strong>Realtime Chat API</strong>
-                  <span class="dash-activity__time">5 days ago · verified</span>
-                </span>
-              </li>
-            </ul>
+            <div class="dash-empty">
+              <div class="dash-empty__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></div>
+              <p class="dash-empty__txt">No activity yet. Connect a platform to import your latest contributions.</p>
+              <a href="platform.html" class="btn btn--ghost btn--sm">Connect a platform</a>
+            </div>
           </section>
 
           <!-- ACHIEVEMENTS -->
           <section class="dash-panel reveal">
             <div class="dash-panel__head">
               <h2 class="dash-panel__title">Achievements</h2>
-              <a class="dash-panel__link" href="resume.html">Manage</a>
             </div>
-            <div class="dash-achievements">
-              <span class="dash-achievement">500-day GitHub streak</span>
-              <span class="dash-achievement">Top 5% LeetCode</span>
-              <span class="dash-achievement">AWS Certified</span>
-              <span class="dash-achievement">Hackathon Winner 2025</span>
-              <span class="dash-achievement">Open Source Contributor</span>
-              <span class="dash-achievement">100 Problems Solved</span>
+            <div class="dash-empty">
+              <div class="dash-empty__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M8 4h8v4a4 4 0 0 1-8 0V4zM6 4H4v2a3 3 0 0 0 3 3M18 4h2v2a3 3 0 0 1-3 3M9 18h6M10 21h4M12 13v5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="dash-empty__txt">No verified achievements yet. They'll appear here as your connected profiles sync.</p>
             </div>
           </section>
 
@@ -172,51 +228,65 @@
           <section class="dash-panel reveal" data-delay="1">
             <div class="dash-panel__head">
               <h2 class="dash-panel__title">Connected Profiles</h2>
-              <a class="dash-panel__link" href="signup.html">Add</a>
+              <a class="dash-panel__link" href="platform.html">Manage</a>
             </div>
             <ul class="dash-profiles">
               <li class="dash-profile">
                 <span class="dash-profile__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></span>
                 <span>
                   <span class="dash-profile__name">GitHub</span>
-                  <span class="dash-profile__stat">1,284 contributions</span>
+                  <span class="dash-profile__stat">Connect GitHub to import repositories.</span>
                 </span>
-                <span class="dash-profile__status is-connected">Synced</span>
+                <a class="dash-profile__status" href="platform.html">Connect</a>
               </li>
               <li class="dash-profile">
                 <span class="dash-profile__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 3 7.5 10.2a2.4 2.4 0 0 0 0 3.4L14.6 21"/><path d="M9.5 12.4h9.5"/></svg></span>
                 <span>
                   <span class="dash-profile__name">LeetCode</span>
-                  <span class="dash-profile__stat">412 problems solved</span>
+                  <span class="dash-profile__stat">Not connected yet.</span>
                 </span>
-                <span class="dash-profile__status is-connected">Synced</span>
+                <a class="dash-profile__status" href="platform.html">Connect</a>
               </li>
               <li class="dash-profile">
                 <span class="dash-profile__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></span>
                 <span>
                   <span class="dash-profile__name">LinkedIn</span>
-                  <span class="dash-profile__stat">Profile verified</span>
+                  <span class="dash-profile__stat">Not connected yet.</span>
                 </span>
-                <span class="dash-profile__status is-connected">Synced</span>
+                <a class="dash-profile__status" href="platform.html">Connect</a>
               </li>
               <li class="dash-profile">
                 <span class="dash-profile__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg></span>
                 <span>
                   <span class="dash-profile__name">GeeksforGeeks</span>
-                  <span class="dash-profile__stat">Not connected</span>
+                  <span class="dash-profile__stat">Not connected yet.</span>
                 </span>
-                <span class="dash-profile__status">Connect</span>
+                <a class="dash-profile__status" href="platform.html">Connect</a>
               </li>
             </ul>
           </section>
 
-          <!-- COMPLETE PROFILE CTA -->
-          <section class="dash-cta reveal" data-delay="2">
-            <h2 class="dash-cta__title">Complete your profile</h2>
-            <p class="dash-cta__txt">Add the finishing details to generate your recruiter-ready resume.</p>
-            <span class="dash-cta__bar"><span class="dash-cta__fill"></span></span>
-            <div class="dash-cta__pct">65% complete</div>
-            <a href="resume.html" class="btn btn--primary btn--lg">Complete Profile</a>
+          <!-- RESUME STATUS -->
+          <section class="dash-panel reveal" data-delay="2">
+            <div class="dash-panel__head">
+              <h2 class="dash-panel__title">Resume</h2>
+            </div>
+            <div class="dash-empty">
+              <div class="dash-empty__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14H7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v4h4M9.5 12h5M9.5 15.5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+              <p class="dash-empty__txt">Resume has not been generated yet.</p>
+              <a href="resume.html" class="btn btn--primary btn--sm">Generate Resume</a>
+            </div>
+          </section>
+
+          <!-- INTERVIEW PREP -->
+          <section class="dash-panel reveal" data-delay="3">
+            <div class="dash-panel__head">
+              <h2 class="dash-panel__title">Interview Preparation</h2>
+            </div>
+            <div class="dash-empty">
+              <div class="dash-empty__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 3z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+              <p class="dash-empty__txt">No interview preparation data available.</p>
+            </div>
           </section>
 
         </div>
@@ -224,6 +294,8 @@
 
     </div>
   </main>
+
+  <footer class="footer">
 
   <footer class="footer">
     <div class="container footer__inner">
