@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#050505" />
-  <title>Dashboard — CareerOS</title>
-  <meta name="description" content="Your CareerOS dashboard — verified projects, connected coding profiles, achievements and certifications in one place." />
+  <title>Your Profile — CareerOS</title>
+  <meta name="description" content="Your CareerOS profile — verified identity, connected coding profiles, skills, achievements and certifications in one place." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -33,10 +33,10 @@
       </a>
 
       <nav class="nav__links" id="navLinks" aria-label="Primary">
+        <a href="dashboard.html" class="nav__link">Dashboard</a>
         <a href="platform.html" class="nav__link">Platform</a>
         <a href="resume.html" class="nav__link">Resume</a>
         <a href="about.html" class="nav__link">About</a>
-        <a href="profile.html" class="nav__link">Profile</a>
         <span class="nav__auth" data-google-navauth data-nav-variant="desktop">
           <a href="signin.html" class="nav__link nav__signin">Sign In</a>
           <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
@@ -51,10 +51,10 @@
 
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
       <a href="platform.html" class="mobile-menu__link">Platform</a>
       <a href="resume.html" class="mobile-menu__link">Resume</a>
       <a href="about.html" class="mobile-menu__link">About</a>
-      <a href="profile.html" class="mobile-menu__link">Profile</a>
       <span data-google-navauth data-nav-variant="mobile">
         <a href="signin.html" class="mobile-menu__link">Sign In</a>
         <a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>
@@ -62,45 +62,22 @@
     </nav>
   </div>
 
+
+
   <main class="dash">
     <div class="container">
 
-      <!-- WELCOME HEADER -->
+      <!-- PROFILE HERO -->
       <section class="dash-hero reveal">
         <div class="dash-hero__photo" aria-hidden="true"></div>
         <div class="dash-hero__inner">
-          <span class="dash-hero__kicker">Your verified workspace</span>
-          <h1 class="dash-hero__title">Welcome back, <span data-google-name>Sasidhar</span></h1>
-          <p class="dash-hero__sub">Everything you've built — pulled from your connected sources, verified, and kept in sync automatically.</p>
-        </div>
-      </section>
-
-      <!-- STAT CARDS -->
-      <section class="dash-stats">
-        <div class="dash-stat reveal">
-          <div class="dash-stat__label">Verified Projects</div>
-          <div class="dash-stat__value">12</div>
-          <div class="dash-stat__meta is-up">+2 this month</div>
-        </div>
-        <div class="dash-stat reveal" data-delay="1">
-          <div class="dash-stat__label">Profiles Connected</div>
-          <div class="dash-stat__value">4</div>
-          <div class="dash-stat__meta">of 6 sources</div>
-        </div>
-        <div class="dash-stat reveal" data-delay="2">
-          <div class="dash-stat__label">Achievements</div>
-          <div class="dash-stat__value">28</div>
-          <div class="dash-stat__meta is-up">+5 verified</div>
-        </div>
-        <div class="dash-stat reveal" data-delay="3">
-          <div class="dash-stat__label">Certifications</div>
-          <div class="dash-stat__value">7</div>
-          <div class="dash-stat__meta">all current</div>
-        </div>
-        <div class="dash-stat reveal" data-delay="4">
-          <div class="dash-stat__label">Career Score</div>
-          <div class="dash-stat__value">842</div>
-          <div class="dash-stat__meta is-up">+34 pts</div>
+          <span class="dash-hero__kicker">Your verified profile</span>
+          <h1 class="dash-hero__title">Hello, <span data-google-name>there</span></h1>
+          <p class="dash-hero__sub">Full-stack developer focused on building reliable, verified software — your identity, work and credentials, unified in one place.</p>
+          <div class="dash-hero__actions" style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;">
+            <a href="resume.html" class="btn btn--primary btn--lg">Edit Profile</a>
+            <a href="dashboard.html" class="btn btn--ghost btn--lg">Back to Dashboard</a>
+          </div>
         </div>
       </section>
 
@@ -108,48 +85,29 @@
       <div class="dash-grid">
         <div class="dash-col">
 
-          <!-- GITHUB (live data) -->
-          <section class="dash-panel gh-card reveal" data-gh-dashboard></section>
-
-          <!-- GOOGLE (signed-in identity) -->
+          <!-- IDENTITY (Google signed-in account; also gates this page for signed-out users) -->
           <section class="dash-panel gh-card reveal" data-google-dashboard></section>
 
-          <!-- RECENT ACTIVITY -->
-          <section class="dash-panel reveal">
+          <!-- SKILLS -->
+          <section class="dash-panel reveal" data-delay="1">
             <div class="dash-panel__head">
-              <h2 class="dash-panel__title">Recent Activity</h2>
-              <a class="dash-panel__link" href="platform.html">View all</a>
+              <h2 class="dash-panel__title">Skills</h2>
+              <a class="dash-panel__link" href="resume.html">Manage</a>
             </div>
-            <ul class="dash-activity">
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Pushed 8 commits to <strong>careeros-web</strong> on GitHub
-                  <span class="dash-activity__time">2 hours ago · verified</span>
-                </span>
-              </li>
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Solved <strong>3 hard problems</strong> on LeetCode
-                  <span class="dash-activity__time">Yesterday · verified</span>
-                </span>
-              </li>
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Earned <strong>AWS Cloud Practitioner</strong> certification
-                  <span class="dash-activity__time">3 days ago · verified</span>
-                </span>
-              </li>
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Published a new project — <strong>Realtime Chat API</strong>
-                  <span class="dash-activity__time">5 days ago · verified</span>
-                </span>
-              </li>
-            </ul>
+            <div class="dash-achievements">
+              <span class="dash-achievement">JavaScript</span>
+              <span class="dash-achievement">Python</span>
+              <span class="dash-achievement">React</span>
+              <span class="dash-achievement">Node.js</span>
+              <span class="dash-achievement">SQL</span>
+              <span class="dash-achievement">AWS</span>
+              <span class="dash-achievement">Docker</span>
+              <span class="dash-achievement">System Design</span>
+            </div>
           </section>
 
           <!-- ACHIEVEMENTS -->
-          <section class="dash-panel reveal">
+          <section class="dash-panel reveal" data-delay="2">
             <div class="dash-panel__head">
               <h2 class="dash-panel__title">Achievements</h2>
               <a class="dash-panel__link" href="resume.html">Manage</a>
@@ -168,11 +126,12 @@
 
         <div class="dash-col">
 
+
           <!-- CONNECTED PROFILES -->
           <section class="dash-panel reveal" data-delay="1">
             <div class="dash-panel__head">
               <h2 class="dash-panel__title">Connected Profiles</h2>
-              <a class="dash-panel__link" href="signup.html">Add</a>
+              <a class="dash-panel__link" href="dashboard.html">Manage</a>
             </div>
             <ul class="dash-profiles">
               <li class="dash-profile">
@@ -210,13 +169,41 @@
             </ul>
           </section>
 
+          <!-- CERTIFICATIONS -->
+          <section class="dash-panel reveal" data-delay="2">
+            <div class="dash-panel__head">
+              <h2 class="dash-panel__title">Certifications</h2>
+              <a class="dash-panel__link" href="resume.html">Manage</a>
+            </div>
+            <ul class="dash-activity">
+              <li>
+                <span class="dash-activity__dot"></span>
+                <span class="dash-activity__txt">AWS Certified Cloud Practitioner
+                  <span class="dash-activity__time">Issued 2025 · verified</span>
+                </span>
+              </li>
+              <li>
+                <span class="dash-activity__dot"></span>
+                <span class="dash-activity__txt">Meta Front-End Developer
+                  <span class="dash-activity__time">Issued 2024 · verified</span>
+                </span>
+              </li>
+              <li>
+                <span class="dash-activity__dot"></span>
+                <span class="dash-activity__txt">Google Data Analytics
+                  <span class="dash-activity__time">Issued 2024 · verified</span>
+                </span>
+              </li>
+            </ul>
+          </section>
+
           <!-- COMPLETE PROFILE CTA -->
-          <section class="dash-cta reveal" data-delay="2">
+          <section class="dash-cta reveal" data-delay="3">
             <h2 class="dash-cta__title">Complete your profile</h2>
             <p class="dash-cta__txt">Add the finishing details to generate your recruiter-ready resume.</p>
             <span class="dash-cta__bar"><span class="dash-cta__fill"></span></span>
             <div class="dash-cta__pct">65% complete</div>
-            <a href="resume.html" class="btn btn--primary btn--lg">Complete Profile</a>
+            <a href="resume.html" class="btn btn--primary btn--lg">Edit Profile</a>
           </section>
 
         </div>
@@ -247,10 +234,10 @@
       </div>
       <nav class="footer__nav" aria-label="Footer navigation">
         <span class="footer__nav-title">Explore</span>
+        <a href="dashboard.html">Dashboard</a>
         <a href="platform.html">Platform</a>
         <a href="resume.html">Resume</a>
         <a href="about.html">About</a>
-        <a href="mailto:sassyurs19@gmail.com">Contact</a>
       </nav>
     </div>
     <div class="container footer__bottom">

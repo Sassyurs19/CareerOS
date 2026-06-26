@@ -39,6 +39,17 @@
     </div>
   </header>
 
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav class="mobile-menu__links" aria-label="Mobile">
+      <a href="platform.html" class="mobile-menu__link">Platform</a>
+      <a href="resume.html" class="mobile-menu__link">Resume</a>
+      <a href="about.html" class="mobile-menu__link">About</a>
+      <a href="signin.html" class="mobile-menu__link">Sign In</a>
+      <a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>
+    </nav>
+  </div>
+
   <!-- HERO -->
   <main>
     <section class="hero">
@@ -61,6 +72,128 @@
         <div class="hero__actions">
           <a class="btn btn--primary btn--lg" href="signup.html">Get Started — It's Free</a>
           <a class="btn btn--ghost btn--lg" href="platform.html">Explore the Platform</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS — connected platforms flow -->
+    <section class="section" id="how">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">How it works</span>
+          <h2 class="section__title">Every proof, into one engine.</h2>
+          <p class="section__lede">
+            Connect the platforms where your work already lives. CareerOS reads, verifies
+            and keeps everything in sync — then turns it into a profile and resume you can share.
+          </p>
+        </header>
+
+        <div class="flow reveal" data-delay="1">
+          <!-- Stage 1: connect -->
+          <div class="flow__stage flow__stage--in">
+            <span class="flow__stage-label">Connect</span>
+            <div class="flow__node">
+              <span class="flow__node-icon flow__node-icon--gh">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+              </span>
+              <span class="flow__node-label">GitHub</span>
+            </div>
+            <div class="flow__node">
+              <span class="flow__node-icon flow__node-icon--lc">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 3 7.5 10.2a2.4 2.4 0 0 0 0 3.4L14.6 21"/><path d="M9.5 12.4h9.5"/></svg>
+              </span>
+              <span class="flow__node-label">LeetCode</span>
+            </div>
+            <div class="flow__node">
+              <span class="flow__node-icon flow__node-icon--gfg">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg>
+              </span>
+              <span class="flow__node-label">GeeksforGeeks</span>
+            </div>
+            <div class="flow__node">
+              <span class="flow__node-icon flow__node-icon--in">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg>
+              </span>
+              <span class="flow__node-label">LinkedIn</span>
+            </div>
+          </div>
+
+          <div class="flow__wire flow__wire--in">
+            <span class="flow__track"></span>
+            <span class="flow__arrow"></span>
+          </div>
+
+          <!-- Stage 2: engine -->
+          <div class="flow__stage flow__stage--engine">
+            <div class="flow__core">
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
+              </svg>
+              <span class="flow__core-name">CareerOS</span>
+              <span class="flow__core-sub">Engine</span>
+            </div>
+          </div>
+
+          <div class="flow__wire flow__wire--out">
+            <span class="flow__track"></span>
+            <span class="flow__arrow"></span>
+          </div>
+
+          <!-- Stage 3: outputs -->
+          <div class="flow__stage flow__stage--out">
+            <span class="flow__stage-label">Get</span>
+            <div class="flow__node flow__node--out">
+              <span class="flow__node-icon flow__node-icon--profile">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+              </span>
+              <span class="flow__node-label">Verified Profile</span>
+            </div>
+            <div class="flow__node flow__node--out">
+              <span class="flow__node-icon flow__node-icon--resume">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 12.5h6M9.5 16h6"/></svg>
+              </span>
+              <span class="flow__node-label">Recruiter-ready Resume</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VALUE PROPS -->
+    <section class="section">
+      <div class="container">
+        <header class="section__head reveal">
+          <span class="section__kicker">Why CareerOS</span>
+          <h2 class="section__title">Proof you can trust.</h2>
+          <p class="section__lede">
+            No copy-pasted portfolios, no inflated claims. Everything on your CareerOS profile is
+            pulled from the source and verified against it.
+          </p>
+        </header>
+
+        <div class="trust__grid">
+          <article class="trust__item reveal">
+            <span class="trust__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            </span>
+            <h3>Verified, never inflated</h3>
+            <p>Every contribution, solved problem and certificate is checked against the original platform — so what recruiters see is real.</p>
+          </article>
+          <article class="trust__item reveal" data-delay="1">
+            <span class="trust__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
+            </span>
+            <h3>Always in sync</h3>
+            <p>Connect once. CareerOS keeps your profile and resume current as you ship, solve and certify — no manual updates.</p>
+          </article>
+          <article class="trust__item reveal" data-delay="2">
+            <span class="trust__check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12a8 8 0 0 1 8-8 8 8 0 0 1 8 8"/><path d="m4 12 8 9 8-9"/></svg>
+            </span>
+            <h3>One link, one story</h3>
+            <p>Share a single, unified identity — and export a recruiter-ready resume generated from the same verified data.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -90,18 +223,42 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div class="footer__brand">
-        <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
-        <p class="footer__tagline">Your professional operating system.</p>
+        <span class="brand brand--footer">
+          <svg class="brand__mark" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M3.5 16.5 L9.5 10 L13.5 13 L20.5 5" stroke="#ffffff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="20.5" cy="5" r="2" fill="#ffffff"/>
+          </svg>
+          <span class="brand__name">𝘾𝙖𝙧𝙚𝙚𝙧𝙊𝙎</span>
+        </span>
+        <p class="footer__tagline">Your career, unified and verified.</p>
+        <div class="footer__social">
+          <a href="https://github.com/Sassyurs19" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/sasidhar-munnangi-b58671379" target="_blank" rel="noopener noreferrer" class="footer__social-link" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg>
+          </a>
+        </div>
+        <div class="footer__trust">
+          <span class="footer__trust-label">Works with</span>
+          <ul class="footer__trust-logos" aria-label="Trusted integrations">
+            <li aria-label="GitHub"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></li>
+            <li aria-label="LeetCode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 3 7.5 10.2a2.4 2.4 0 0 0 0 3.4L14.6 21"/><path d="M9.5 12.4h9.5"/></svg></li>
+            <li aria-label="GeeksforGeeks"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg></li>
+            <li aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></li>
+          </ul>
+        </div>
       </div>
-      <nav class="footer__nav" aria-label="Footer">
-        <a href="platform.html" class="footer__link">Platform</a>
-        <a href="resume.html" class="footer__link">Resume</a>
-        <a href="about.html" class="footer__link">About</a>
-        <a href="signin.html" class="footer__link">Sign In</a>
+      <nav class="footer__nav" aria-label="Footer navigation">
+        <span class="footer__nav-title">Explore</span>
+        <a href="platform.html">Platform</a>
+        <a href="resume.html">Resume</a>
+        <a href="about.html">About</a>
+        <a href="mailto:sassyurs19@gmail.com">Contact</a>
       </nav>
     </div>
-    <div class="footer__bottom">
-      <p class="footer__note">&copy; 2026 CareerOS. All rights reserved.</p>
+    <div class="container footer__bottom">
+      <p class="footer__note">© 2026 CareerOS · Progress leaves proof.</p>
     </div>
   </footer>
 
