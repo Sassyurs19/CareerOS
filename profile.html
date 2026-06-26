@@ -65,17 +65,18 @@
 
 
   <main class="dash">
+  <main class="dash">
     <div class="container">
 
       <!-- PROFILE HERO -->
       <section class="dash-hero reveal">
         <div class="dash-hero__photo" aria-hidden="true"></div>
         <div class="dash-hero__inner">
-          <span class="dash-hero__kicker">Your verified profile</span>
+          <span class="dash-hero__kicker">Account &amp; settings</span>
           <h1 class="dash-hero__title">Hello, <span data-google-name>there</span></h1>
-          <p class="dash-hero__sub">Full-stack developer focused on building reliable, verified software — your identity, work and credentials, unified in one place.</p>
+          <p class="dash-hero__sub">Manage your personal information, connected accounts and account security. Your career progress and AI guidance live on your dashboard.</p>
           <div class="dash-hero__actions" style="margin-top:18px;display:flex;gap:12px;flex-wrap:wrap;">
-            <a href="resume.html" class="btn btn--primary btn--lg">Edit Profile</a>
+            <a href="profile.html" class="btn btn--primary btn--lg">Edit Profile</a>
             <a href="dashboard.html" class="btn btn--ghost btn--lg">Back to Dashboard</a>
           </div>
         </div>
@@ -88,37 +89,73 @@
           <!-- IDENTITY (Google signed-in account; also gates this page for signed-out users) -->
           <section class="dash-panel gh-card reveal" data-google-dashboard></section>
 
-          <!-- SKILLS -->
+          <!-- PERSONAL INFORMATION -->
           <section class="dash-panel reveal" data-delay="1">
             <div class="dash-panel__head">
-              <h2 class="dash-panel__title">Skills</h2>
-              <a class="dash-panel__link" href="resume.html">Manage</a>
+              <h2 class="dash-panel__title">Personal Information</h2>
+              <a class="dash-panel__link" href="profile.html">Edit</a>
             </div>
-            <div class="dash-achievements">
-              <span class="dash-achievement">JavaScript</span>
-              <span class="dash-achievement">Python</span>
-              <span class="dash-achievement">React</span>
-              <span class="dash-achievement">Node.js</span>
-              <span class="dash-achievement">SQL</span>
-              <span class="dash-achievement">AWS</span>
-              <span class="dash-achievement">Docker</span>
-              <span class="dash-achievement">System Design</span>
+            <ul class="dash-profiles">
+              <li class="dash-profile">
+                <span>
+                  <span class="dash-profile__name">Name</span>
+                  <span class="dash-profile__stat" data-google-name>Not set</span>
+                </span>
+              </li>
+              <li class="dash-profile">
+                <span>
+                  <span class="dash-profile__name">Email</span>
+                  <span class="dash-profile__stat" data-google-email>Not set</span>
+                </span>
+              </li>
+              <li class="dash-profile">
+                <span>
+                  <span class="dash-profile__name">Username</span>
+                  <span class="dash-profile__stat">Not set</span>
+                </span>
+              </li>
+              <li class="dash-profile">
+                <span>
+                  <span class="dash-profile__name">College</span>
+                  <span class="dash-profile__stat">Not set</span>
+                </span>
+              </li>
+              <li class="dash-profile">
+                <span>
+                  <span class="dash-profile__name">Branch</span>
+                  <span class="dash-profile__stat">Not set</span>
+                </span>
+              </li>
+              <li class="dash-profile">
+                <span>
+                  <span class="dash-profile__name">Graduation Year</span>
+                  <span class="dash-profile__stat">Not set</span>
+                </span>
+              </li>
+            </ul>
+          </section>
+
+          <!-- SKILLS -->
+          <section class="dash-panel reveal" data-delay="2">
+            <div class="dash-panel__head">
+              <h2 class="dash-panel__title">Skills</h2>
+              <a class="dash-panel__link" href="profile.html">Add</a>
+            </div>
+            <div class="dash-empty">
+              <div class="dash-empty__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.5 5 5.5.8-4 3.9.9 5.5L12 21l-4.9 2.6.9-5.5-4-3.9 5.5-.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+              <p class="dash-empty__txt">No skills added yet. Add your skills so CareerOS can match them to roles.</p>
             </div>
           </section>
 
-          <!-- ACHIEVEMENTS -->
-          <section class="dash-panel reveal" data-delay="2">
+          <!-- CAREER INTERESTS -->
+          <section class="dash-panel reveal" data-delay="3">
             <div class="dash-panel__head">
-              <h2 class="dash-panel__title">Achievements</h2>
-              <a class="dash-panel__link" href="resume.html">Manage</a>
+              <h2 class="dash-panel__title">Career Interests</h2>
+              <a class="dash-panel__link" href="profile.html">Add</a>
             </div>
-            <div class="dash-achievements">
-              <span class="dash-achievement">500-day GitHub streak</span>
-              <span class="dash-achievement">Top 5% LeetCode</span>
-              <span class="dash-achievement">AWS Certified</span>
-              <span class="dash-achievement">Hackathon Winner 2025</span>
-              <span class="dash-achievement">Open Source Contributor</span>
-              <span class="dash-achievement">100 Problems Solved</span>
+            <div class="dash-empty">
+              <div class="dash-empty__ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M12 8v4l3 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+              <p class="dash-empty__txt">No career interests set yet. Tell us your target roles to personalize your roadmap.</p>
             </div>
           </section>
 
@@ -126,84 +163,75 @@
 
         <div class="dash-col">
 
+          <!-- CONNECTED ACCOUNTS (live GitHub state) -->
+          <section class="dash-panel gh-card reveal" data-delay="1" data-gh-dashboard></section>
 
-          <!-- CONNECTED PROFILES -->
+          <!-- OTHER PLATFORMS -->
           <section class="dash-panel reveal" data-delay="1">
             <div class="dash-panel__head">
-              <h2 class="dash-panel__title">Connected Profiles</h2>
-              <a class="dash-panel__link" href="dashboard.html">Manage</a>
+              <h2 class="dash-panel__title">Connected Accounts</h2>
+              <a class="dash-panel__link" href="platform.html">Manage</a>
             </div>
             <ul class="dash-profiles">
-              <li class="dash-profile">
-                <span class="dash-profile__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.7.5.5 5.7.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.3-1.7-1.3-1.7-1.1-.7.1-.7.1-.7 1.2.1 1.8 1.2 1.8 1.2 1 1.8 2.7 1.3 3.4 1 .1-.8.4-1.3.7-1.6-2.6-.3-5.3-1.3-5.3-5.8 0-1.3.5-2.3 1.2-3.1-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2a11.5 11.5 0 0 1 6 0C17 4.6 18 4.9 18 4.9c.6 1.6.2 2.8.1 3.1.8.8 1.2 1.8 1.2 3.1 0 4.5-2.7 5.5-5.3 5.8.4.4.8 1.1.8 2.2v3.3c0 .3.2.7.8.6 4.6-1.5 7.9-5.8 7.9-10.9C23.5 5.7 18.3.5 12 .5z"/></svg></span>
-                <span>
-                  <span class="dash-profile__name">GitHub</span>
-                  <span class="dash-profile__stat">1,284 contributions</span>
-                </span>
-                <span class="dash-profile__status is-connected">Synced</span>
-              </li>
               <li class="dash-profile">
                 <span class="dash-profile__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.6 3 7.5 10.2a2.4 2.4 0 0 0 0 3.4L14.6 21"/><path d="M9.5 12.4h9.5"/></svg></span>
                 <span>
                   <span class="dash-profile__name">LeetCode</span>
-                  <span class="dash-profile__stat">412 problems solved</span>
+                  <span class="dash-profile__stat">Integration Coming Soon</span>
                 </span>
-                <span class="dash-profile__status is-connected">Synced</span>
+                <span class="dash-profile__status">Soon</span>
               </li>
               <li class="dash-profile">
                 <span class="dash-profile__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.7h.1c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.55 4.78 5.86V21h-4v-5.4c0-1.29-.02-2.95-1.8-2.95-1.8 0-2.07 1.4-2.07 2.85V21h-4z"/></svg></span>
                 <span>
                   <span class="dash-profile__name">LinkedIn</span>
-                  <span class="dash-profile__stat">Profile verified</span>
+                  <span class="dash-profile__stat">Integration Coming Soon</span>
                 </span>
-                <span class="dash-profile__status is-connected">Synced</span>
+                <span class="dash-profile__status">Soon</span>
               </li>
               <li class="dash-profile">
                 <span class="dash-profile__icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7.6 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36A4.3 4.3 0 0 0 7.6 7.4z"/><path d="M16.4 7.4a4.3 4.3 0 1 0 3.7 6.5l-1.6-1a2.4 2.4 0 1 1-2.1-3.6c.66 0 1.25.27 1.68.7l1.2-1.36a4.3 4.3 0 0 0-2.88-1.24z"/></svg></span>
                 <span>
                   <span class="dash-profile__name">GeeksforGeeks</span>
-                  <span class="dash-profile__stat">Not connected</span>
+                  <span class="dash-profile__stat">Integration Coming Soon</span>
                 </span>
-                <span class="dash-profile__status">Connect</span>
+                <span class="dash-profile__status">Soon</span>
               </li>
             </ul>
           </section>
 
-          <!-- CERTIFICATIONS -->
+          <!-- ACCOUNT SECURITY -->
           <section class="dash-panel reveal" data-delay="2">
             <div class="dash-panel__head">
-              <h2 class="dash-panel__title">Certifications</h2>
-              <a class="dash-panel__link" href="resume.html">Manage</a>
+              <h2 class="dash-panel__title">Account Security</h2>
             </div>
-            <ul class="dash-activity">
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">AWS Certified Cloud Practitioner
-                  <span class="dash-activity__time">Issued 2025 · verified</span>
+            <ul class="dash-profiles">
+              <li class="dash-profile">
+                <span>
+                  <span class="dash-profile__name">Sign-in method</span>
+                  <span class="dash-profile__stat">Google account</span>
                 </span>
+                <span class="dash-profile__status is-connected">Secure</span>
               </li>
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Meta Front-End Developer
-                  <span class="dash-activity__time">Issued 2024 · verified</span>
+              <li class="dash-profile">
+                <span>
+                  <span class="dash-profile__name">Privacy</span>
+                  <span class="dash-profile__stat">Control how your data is used.</span>
                 </span>
-              </li>
-              <li>
-                <span class="dash-activity__dot"></span>
-                <span class="dash-activity__txt">Google Data Analytics
-                  <span class="dash-activity__time">Issued 2024 · verified</span>
-                </span>
+                <a class="dash-profile__status" href="profile.html">Manage</a>
               </li>
             </ul>
           </section>
 
-          <!-- COMPLETE PROFILE CTA -->
-          <section class="dash-cta reveal" data-delay="3">
-            <h2 class="dash-cta__title">Complete your profile</h2>
-            <p class="dash-cta__txt">Add the finishing details to generate your recruiter-ready resume.</p>
-            <span class="dash-cta__bar"><span class="dash-cta__fill"></span></span>
-            <div class="dash-cta__pct">65% complete</div>
-            <a href="resume.html" class="btn btn--primary btn--lg">Edit Profile</a>
+          <!-- DELETE ACCOUNT -->
+          <section class="dash-panel reveal" data-delay="3">
+            <div class="dash-panel__head">
+              <h2 class="dash-panel__title">Delete Account</h2>
+            </div>
+            <div class="dash-empty">
+              <p class="dash-empty__txt">Permanently delete your CareerOS account and all associated data. This action cannot be undone.</p>
+              <button type="button" class="btn btn--ghost btn--sm" data-google-disconnect>Delete &amp; Sign Out</button>
+            </div>
           </section>
 
         </div>
@@ -211,6 +239,8 @@
 
     </div>
   </main>
+
+  <footer class="footer">
 
   <footer class="footer">
     <div class="container footer__inner">

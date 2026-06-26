@@ -1112,13 +1112,18 @@
     } catch (e) {}
   }
   function disconnect() {
+    /* Full sign-out: clear the Google identity AND any cached platform data,
+       reset the UI immediately, then return to the public landing page. */
     try {
       localStorage.removeItem(STORE_KEY);
+      localStorage.removeItem("careeros.github");
     } catch (e) {}
     reflectGoogle();
     renderGoogleDashboard();
     renderGoogleGreeting();
     renderGoogleNav();
+    applyBrandTarget();
+    window.location.href = "index.html";
   }
 
   /* ---------- helpers ---------- */
@@ -1527,9 +1532,35 @@
     nodes.forEach(function (el) {
       el.textContent = esc(first);
     });
+    var emailNodes = document.querySelectorAll("[data-google-email]");
+    if (emailNodes.length && d.email) {
+      emailNodes.forEach(function (el) {
+        el.textContent = esc(d.email);
+      });
+    }
   }
 
-  /* ---------- navbar identity chip ---------- */
+  /* Never render placeholder identities (noreply / anonymous / user123 …).
+     Fall back to a humanised email local-part, then a neutral label. */
+  function displayName(d) {
+    var bad = /^(no-?reply|anonymous|null|undefined|user\d*|guest)$/i;
+    var raw = (d.name || "").trim();
+    if (!raw || bad.test(raw)) {
+      var local = (d.email || "").split("@")[0];
+      if (local && !bad.test(local)) {
+        raw = local.replace(/[._-]+/g, " ").replace(/\b\w/g, function (c) {
+          return c.toUpperCase();
+        });
+      } else {
+        raw = "";
+      }
+    }
+    return raw || "Account";
+  }
+
+  var navMenuSeq = 0;
+
+  /* ---------- navbar account dropdown ---------- */
   function renderGoogleNav() {
     var mounts = document.querySelectorAll("[data-google-navauth]");
     if (!mounts.length) return;
@@ -1552,19 +1583,86 @@
         return;
       }
 
-      /* Signed in: show an avatar chip + sign-out control. */
-      var avatar = d.picture
-        ? '<img class="g-avatar nav-user__avatar g-avatar-img" src="' + esc(d.picture) + '" alt="" width="28" height="28" loading="lazy" referrerpolicy="no-referrer" />'
-        : '<span class="g-avatar nav-user__avatar" style="background:#' + esc(d.avatar_color) + '" aria-hidden="true">' + esc(d.avatar_initial) + '</span>';
+      /* Signed in: premium glassmorphism account dropdown. */
+      var name = displayName(d);
+      var triggerAvatar = d.picture
+        ? '<img class="g-avatar acct__avatar g-avatar-img" src="' + esc(d.picture) + '" alt="" width="32" height="32" loading="lazy" referrerpolicy="no-referrer" />'
+        : '<span class="g-avatar acct__avatar" style="background:#' + esc(d.avatar_color) + '" aria-hidden="true">' + esc(d.avatar_initial) + '</span>';
+      var menuAvatar = d.picture
+        ? '<img class="g-avatar acct-menu__avatar g-avatar-img" src="' + esc(d.picture) + '" alt="" width="40" height="40" loading="lazy" referrerpolicy="no-referrer" />'
+        : '<span class="g-avatar acct-menu__avatar" style="background:#' + esc(d.avatar_color) + '" aria-hidden="true">' + esc(d.avatar_initial) + '</span>';
+
+      var menuId = "acctMenu" + (++navMenuSeq);
+
+      var items =
+        '<a class="acct-menu__item" href="profile.html" role="menuitem"><span class="acct-menu__ico" aria-hidden="true">👤</span>View Profile</a>' +
+        '<a class="acct-menu__item" href="dashboard.html" role="menuitem"><span class="acct-menu__ico" aria-hidden="true">📊</span>Dashboard</a>' +
+        '<a class="acct-menu__item" href="resume.html" role="menuitem"><span class="acct-menu__ico" aria-hidden="true">📄</span>Resume</a>' +
+        '<a class="acct-menu__item" href="platform.html" role="menuitem"><span class="acct-menu__ico" aria-hidden="true">🔗</span>Connected Platforms</a>' +
+        '<button class="acct-menu__item acct-menu__item--disabled" type="button" role="menuitem" disabled aria-disabled="true"><span class="acct-menu__ico" aria-hidden="true">⚙</span>Settings<span class="acct-menu__soon">Soon</span></button>' +
+        '<div class="acct-menu__sep" role="separator"></div>' +
+        '<button class="acct-menu__item acct-menu__item--danger" type="button" role="menuitem" data-google-disconnect><span class="acct-menu__ico" aria-hidden="true">🚪</span>Sign Out</button>';
 
       mount.innerHTML =
-        '<span class="nav-user">' +
-          avatar +
-          '<span class="nav-user__name">' + esc(d.name) + '</span>' +
-          '<button class="dash-panel__link nav-user__signout" type="button" data-google-disconnect>Sign out</button>' +
-        '</span>';
+        '<div class="acct" data-acct>' +
+          '<button class="acct__trigger" type="button" data-acct-toggle aria-haspopup="true" aria-expanded="false" aria-controls="' + menuId + '">' +
+            triggerAvatar +
+            '<span class="acct__name">' + esc(name) + '</span>' +
+            '<svg class="acct__chev" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>' +
+          '</button>' +
+          '<div class="acct-menu" id="' + menuId + '" role="menu" data-acct-menu>' +
+            '<div class="acct-menu__head">' +
+              menuAvatar +
+              '<span class="acct-menu__meta">' +
+                '<span class="acct-menu__name">' + esc(name) + '</span>' +
+                (d.email ? '<span class="acct-menu__email">' + esc(d.email) + '</span>' : '') +
+              '</span>' +
+            '</div>' +
+            '<div class="acct-menu__list">' + items + '</div>' +
+          '</div>' +
+        '</div>';
     });
   }
+
+  /* Rewrite the brand logo target: signed-in users always land on the
+     dashboard; signed-out users keep the public landing page. */
+  function applyBrandTarget() {
+    var target = get() ? "dashboard.html" : "index.html";
+    document.querySelectorAll("a.brand").forEach(function (a) {
+      a.setAttribute("href", target);
+    });
+  }
+
+  /* ---------- account dropdown open/close behaviour ---------- */
+  function closeAccountMenus(except) {
+    document.querySelectorAll("[data-acct].is-open").forEach(function (acct) {
+      if (acct === except) return;
+      acct.classList.remove("is-open");
+      var t = acct.querySelector("[data-acct-toggle]");
+      if (t) t.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    var toggle = e.target.closest("[data-acct-toggle]");
+    if (toggle) {
+      e.preventDefault();
+      var acct = toggle.closest("[data-acct]");
+      var willOpen = !acct.classList.contains("is-open");
+      closeAccountMenus(acct);
+      acct.classList.toggle("is-open", willOpen);
+      toggle.setAttribute("aria-expanded", String(willOpen));
+      return;
+    }
+    /* Clicks inside the menu (links / sign-out) act normally; everything
+       else outside an open menu closes it. */
+    if (e.target.closest("[data-acct-menu]")) return;
+    closeAccountMenus(null);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") closeAccountMenus(null);
+  });
 
   function init() {
     /* Auth guard: if already signed in, never show the sign-in/sign-up UI. */
@@ -1593,10 +1691,60 @@
     renderGoogleDashboard();
     renderGoogleGreeting();
     renderGoogleNav();
+    applyBrandTarget();
   }
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
     init();
+  }
+})();
+
+
+
+
+/* ============================================================
+   ACTIVE NAV HIGHLIGHTING — marks the current page's nav link
+   with .is-active + aria-current="page". Generic: derives the
+   current filename from the pathname and matches link hrefs.
+   Element-guarded; runs on every page.
+   ============================================================ */
+(function () {
+  "use strict";
+
+  function currentFile() {
+    var path = window.location.pathname;
+    var file = path.substring(path.lastIndexOf("/") + 1);
+    /* Treat a bare directory ("/" or "/careeros/") as index.html. */
+    return file === "" ? "index.html" : file.toLowerCase();
+  }
+
+  function linkFile(href) {
+    if (!href) return "";
+    /* Ignore anchors, mailto, external and protocol-relative links. */
+    if (/^(https?:|mailto:|tel:|#)/i.test(href)) return "";
+    var clean = href.split("#")[0].split("?")[0];
+    var file = clean.substring(clean.lastIndexOf("/") + 1);
+    return file.toLowerCase();
+  }
+
+  function highlight() {
+    var here = currentFile();
+    var links = document.querySelectorAll(".nav__link, .mobile-menu__link");
+    Array.prototype.forEach.call(links, function (a) {
+      if (linkFile(a.getAttribute("href")) === here) {
+        a.classList.add("is-active");
+        a.setAttribute("aria-current", "page");
+      } else {
+        a.classList.remove("is-active");
+        a.removeAttribute("aria-current");
+      }
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", highlight);
+  } else {
+    highlight();
   }
 })();
