@@ -1525,13 +1525,10 @@
       var menuId = "acctMenu" + (++navMenuSeq);
 
       var items =
-        '<a class="acct-menu__item" href="profile.html" role="menuitem"><span class="acct-menu__ico" aria-hidden="true">👤</span>View Profile</a>' +
-        '<a class="acct-menu__item" href="dashboard.html" role="menuitem"><span class="acct-menu__ico" aria-hidden="true">📊</span>Dashboard</a>' +
-        '<a class="acct-menu__item" href="resume.html" role="menuitem"><span class="acct-menu__ico" aria-hidden="true">📄</span>Resume</a>' +
-        '<a class="acct-menu__item" href="platform.html" role="menuitem"><span class="acct-menu__ico" aria-hidden="true">🔗</span>Connected Platforms</a>' +
-        '<button class="acct-menu__item acct-menu__item--disabled" type="button" role="menuitem" disabled aria-disabled="true"><span class="acct-menu__ico" aria-hidden="true">⚙</span>Settings<span class="acct-menu__soon">Soon</span></button>' +
+        '<a class="acct-menu__item" href="profile.html" role="menuitem">My Profile</a>' +
+        '<button class="acct-menu__item acct-menu__item--disabled" type="button" role="menuitem" disabled aria-disabled="true">Settings<span class="acct-menu__soon">Coming Soon</span></button>' +
         '<div class="acct-menu__sep" role="separator"></div>' +
-        '<button class="acct-menu__item acct-menu__item--danger" type="button" role="menuitem" data-google-disconnect><span class="acct-menu__ico" aria-hidden="true">🚪</span>Sign Out</button>';
+        '<button class="acct-menu__item acct-menu__item--danger" type="button" role="menuitem" data-google-disconnect>Sign Out</button>';
 
       mount.innerHTML =
         '<div class="acct" data-acct>' +

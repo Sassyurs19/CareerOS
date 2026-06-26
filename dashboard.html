@@ -35,7 +35,7 @@
       <nav class="nav__links" id="navLinks" aria-label="Primary">
         <a href="platform.html" class="nav__link">Platform</a>
         <a href="resume.html" class="nav__link">Resume</a>
-        <a href="profile.html" class="nav__link">Profile</a>
+        <a href="dashboard.html" class="nav__link">Dashboard</a>
         <span class="nav__auth" data-google-navauth data-nav-variant="desktop">
           <a href="signin.html" class="nav__link nav__signin">Sign In</a>
           <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
@@ -52,7 +52,7 @@
     <nav class="mobile-menu__links" aria-label="Mobile">
       <a href="platform.html" class="mobile-menu__link">Platform</a>
       <a href="resume.html" class="mobile-menu__link">Resume</a>
-      <a href="profile.html" class="mobile-menu__link">Profile</a>
+      <a href="dashboard.html" class="mobile-menu__link">Dashboard</a>
       <span data-google-navauth data-nav-variant="mobile">
         <a href="signin.html" class="mobile-menu__link">Sign In</a>
         <a href="signup.html" class="btn btn--primary mobile-menu__cta">Get Started</a>
@@ -84,24 +84,36 @@
           </div>
           <ul class="copilot__tasks">
             <li class="copilot__task">
-              <span class="copilot__task-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></span>
-              <span class="copilot__task-txt"><strong>Complete your AI Profile Analysis</strong><span>Let CareerOS understand your current level.</span></span>
-              <a class="copilot__task-go" href="profile.html" aria-label="Go">›</a>
+              <span class="copilot__task-txt">
+                <span class="copilot__task-status">Action needed</span>
+                <strong>Complete your AI Profile Analysis</strong>
+                <span>Let CareerOS understand your current level.</span>
+              </span>
+              <a class="btn btn--primary btn--sm copilot__task-cta" href="profile.html">Complete</a>
             </li>
             <li class="copilot__task">
-              <span class="copilot__task-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></span>
-              <span class="copilot__task-txt"><strong>Connect your developer accounts</strong><span>Import achievements from GitHub & more.</span></span>
-              <a class="copilot__task-go" href="platform.html" aria-label="Go">›</a>
+              <span class="copilot__task-txt">
+                <span class="copilot__task-status">Not connected</span>
+                <strong>Connect your developer accounts</strong>
+                <span>Import achievements from GitHub &amp; more.</span>
+              </span>
+              <a class="btn btn--primary btn--sm copilot__task-cta" href="platform.html">Connect</a>
             </li>
             <li class="copilot__task">
-              <span class="copilot__task-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></span>
-              <span class="copilot__task-txt"><strong>Generate your resume</strong><span>Build an ATS-friendly resume from verified data.</span></span>
-              <a class="copilot__task-go" href="resume.html" aria-label="Go">›</a>
+              <span class="copilot__task-txt">
+                <span class="copilot__task-status">Ready to build</span>
+                <strong>Generate your resume</strong>
+                <span>Build an ATS-friendly resume from verified data.</span>
+              </span>
+              <a class="btn btn--primary btn--sm copilot__task-cta" href="resume.html">Generate</a>
             </li>
             <li class="copilot__task">
-              <span class="copilot__task-ico"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 12.5l2 2 4-4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/></svg></span>
-              <span class="copilot__task-txt"><strong>Continue your career roadmap</strong><span>Follow your personalized learning plan.</span></span>
-              <a class="copilot__task-go" href="platform.html" aria-label="Go">›</a>
+              <span class="copilot__task-txt">
+                <span class="copilot__task-status">In progress</span>
+                <strong>Continue your career roadmap</strong>
+                <span>Follow your personalized learning plan.</span>
+              </span>
+              <a class="btn btn--primary btn--sm copilot__task-cta" href="platform.html">Continue</a>
             </li>
           </ul>
         </div>

@@ -69,10 +69,23 @@
         <span class="profile-id__kicker">Career Identity</span>
         <h1 class="profile-id__name"><span data-google-name>there</span></h1>
         <p class="profile-id__email" data-google-email>Your email will appear here</p>
-        <div class="profile-id__actions">
-          <a href="dashboard.html" class="btn btn--primary btn--lg">Back to Dashboard</a>
-          <a href="resume.html" class="btn btn--ghost btn--lg">View Resume</a>
+      </section>
+
+      <!-- CAREER PROFILE COMPLETION -->
+      <section class="profile-section profile-completion reveal" data-delay="1">
+        <div class="profile-section__head">
+          <h2 class="profile-section__title">Career Profile Completion</h2>
+          <span class="profile-section__hint">Finish your profile to unlock your readiness score</span>
         </div>
+        <div class="profile-completion__bar" role="img" aria-label="Profile completion progress">
+          <span class="profile-completion__fill" style="width:25%"></span>
+        </div>
+        <ul class="profile-completion__steps">
+          <li class="profile-completion__step is-done">Account created</li>
+          <li class="profile-completion__step">Add education &amp; skills</li>
+          <li class="profile-completion__step">Connect a platform</li>
+          <li class="profile-completion__step">Generate your resume</li>
+        </ul>
       </section>
 
       <!-- PERSONAL INFORMATION -->
@@ -105,6 +118,46 @@
         </dl>
       </section>
 
+      <!-- EDUCATION -->
+      <section class="profile-section reveal" data-delay="1">
+        <div class="profile-section__head">
+          <h2 class="profile-section__title">Education</h2>
+          <span class="profile-section__hint">Where you're studying</span>
+        </div>
+        <dl class="profile-fields">
+          <div class="profile-field">
+            <dt class="profile-field__label">College</dt>
+            <dd class="profile-field__value profile-field__value--empty">Not set</dd>
+          </div>
+          <div class="profile-field">
+            <dt class="profile-field__label">Degree &amp; Branch</dt>
+            <dd class="profile-field__value profile-field__value--empty">Not set</dd>
+          </div>
+          <div class="profile-field">
+            <dt class="profile-field__label">Graduation Year</dt>
+            <dd class="profile-field__value profile-field__value--empty">Not set</dd>
+          </div>
+        </dl>
+      </section>
+
+      <!-- SKILLS -->
+      <section class="profile-section reveal" data-delay="2">
+        <div class="profile-section__head">
+          <h2 class="profile-section__title">Skills</h2>
+          <span class="profile-section__hint">Verified from your connected platforms</span>
+        </div>
+        <p class="profile-empty">No skills yet. Connect a platform so CareerOS can verify and surface your skills here.</p>
+      </section>
+
+      <!-- CAREER INTERESTS -->
+      <section class="profile-section reveal" data-delay="2">
+        <div class="profile-section__head">
+          <h2 class="profile-section__title">Career Interests</h2>
+          <span class="profile-section__hint">Helps tailor your roadmap</span>
+        </div>
+        <p class="profile-empty">No career interests set yet.</p>
+      </section>
+
       <!-- CONNECTED ACCOUNT (Google identity — live) -->
       <section class="profile-section profile-section--card gh-card reveal" data-delay="2" data-google-dashboard></section>
 
@@ -121,12 +174,22 @@
             </span>
             <span class="profile-row__badge is-secure">Secure</span>
           </li>
+        </ul>
+      </section>
+
+      <!-- PRIVACY -->
+      <section class="profile-section reveal" data-delay="2">
+        <div class="profile-section__head">
+          <h2 class="profile-section__title">Privacy</h2>
+          <span class="profile-section__hint">Control how your data is used</span>
+        </div>
+        <ul class="profile-rows">
           <li class="profile-row">
             <span class="profile-row__main">
-              <span class="profile-row__name">Privacy</span>
-              <span class="profile-row__sub">Control how your data is used.</span>
+              <span class="profile-row__name">Profile visibility</span>
+              <span class="profile-row__sub">Only you can see your CareerOS profile.</span>
             </span>
-            <a class="profile-row__action" href="profile.html">Manage</a>
+            <span class="profile-row__badge is-secure">Private</span>
           </li>
         </ul>
       </section>
