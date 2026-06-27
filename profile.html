@@ -77,7 +77,7 @@
         <h1 class="profile-id__name"><span data-google-name>there</span></h1>
         <p class="profile-id__email" data-google-email>Your email will appear here</p>
         <div class="profile-id__actions">
-          <button type="button" class="btn btn--primary btn--sm" id="editProfileToggle">Edit Profile</button>
+          <button type="button" class="btn btn--primary btn--sm" id="manageProfileBtn">Manage Profile</button>
           <button type="button" class="btn btn--ghost btn--sm" id="connectAccountsBtn">Connect Accounts</button>
         </div>
       </section>
@@ -104,11 +104,7 @@
         <div class="profile-section__head">
           <h2 class="profile-section__title">Personal Information</h2>
           <span class="profile-section__hint">Used to personalize your roadmap</span>
-          <button type="button" class="profile-section__edit-btn" data-edit-trigger="personal" aria-label="Edit personal information">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
-            </svg>
-          </button>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="personal">Edit</button>
         </div>
         <dl class="profile-fields" data-field-group="personal">
           <div class="profile-field" data-field="name">
@@ -147,6 +143,10 @@
             <input type="text" class="profile-field__input" name="location" placeholder="Enter your location" data-edit-input />
           </div>
         </dl>
+        <div class="profile-section__actions" data-section-actions="personal">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
+        </div>
       </section>
 
       <!-- EDUCATION -->
@@ -154,11 +154,7 @@
         <div class="profile-section__head">
           <h2 class="profile-section__title">Education</h2>
           <span class="profile-section__hint">Where you're studying</span>
-          <button type="button" class="profile-section__edit-btn" data-edit-trigger="education" aria-label="Edit education">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
-            </svg>
-          </button>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="education">Edit</button>
         </div>
         <dl class="profile-fields" data-field-group="education">
           <div class="profile-field" data-field="college">
@@ -202,6 +198,10 @@
             </select>
           </div>
         </dl>
+        <div class="profile-section__actions" data-section-actions="education">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
+        </div>
       </section>
 
       <!-- SKILLS -->
@@ -209,11 +209,7 @@
         <div class="profile-section__head">
           <h2 class="profile-section__title">Skills</h2>
           <span class="profile-section__hint">Verified from your connected platforms</span>
-          <button type="button" class="profile-section__edit-btn" data-edit-trigger="skills" aria-label="Edit skills">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
-            </svg>
-          </button>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="skills">Edit</button>
         </div>
         <div class="profile-tags" data-field-group="skills">
           <p class="profile-empty">No skills yet. Connect a platform so CareerOS can verify and surface your skills here.</p>
@@ -222,6 +218,10 @@
             <div class="profile-tags__list"></div>
           </div>
         </div>
+        <div class="profile-section__actions" data-section-actions="skills">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
+        </div>
       </section>
 
       <!-- CAREER INTERESTS -->
@@ -229,11 +229,7 @@
         <div class="profile-section__head">
           <h2 class="profile-section__title">Career Interests</h2>
           <span class="profile-section__hint">Helps tailor your roadmap</span>
-          <button type="button" class="profile-section__edit-btn" data-edit-trigger="interests" aria-label="Edit career interests">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
-            </svg>
-          </button>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="interests">Edit</button>
         </div>
         <div class="profile-tags" data-field-group="interests">
           <p class="profile-empty">No career interests set yet.</p>
@@ -242,6 +238,10 @@
             <div class="profile-tags__list"></div>
           </div>
         </div>
+        <div class="profile-section__actions" data-section-actions="interests">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
+        </div>
       </section>
 
       <!-- BIO -->
@@ -249,15 +249,15 @@
         <div class="profile-section__head">
           <h2 class="profile-section__title">Bio</h2>
           <span class="profile-section__hint">Tell us about yourself</span>
-          <button type="button" class="profile-section__edit-btn" data-edit-trigger="bio" aria-label="Edit bio">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
-            </svg>
-          </button>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="bio">Edit</button>
         </div>
         <div class="profile-bio" data-field-group="bio">
           <p class="profile-bio__text profile-field__value--empty">No bio added yet.</p>
           <textarea class="profile-bio__input" name="bio" placeholder="Write a short bio about yourself..." rows="4" data-edit-input></textarea>
+        </div>
+        <div class="profile-section__actions" data-section-actions="bio">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
         </div>
       </section>
 
@@ -266,11 +266,7 @@
         <div class="profile-section__head">
           <h2 class="profile-section__title">Social Links</h2>
           <span class="profile-section__hint">Your online presence</span>
-          <button type="button" class="profile-section__edit-btn" data-edit-trigger="social" aria-label="Edit social links">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
-            </svg>
-          </button>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="social">Edit</button>
         </div>
         <dl class="profile-fields" data-field-group="social">
           <div class="profile-field" data-field="portfolio">
@@ -289,6 +285,10 @@
             <input type="text" class="profile-field__input" name="github" placeholder="Your GitHub username" data-edit-input disabled />
           </div>
         </dl>
+        <div class="profile-section__actions" data-section-actions="social">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
+        </div>
       </section>
 
       <!-- CONNECTED ACCOUNT (Google identity — live) -->
@@ -392,12 +392,11 @@
     (function() {
       // State management
       let isEditMode = false;
-      let hasUnsavedChanges = false;
-      let originalData = new Map();
-      let pendingNavigation = null;
+      let editingSection = null;
+      let sectionChanges = new Map(); // Track changes per section
       
       // DOM elements
-      const editToggleBtn = document.getElementById('editProfileToggle');
+      const manageProfileBtn = document.getElementById('manageProfileBtn');
       const body = document.body;
       const unsavedDialog = document.getElementById('unsavedDialog');
       const dialogSave = document.getElementById('dialogSave');
@@ -406,13 +405,21 @@
       
       // Initialize
       function init() {
-        if (!editToggleBtn) return;
+        if (!manageProfileBtn) return;
         
-        editToggleBtn.addEventListener('click', handleEditToggle);
+        manageProfileBtn.addEventListener('click', handleManageProfileToggle);
         
-        // Add section edit button listeners
+        // Add section edit link listeners
         document.querySelectorAll('[data-edit-trigger]').forEach(btn => {
           btn.addEventListener('click', handleSectionEdit);
+        });
+        
+        // Add section Save/Cancel listeners
+        document.querySelectorAll('.profile-section__save').forEach(btn => {
+          btn.addEventListener('click', handleSectionSave);
+        });
+        document.querySelectorAll('.profile-section__cancel').forEach(btn => {
+          btn.addEventListener('click', handleSectionCancel);
         });
         
         // Add tag input listeners
@@ -420,37 +427,33 @@
           input.addEventListener('keydown', handleTagInputKeydown);
         });
         
-        // Store original data for change detection
-        storeOriginalData();
-        
-        // Add beforeunload listener for unsaved changes
-        window.addEventListener('beforeunload', handleBeforeUnload);
-        
         // Add dialog button listeners
         if (dialogSave) dialogSave.addEventListener('click', handleDialogSave);
         if (dialogDiscard) dialogDiscard.addEventListener('click', handleDialogDiscard);
         if (dialogCancel) dialogCancel.addEventListener('click', handleDialogCancel);
         
-        // Track input changes for unsaved detection
+        // Track input changes per section
         document.querySelectorAll('[data-edit-input]').forEach(input => {
           input.addEventListener('input', () => {
-            hasUnsavedChanges = true;
+            const section = input.closest('[data-editable-section]');
+            if (section) {
+              const sectionId = section.dataset.editableSection;
+              sectionChanges.set(sectionId, true);
+            }
           });
         });
       }
       
-      // Store original data values
-      function storeOriginalData() {
-        document.querySelectorAll('[data-edit-input]').forEach(input => {
-          originalData.set(input.name, input.value);
-        });
-      }
-      
-      // Handle edit mode toggle
-      function handleEditToggle() {
+      // Handle Manage Profile / Done toggle
+      function handleManageProfileToggle() {
         if (isEditMode) {
-          // Save changes
-          saveChanges();
+          // Check for unsaved changes
+          if (sectionChanges.size > 0) {
+            showUnsavedDialog();
+            return;
+          }
+          // Exit edit mode
+          exitEditMode();
         } else {
           // Enter edit mode
           enterEditMode();
@@ -461,57 +464,164 @@
       function enterEditMode() {
         isEditMode = true;
         body.classList.add('is-editing');
-        editToggleBtn.textContent = 'Save Changes';
-        hasUnsavedChanges = false;
+        manageProfileBtn.textContent = 'Done';
       }
       
       // Exit edit mode
       function exitEditMode() {
         isEditMode = false;
         body.classList.remove('is-editing');
+        manageProfileBtn.textContent = 'Manage Profile';
         
-        // Close all editing sections
-        document.querySelectorAll('.is-editing').forEach(el => {
-          el.classList.remove('is-editing');
-        });
+        // Close any editing section
+        if (editingSection) {
+          closeEditingSection(editingSection);
+        }
         
-        editToggleBtn.textContent = 'Edit Profile';
-        hasUnsavedChanges = false;
+        // Clear changes
+        sectionChanges.clear();
       }
       
-      // Handle section edit button click
+      // Handle section edit click
       function handleSectionEdit(e) {
-        const trigger = e.currentTarget;
-        const sectionId = trigger.dataset.editTrigger;
+        e.preventDefault();
+        const sectionId = e.currentTarget.dataset.editTrigger;
         const section = document.querySelector(`[data-editable-section="${sectionId}"]`);
         
         if (!section) return;
         
-        // Toggle editing state for this section
-        const fieldGroup = section.querySelector('[data-field-group]');
-        if (fieldGroup) {
-          fieldGroup.classList.toggle('is-editing');
-          
-          // For tag inputs and bio, toggle the parent container
-          if (fieldGroup.classList.contains('profile-tags') || fieldGroup.classList.contains('profile-bio')) {
-            fieldGroup.classList.toggle('is-editing');
-          }
+        // If another section is editing, close it first
+        if (editingSection && editingSection !== section) {
+          closeEditingSection(editingSection);
         }
         
-        // For individual fields in Personal Information and Education
-        if (sectionId === 'personal' || sectionId === 'education' || sectionId === 'social') {
-          const fields = section.querySelectorAll('.profile-field');
-          fields.forEach(field => {
-            if (!field.querySelector('[data-edit-input]:disabled')) {
-              field.classList.add('is-editing');
-            }
-          });
+        // Toggle this section
+        if (section.classList.contains('is-editing')) {
+          closeEditingSection(section);
+        } else {
+          openEditingSection(section);
         }
-        
-        hasUnsavedChanges = true;
       }
       
-      // Handle tag input keydown (Enter to add tag)
+      // Open editing section
+      function openEditingSection(section) {
+        editingSection = section;
+        section.classList.add('is-editing');
+        
+        // Mark fields as editing
+        section.querySelectorAll('.profile-field').forEach(field => {
+          field.classList.add('is-editing');
+        });
+        section.querySelectorAll('.profile-tags').forEach(tags => {
+          tags.classList.add('is-editing');
+        });
+        section.querySelectorAll('.profile-bio').forEach(bio => {
+          bio.classList.add('is-editing');
+        });
+      }
+      
+      // Close editing section
+      function closeEditingSection(section) {
+        section.classList.remove('is-editing');
+        
+        // Remove editing state from fields
+        section.querySelectorAll('.profile-field').forEach(field => {
+          field.classList.remove('is-editing');
+        });
+        section.querySelectorAll('.profile-tags').forEach(tags => {
+          tags.classList.remove('is-editing');
+        });
+        section.querySelectorAll('.profile-bio').forEach(bio => {
+          bio.classList.remove('is-editing');
+        });
+        
+        // Reset inputs to original values
+        section.querySelectorAll('[data-edit-input]').forEach(input => {
+          const originalValue = input.dataset.originalValue || '';
+          input.value = originalValue;
+        });
+        
+        // Clear changes for this section
+        const sectionId = section.dataset.editableSection;
+        sectionChanges.delete(sectionId);
+        
+        editingSection = null;
+      }
+      
+      // Handle section Save
+      function handleSectionSave(e) {
+        const section = e.currentTarget.closest('[data-editable-section]');
+        if (!section) return;
+        
+        const sectionId = section.dataset.editableSection;
+        
+        // Store original values before saving
+        section.querySelectorAll('[data-edit-input]').forEach(input => {
+          input.dataset.originalValue = input.value;
+        });
+        
+        // Clear changes for this section
+        sectionChanges.delete(sectionId);
+        
+        // Close the section
+        closeEditingSection(section);
+        
+        // Show success notification
+        showSuccessNotification('Changes saved successfully');
+      }
+      
+      // Handle section Cancel
+      function handleSectionCancel(e) {
+        const section = e.currentTarget.closest('[data-editable-section]');
+        if (!section) return;
+        
+        closeEditingSection(section);
+      }
+      
+      // Show unsaved changes dialog
+      function showUnsavedDialog() {
+        unsavedDialog.classList.add('is-visible');
+        unsavedDialog.setAttribute('aria-hidden', 'false');
+      }
+      
+      // Hide unsaved changes dialog
+      function hideUnsavedDialog() {
+        unsavedDialog.classList.remove('is-visible');
+        unsavedDialog.setAttribute('aria-hidden', 'true');
+      }
+      
+      // Handle dialog Save
+      function handleDialogSave() {
+        // Save all sections with changes
+        sectionChanges.forEach((_, sectionId) => {
+          const section = document.querySelector(`[data-editable-section="${sectionId}"]`);
+          if (section) {
+            section.querySelectorAll('[data-edit-input]').forEach(input => {
+              input.dataset.originalValue = input.value;
+            });
+          }
+        });
+        
+        sectionChanges.clear();
+        hideUnsavedDialog();
+        exitEditMode();
+        showSuccessNotification('All changes saved successfully');
+      }
+      
+      // Handle dialog Discard
+      function handleDialogDiscard() {
+        // Discard all changes
+        sectionChanges.clear();
+        hideUnsavedDialog();
+        exitEditMode();
+      }
+      
+      // Handle dialog Cancel
+      function handleDialogCancel() {
+        hideUnsavedDialog();
+      }
+      
+      // Handle tag input keydown
       function handleTagInputKeydown(e) {
         if (e.key === 'Enter') {
           e.preventDefault();
@@ -521,15 +631,14 @@
           if (value) {
             addTag(input, value);
             input.value = '';
-            hasUnsavedChanges = true;
           }
         }
       }
       
-      // Add tag to tag list
+      // Add tag
       function addTag(input, value) {
-        const container = input.closest('.profile-tags__editor');
-        const tagList = container.querySelector('.profile-tags__list');
+        const container = input.parentElement;
+        const list = container.querySelector('.profile-tags__list');
         
         const tag = document.createElement('span');
         tag.className = 'profile-tag';
@@ -545,209 +654,27 @@
         
         tag.querySelector('.profile-tag__remove').addEventListener('click', () => {
           tag.remove();
-          hasUnsavedChanges = true;
         });
         
-        tagList.appendChild(tag);
-      }
-      
-      // Save changes
-      function saveChanges() {
-        // Validate inputs
-        if (!validateInputs()) {
-          return;
-        }
-        
-        // Collect form data
-        const formData = collectFormData();
-        
-        // Here you would send data to your backend (Firebase/Supabase)
-        console.log('Saving profile data:', formData);
-        
-        // Update display values
-        updateDisplayValues(formData);
-        
-        // Show success notification
-        showSuccessNotification();
-        
-        // Exit edit mode
-        exitEditMode();
-        
-        // Update original data
-        storeOriginalData();
-        
-        // Hide dialog if open
-        hideUnsavedDialog();
-      }
-      
-      // Validate inputs
-      function validateInputs() {
-        let isValid = true;
-        
-        document.querySelectorAll('[data-edit-input]').forEach(input => {
-          if (input.disabled) return;
-          
-          // Required field validation
-          if (input.required && !input.value.trim()) {
-            isValid = false;
-            input.style.borderColor = 'rgba(255, 90, 90, 0.5)';
-          } else {
-            input.style.borderColor = '';
-          }
-          
-          // Email validation
-          if (input.type === 'email' && input.value) {
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(input.value)) {
-              isValid = false;
-              input.style.borderColor = 'rgba(255, 90, 90, 0.5)';
-            }
-          }
-          
-          // URL validation
-          if (input.type === 'url' && input.value) {
-            try {
-              new URL(input.value);
-            } catch {
-              isValid = false;
-              input.style.borderColor = 'rgba(255, 90, 90, 0.5)';
-            }
-          }
-        });
-        
-        return isValid;
-      }
-      
-      // Collect form data
-      function collectFormData() {
-        const data = {};
-        
-        document.querySelectorAll('[data-edit-input]').forEach(input => {
-          if (input.disabled) return;
-          
-          if (input.type === 'checkbox') {
-            data[input.name] = input.checked;
-          } else {
-            data[input.name] = input.value;
-          }
-        });
-        
-        // Collect tags
-        document.querySelectorAll('.profile-tags__list').forEach(tagList => {
-          const section = tagList.closest('[data-field-group]');
-          const fieldName = section.querySelector('.profile-tags__input')?.name;
-          if (fieldName) {
-            const tags = Array.from(tagList.querySelectorAll('.profile-tag'))
-              .map(tag => tag.textContent.trim());
-            data[fieldName] = tags;
-          }
-        });
-        
-        return data;
-      }
-      
-      // Update display values
-      function updateDisplayValues(data) {
-        // Update field values
-        Object.keys(data).forEach(key => {
-          const input = document.querySelector(`[name="${key}"][data-edit-input]`);
-          if (input) {
-            const field = input.closest('.profile-field');
-            const valueDisplay = field?.querySelector('.profile-field__value');
-            
-            if (valueDisplay) {
-              if (Array.isArray(data[key])) {
-                valueDisplay.textContent = data[key].join(', ') || 'Not set';
-              } else {
-                valueDisplay.textContent = data[key] || 'Not set';
-                valueDisplay.classList.remove('profile-field__value--empty');
-              }
-            }
-          }
-        });
+        list.appendChild(tag);
       }
       
       // Show success notification
-      function showSuccessNotification() {
+      function showSuccessNotification(message) {
         let notification = document.querySelector('.profile-save-notification');
         
         if (!notification) {
           notification = document.createElement('div');
           notification.className = 'profile-save-notification';
-          notification.textContent = 'Profile saved successfully';
           document.body.appendChild(notification);
         }
         
+        notification.textContent = message;
         notification.classList.add('is-visible');
         
         setTimeout(() => {
           notification.classList.remove('is-visible');
         }, 3000);
-      }
-      
-      // Show unsaved changes dialog
-      function showUnsavedDialog() {
-        if (unsavedDialog) {
-          unsavedDialog.classList.add('is-visible');
-          unsavedDialog.setAttribute('aria-hidden', 'false');
-        }
-      }
-      
-      // Hide unsaved changes dialog
-      function hideUnsavedDialog() {
-        if (unsavedDialog) {
-          unsavedDialog.classList.remove('is-visible');
-          unsavedDialog.setAttribute('aria-hidden', 'true');
-        }
-      }
-      
-      // Handle dialog Save button
-      function handleDialogSave() {
-        saveChanges();
-      }
-      
-      // Handle dialog Discard button
-      function handleDialogDiscard() {
-        // Revert to original data
-        originalData.forEach((value, key) => {
-          const input = document.querySelector(`[name="${key}"][data-edit-input]`);
-          if (input) {
-            input.value = value;
-          }
-        });
-        
-        // Clear all tags
-        document.querySelectorAll('.profile-tags__list').forEach(tagList => {
-          tagList.innerHTML = '';
-        });
-        
-        // Exit edit mode
-        exitEditMode();
-        
-        // Hide dialog
-        hideUnsavedDialog();
-        
-        // If there was pending navigation, execute it
-        if (pendingNavigation) {
-          const nav = pendingNavigation;
-          pendingNavigation = null;
-          nav();
-        }
-      }
-      
-      // Handle dialog Cancel button
-      function handleDialogCancel() {
-        hideUnsavedDialog();
-        pendingNavigation = null;
-      }
-      
-      // Handle beforeunload for unsaved changes
-      function handleBeforeUnload(e) {
-        if (hasUnsavedChanges) {
-          e.preventDefault();
-          e.returnValue = '';
-          return '';
-        }
       }
       
       // Initialize on DOM ready

@@ -3021,35 +3021,61 @@ img, svg, video, canvas { max-width: 100%; height: auto; }
 }
 
 /* ============================================================
-   PROFILE EDIT MODE
+   PROFILE EDIT MODE - Premium SaaS Experience
    ============================================================ */
 
-/* Edit button in section header - hidden by default */
-.profile-section__edit-btn {
+/* Edit link - hidden by default, shown in edit mode */
+.profile-section__edit-link {
   display: none;
-  width: 32px; height: 32px;
-  padding: 6px;
-  border-radius: 8px;
-  background: transparent;
-  border: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 500;
   color: var(--text-muted);
+  background: transparent;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
   cursor: pointer;
   transition: all 0.2s var(--ease);
 }
-.profile-section__edit-btn:hover {
-  background: var(--surface-2);
-  border-color: var(--border-strong);
+.profile-section__edit-link:hover {
   color: var(--text);
-}
-.profile-section__edit-btn svg {
-  width: 16px; height: 16px;
+  background: rgba(255, 255, 255, 0.05);
 }
 
-/* Show edit buttons when in edit mode */
-body.is-editing .profile-section__edit-btn {
+/* Show edit links when in edit mode */
+body.is-editing .profile-section__edit-link {
+  display: inline-block;
+}
+
+/* Section actions (Save/Cancel) - hidden by default */
+.profile-section__actions {
+  display: none;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+
+/* Show actions when section is editing */
+.profile-section.is-editing .profile-section__actions {
   display: flex;
-  align-items: center;
-  justify-content: center;
+}
+
+/* Edit mode visual indicators */
+body.is-editing .profile-section {
+  border-color: rgba(99, 102, 241, 0.2);
+  transition: all 0.3s var(--ease);
+}
+body.is-editing .profile-section:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Section being edited - enhanced styling */
+.profile-section.is-editing {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.1), 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s var(--ease);
 }
 
 /* Edit inputs - completely hidden by default */
@@ -3061,11 +3087,7 @@ body.is-editing .profile-section__edit-btn {
   visibility: hidden;
 }
 
-/* Show inputs when section is being edited - keep value visible */
-.profile-field.is-editing .profile-field__label {
-  display: block !important;
-  margin-bottom: 6px;
-}
+/* Show inputs when section is being edited - preserve layout */
 .profile-field.is-editing .profile-field__value {
   display: block !important;
   margin-bottom: 8px;
@@ -3128,7 +3150,7 @@ body.is-editing .profile-section__edit-btn {
   visibility: visible;
 }
 
-/* Input styling - CareerOS dark theme */
+/* Input styling - CareerOS dark theme with glassmorphism */
 .profile-field__input,
 .profile-tags__input,
 .profile-bio__input {
@@ -3148,9 +3170,9 @@ body.is-editing .profile-section__edit-btn {
 .profile-tags__input:focus,
 .profile-bio__input:focus {
   outline: none;
-  border-color: var(--border-strong);
+  border-color: rgba(99, 102, 241, 0.5);
   background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 .profile-field__input::placeholder,
 .profile-tags__input::placeholder,
@@ -3320,6 +3342,12 @@ select.profile-field__input {
     flex-direction: column;
   }
   .profile-unsaved-dialog__actions .btn {
+    width: 100%;
+  }
+  .profile-section__actions {
+    flex-direction: column;
+  }
+  .profile-section__actions .btn {
     width: 100%;
   }
 }
