@@ -261,7 +261,7 @@ img, svg { display: block; max-width: 100%; }
 .mobile-menu__cta { margin-top: 22px; width: 100%; }
 
 /* ============================================================
-   HERO — AI-themed multi-layer background
+   HERO — Career Universe multi-layer background
    ============================================================ */
 .hero {
   position: relative;
@@ -272,6 +272,199 @@ img, svg { display: block; max-width: 100%; }
   overflow: hidden;
 }
 .hero__bg { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+
+/* Layer 1: Dark gradient base */
+.hero__gradient {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 130% 90% at 20% 30%, rgba(15, 23, 42, 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 80% at 80% 70%, rgba(30, 41, 59, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(15, 23, 42, 0.3) 0%, transparent 50%),
+    linear-gradient(180deg, #050505 0%, #0a0e1a 40%, #050505 100%);
+}
+
+/* Layer 2: Soft mesh glow */
+.hero__mesh-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.25;
+  animation: breatheGlow 8s ease-in-out infinite;
+}
+.hero__mesh-glow--blue {
+  width: 700px; height: 700px;
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+  animation-delay: 0s;
+}
+.hero__mesh-glow--violet {
+  width: 500px; height: 500px;
+  bottom: -150px; right: -100px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.12), transparent 70%);
+  animation-delay: -4s;
+}
+
+/* Layer 3: Career Constellation */
+.hero__constellation {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0.7;
+}
+.constellation-lines {
+  animation: pulseConstellation 10s ease-in-out infinite;
+}
+.constellation-node {
+  animation: twinkleNode 4s ease-in-out infinite;
+}
+.constellation-node--1 { animation-delay: 0s; }
+.constellation-node--2 { animation-delay: -0.5s; }
+.constellation-node--3 { animation-delay: -1s; }
+.constellation-node--4 { animation-delay: -1.5s; }
+.constellation-node--5 { animation-delay: -2s; }
+.constellation-node--6 { animation-delay: -2.5s; }
+.constellation-node--7 { animation-delay: -3s; }
+.constellation-node--8 { animation-delay: -3.5s; }
+.constellation-node--9 { animation-delay: -0.3s; }
+.constellation-node--10 { animation-delay: -0.8s; }
+.constellation-node--11 { animation-delay: -1.3s; }
+.constellation-node--12 { animation-delay: -1.8s; }
+.constellation-node--13 { animation-delay: -2.3s; }
+.constellation-node--14 { animation-delay: -2.8s; }
+
+/* Layer 4: Career Flow Lines */
+.hero__flow-lines {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  opacity: 0.5;
+}
+.flow-line {
+  animation: flowPulse 12s ease-in-out infinite;
+}
+.flow-line--1 { animation-delay: 0s; }
+.flow-line--2 { animation-delay: -4s; }
+.flow-line--3 { animation-delay: -8s; }
+
+/* Layer 5: Floating Glass Cards */
+.hero__glass-cards {
+  position: absolute; inset: 0;
+}
+.glass-card {
+  position: absolute;
+  padding: 16px 24px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  font-family: var(--font-head);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.15);
+  letter-spacing: 0.05em;
+  filter: blur(3px);
+  animation: floatCard 15s ease-in-out infinite;
+}
+.glass-card--1 {
+  top: 20%; left: 10%;
+  animation-delay: 0s;
+}
+.glass-card--2 {
+  top: 35%; right: 12%;
+  animation-delay: -3s;
+}
+.glass-card--3 {
+  bottom: 30%; left: 15%;
+  animation-delay: -6s;
+}
+.glass-card--4 {
+  bottom: 40%; right: 18%;
+  animation-delay: -9s;
+}
+.glass-card--5 {
+  top: 55%; left: 8%;
+  animation-delay: -12s;
+}
+
+/* Layer 6: Soft animated light */
+.hero__ambient-light {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 60% 40% at 50% 45%, rgba(99, 102, 241, 0.03) 0%, transparent 60%);
+  animation: ambientShift 20s ease-in-out infinite;
+}
+
+/* Subtle animations */
+@keyframes breatheGlow {
+  0%, 100% { opacity: 0.25; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.35; transform: translateX(-50%) scale(1.05); }
+}
+@keyframes pulseConstellation {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 0.8; }
+}
+@keyframes twinkleNode {
+  0%, 100% { opacity: 0.6; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.2); }
+}
+@keyframes flowPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.6; }
+}
+@keyframes floatCard {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-8px) rotate(0.5deg); }
+  50% { transform: translateY(-12px) rotate(0deg); }
+  75% { transform: translateY(-6px) rotate(-0.5deg); }
+}
+@keyframes ambientShift {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.02); }
+}
+
+/* Mobile responsiveness - simplify background on small screens */
+@media (max-width: 768px) {
+  .hero__mesh-glow--blue {
+    width: 500px; height: 500px;
+    top: -150px;
+  }
+  .hero__mesh-glow--violet {
+    width: 350px; height: 350px;
+    bottom: -100px; right: -80px;
+  }
+  .hero__constellation {
+    opacity: 0.5;
+  }
+  .hero__flow-lines {
+    opacity: 0.3;
+  }
+  .glass-card {
+    filter: blur(4px);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero__mesh-glow--blue {
+    width: 400px; height: 400px;
+    top: -120px;
+  }
+  .hero__mesh-glow--violet {
+    width: 280px; height: 280px;
+    bottom: -80px; right: -60px;
+  }
+  .hero__constellation {
+    opacity: 0.4;
+  }
+  .hero__flow-lines {
+    opacity: 0.2;
+  }
+  .hero__glass-cards {
+    display: none;
+  }
+  .hero__ambient-light {
+    opacity: 0.5;
+  }
+}
 
 .hero__inner { position: relative; z-index: 1; text-align: center; max-width: 880px; }
 .hero__title { font-size: clamp(2.4rem, 8.5vw, 5rem); font-weight: 700; }
@@ -287,139 +480,6 @@ img, svg { display: block; max-width: 100%; }
 }
 .hero__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
 
-/* ============================================================
-   HERO — AI-themed multi-layer background (NEW)
-   ============================================================ */
-
-/* Layer 1: Dark gradient base */
-.hero__gradient {
-  position: absolute; inset: 0;
-  background:
-    radial-gradient(ellipse 120% 80% at 30% 20%, rgba(15, 23, 42, 0.4) 0%, transparent 50%),
-    radial-gradient(ellipse 100% 70% at 70% 80%, rgba(30, 41, 59, 0.3) 0%, transparent 50%),
-    radial-gradient(ellipse 80% 60% at 50% 50%, rgba(15, 23, 42, 0.2) 0%, transparent 50%),
-    linear-gradient(180deg, #050505 0%, #0a0a0f 50%, #050505 100%);
-}
-
-/* Layer 2: Blueprint grid */
-.hero__blueprint-grid {
-  position: absolute; inset: 0;
-  background-image:
-    linear-gradient(rgba(100, 116, 139, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(100, 116, 139, 0.03) 1px, transparent 1px);
-  background-size: 80px 80px;
-  mask-image: radial-gradient(ellipse 70% 50% at 50% 40%, #000 20%, transparent 70%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 40%, #000 20%, transparent 70%);
-}
-
-/* Layer 3: Neural network SVG */
-.hero__neural-network {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  opacity: 0.6;
-}
-.hero__neural-network .neural-lines {
-  animation: pulseLines 8s ease-in-out infinite;
-}
-
-/* Layer 4: Floating glowing nodes */
-.hero__nodes {
-  position: absolute; inset: 0;
-}
-.node {
-  position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.4) 0%, rgba(139, 92, 246, 0.1) 40%, transparent 70%);
-  filter: blur(1px);
-  animation: floatNode 12s ease-in-out infinite;
-}
-.node--1 { width: 8px; height: 8px; top: 15%; left: 20%; animation-delay: 0s; }
-.node--2 { width: 12px; height: 12px; top: 25%; right: 25%; animation-delay: -2s; }
-.node--3 { width: 6px; height: 6px; top: 45%; left: 15%; animation-delay: -4s; }
-.node--4 { width: 10px; height: 10px; bottom: 35%; right: 20%; animation-delay: -6s; }
-.node--5 { width: 7px; height: 7px; top: 60%; left: 35%; animation-delay: -8s; }
-.node--6 { width: 9px; height: 9px; bottom: 25%; left: 25%; animation-delay: -3s; }
-.node--7 { width: 5px; height: 5px; top: 30%; right: 15%; animation-delay: -5s; }
-.node--8 { width: 11px; height: 11px; bottom: 45%; right: 30%; animation-delay: -7s; }
-
-/* Layer 5: Soft animated particles */
-.hero__particles {
-  position: absolute; inset: 0;
-}
-.particle {
-  position: absolute;
-  width: 2px; height: 2px;
-  border-radius: 50%;
-  background: rgba(148, 163, 184, 0.3);
-  animation: driftParticle 20s linear infinite;
-}
-.particle--1 { top: 10%; left: 10%; animation-delay: 0s; animation-duration: 25s; }
-.particle--2 { top: 20%; right: 15%; animation-delay: -5s; animation-duration: 22s; }
-.particle--3 { top: 35%; left: 25%; animation-delay: -10s; animation-duration: 28s; }
-.particle--4 { top: 50%; right: 20%; animation-delay: -15s; animation-duration: 24s; }
-.particle--5 { bottom: 30%; left: 15%; animation-delay: -8s; animation-duration: 26s; }
-.particle--6 { bottom: 20%; right: 25%; animation-delay: -12s; animation-duration: 23s; }
-.particle--7 { top: 40%; left: 40%; animation-delay: -3s; animation-duration: 27s; }
-.particle--8 { top: 60%; right: 35%; animation-delay: -7s; animation-duration: 21s; }
-.particle--9 { bottom: 40%; left: 30%; animation-delay: -11s; animation-duration: 25s; }
-.particle--10 { top: 15%; right: 40%; animation-delay: -14s; animation-duration: 29s; }
-.particle--11 { bottom: 50%; right: 10%; animation-delay: -6s; animation-duration: 24s; }
-.particle--12 { top: 70%; left: 20%; animation-delay: -9s; animation-duration: 26s; }
-
-/* Layer 6: Gentle vignette */
-.hero__vignette {
-  position: absolute; inset: 0;
-  background: radial-gradient(ellipse 70% 50% at 50% 40%, transparent 30%, rgba(5, 5, 5, 0.8) 100%);
-}
-
-/* Subtle animations */
-@keyframes floatNode {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.6; }
-  25% { transform: translate(10px, -15px) scale(1.1); opacity: 0.8; }
-  50% { transform: translate(-5px, -25px) scale(0.95); opacity: 0.5; }
-  75% { transform: translate(-15px, -10px) scale(1.05); opacity: 0.7; }
-}
-
-@keyframes driftParticle {
-  0% { transform: translate(0, 0); opacity: 0; }
-  10% { opacity: 0.4; }
-  90% { opacity: 0.4; }
-  100% { transform: translate(100px, -200px); opacity: 0; }
-}
-
-@keyframes pulseLines {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 0.8; }
-}
-
-/* Responsive adjustments for hero background */
-@media (max-width: 768px) {
-  .hero__blueprint-grid {
-    background-size: 60px 60px;
-  }
-  .node--1, .node--2, .node--3, .node--4,
-  .node--5, .node--6, .node--7, .node--8 {
-    opacity: 0.5;
-  }
-  .particle {
-    opacity: 0.2;
-  }
-}
-
-@media (max-width: 480px) {
-  .hero__blueprint-grid {
-    background-size: 40px 40px;
-  }
-  .hero__neural-network {
-    opacity: 0.4;
-  }
-  .node {
-    opacity: 0.4;
-  }
-  .particle {
-    opacity: 0.15;
-  }
-}
 
 
 /* ============================================================
