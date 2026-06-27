@@ -17,12 +17,12 @@
   <script src="https://accounts.google.com/gsi/client" async></script>
 </head>
 <body data-google-redirect="dashboard.html">
-  <!-- Architectural background (matches homepage hero) -->
+  <!-- Premium background (matches CareerOS design language) -->
   <div class="ob-bg" aria-hidden="true">
+    <div class="ob-bg__gradient"></div>
     <div class="ob-bg__glow ob-bg__glow--1"></div>
     <div class="ob-bg__glow ob-bg__glow--2"></div>
-    <div class="ob-bg__grid"></div>
-    <div class="ob-bg__beam"></div>
+    <div class="ob-bg__vignette"></div>
   </div>
 
   <!-- TOP BAR: back + brand + progress -->
@@ -52,10 +52,8 @@
     <!-- STEP 1 — WELCOME -->
     <section class="ob-step is-active" data-step="1" aria-labelledby="s1-title">
       <div class="ob-step__inner ob-welcome">
-        <span class="ob-kicker">Welcome to CareerOS</span>
-        <h1 class="ob-h1" id="s1-title">Create Your CareerOS</h1>
-        <p class="ob-sub">Build your professional identity from the work you've already done.</p>
-        <p class="ob-desc">Connect the platforms where your achievements already exist.</p>
+        <h1 class="ob-h1" id="s1-title">Create Account</h1>
+        <p class="ob-sub">Start building your career.</p>
 
         <div data-oauth-block>
           <div class="ob-welcome__actions">
@@ -99,6 +97,15 @@
 
         <p class="ob-fineprint">By continuing you agree to the CareerOS Terms &amp; Privacy Policy.</p>
         <p class="ob-switch">Already have an account? <a href="signin.html">Sign In</a></p>
+
+        <footer class="auth-footer">
+          <nav class="auth-footer__links">
+            <a href="#">Privacy</a>
+            <a href="#">Terms</a>
+            <a href="#">Help</a>
+          </nav>
+          <p class="auth-footer__copyright">© 2026 CareerOS</p>
+        </footer>
       </div>
     </section>
 
@@ -286,6 +293,8 @@
 
   </main>
 
+  <script src="js/toast.js"></script>
+  <script src="js/modal.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
