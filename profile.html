@@ -75,28 +75,58 @@
         </span>
         <span class="profile-id__kicker">Career Identity</span>
         <h1 class="profile-id__name"><span data-google-name>there</span></h1>
+        <p class="profile-id__headline" data-google-headline>Add your career headline</p>
+        <p class="profile-id__college" data-google-college>Add your college</p>
         <p class="profile-id__email" data-google-email>Your email will appear here</p>
-        <div class="profile-id__actions">
-          <button type="button" class="btn btn--primary btn--sm" id="manageProfileBtn">Manage Profile</button>
-          <button type="button" class="btn btn--ghost btn--sm" id="connectAccountsBtn">Connect Accounts</button>
+        
+        <!-- Quick Stats -->
+        <div class="profile-id__stats">
+          <div class="profile-stat">
+            <span class="profile-stat__value" data-stat-projects>0</span>
+            <span class="profile-stat__label">Projects</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat__value" data-stat-skills>0</span>
+            <span class="profile-stat__label">Skills</span>
+          </div>
+          <div class="profile-stat">
+            <span class="profile-stat__value" data-stat-certifications>0</span>
+            <span class="profile-stat__label">Certifications</span>
+          </div>
         </div>
       </section>
 
       <!-- CAREER PROFILE COMPLETION -->
       <section class="profile-section profile-completion reveal" data-delay="1">
         <div class="profile-section__head">
-          <h2 class="profile-section__title">Career Profile Completion</h2>
-          <span class="profile-section__hint">Finish your profile to unlock your readiness score</span>
+          <h2 class="profile-section__title">Career Profile</h2>
+          <span class="profile-completion__percentage" id="completionPercentage">25% Complete</span>
         </div>
         <div class="profile-completion__bar" role="img" aria-label="Profile completion progress">
-          <span class="profile-completion__fill" style="width:25%"></span>
+          <span class="profile-completion__fill" id="completionFill" style="width:25%"></span>
         </div>
-        <ul class="profile-completion__steps">
-          <li class="profile-completion__step is-done">Account created</li>
-          <li class="profile-completion__step">Add education &amp; skills</li>
-          <li class="profile-completion__step">Connect a platform</li>
-          <li class="profile-completion__step">Generate your resume</li>
-        </ul>
+        <div class="profile-completion__details">
+          <div class="profile-completion__status">
+            <span class="profile-completion__completed" id="completedSections">2</span>
+            <span class="profile-completion__label">Completed</span>
+            <span class="profile-completion__divider">/</span>
+            <span class="profile-completion__total" id="totalSections">8</span>
+            <span class="profile-completion__label">Sections</span>
+          </div>
+          <div class="profile-completion__next">
+            <span class="profile-completion__next-label">Next Recommendation:</span>
+            <span class="profile-completion__next-action" id="nextRecommendation">Add your first project</span>
+          </div>
+        </div>
+        <div class="profile-completion__benefits">
+          <p class="profile-completion__benefits-title">Complete your Career Profile to unlock:</p>
+          <ul class="profile-completion__benefits-list">
+            <li class="profile-completion__benefit">ATS Resume Generation</li>
+            <li class="profile-completion__benefit">AI Career Analysis</li>
+            <li class="profile-completion__benefit">Personalized Learning Roadmaps</li>
+            <li class="profile-completion__benefit">Internship Recommendations</li>
+          </ul>
+        </div>
       </section>
 
       <!-- PERSONAL INFORMATION -->
@@ -107,6 +137,16 @@
           <button type="button" class="profile-section__edit-link" data-edit-trigger="personal">Edit</button>
         </div>
         <dl class="profile-fields" data-field-group="personal">
+          <div class="profile-field" data-field="headline">
+            <dt class="profile-field__label">Career Headline</dt>
+            <dd class="profile-field__value profile-field__value--empty" data-google-headline>Add your career headline</dd>
+            <input type="text" class="profile-field__input" name="headline" placeholder="e.g., Software Developer | AI Enthusiast" data-edit-input />
+          </div>
+          <div class="profile-field" data-field="college">
+            <dt class="profile-field__label">College</dt>
+            <dd class="profile-field__value profile-field__value--empty" data-google-college>Add your college</dd>
+            <input type="text" class="profile-field__input" name="college" placeholder="Enter college name" data-edit-input />
+          </div>
           <div class="profile-field" data-field="name">
             <dt class="profile-field__label">Full Name</dt>
             <dd class="profile-field__value" data-google-name>Not set</dd>
@@ -120,22 +160,6 @@
             <dt class="profile-field__label">Phone Number</dt>
             <dd class="profile-field__value profile-field__value--empty">Not set</dd>
             <input type="tel" class="profile-field__input" name="phone" placeholder="Enter phone number" data-edit-input />
-          </div>
-          <div class="profile-field" data-field="dob">
-            <dt class="profile-field__label">Date of Birth</dt>
-            <dd class="profile-field__value profile-field__value--empty">Not set</dd>
-            <input type="date" class="profile-field__input" name="dob" data-edit-input />
-          </div>
-          <div class="profile-field" data-field="gender">
-            <dt class="profile-field__label">Gender</dt>
-            <dd class="profile-field__value profile-field__value--empty">Not set</dd>
-            <select class="profile-field__input" name="gender" data-edit-input>
-              <option value="">Select gender</option>
-              <option value="male">Male</option>
-              <option value="female">Female</option>
-              <option value="other">Other</option>
-              <option value="prefer-not-to-say">Prefer not to say</option>
-            </select>
           </div>
           <div class="profile-field" data-field="location">
             <dt class="profile-field__label">Location</dt>
@@ -204,6 +228,33 @@
         </div>
       </section>
 
+      <!-- EXPERIENCE -->
+      <section class="profile-section reveal" data-delay="1" data-editable-section="experience">
+        <div class="profile-section__head">
+          <h2 class="profile-section__title">Experience</h2>
+          <span class="profile-section__hint">Internships, freelance, research, volunteer work</span>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="experience">Edit</button>
+        </div>
+        <div class="profile-experience" data-field-group="experience">
+          <div class="profile-empty-state">
+            <p class="profile-empty-state__text">No experience added yet.</p>
+            <button type="button" class="btn btn--ghost btn--sm profile-empty-state__action" data-empty-action="experience">Add Experience</button>
+          </div>
+          <div class="profile-experience__editor" data-edit-input>
+            <div class="profile-experience__item">
+              <input type="text" class="profile-field__input" name="experienceTitle" placeholder="Role / Position" />
+              <input type="text" class="profile-field__input" name="experienceCompany" placeholder="Company / Organization" />
+              <input type="text" class="profile-field__input" name="experienceType" placeholder="Type (Internship, Freelance, Research, Volunteer)" />
+              <input type="text" class="profile-field__input" name="experienceDuration" placeholder="Duration (e.g., Jun 2024 - Aug 2024)" />
+            </div>
+          </div>
+        </div>
+        <div class="profile-section__actions" data-section-actions="experience">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
+        </div>
+      </section>
+
       <!-- SKILLS -->
       <section class="profile-section reveal" data-delay="2" data-editable-section="skills">
         <div class="profile-section__head">
@@ -212,13 +263,42 @@
           <button type="button" class="profile-section__edit-link" data-edit-trigger="skills">Edit</button>
         </div>
         <div class="profile-tags" data-field-group="skills">
-          <p class="profile-empty">No skills yet. Connect a platform so CareerOS can verify and surface your skills here.</p>
+          <div class="profile-empty-state">
+            <p class="profile-empty-state__text">No skills yet. Connect a platform so CareerOS can verify and surface your skills here.</p>
+            <button type="button" class="btn btn--ghost btn--sm profile-empty-state__action" data-empty-action="skills">Add Skills</button>
+          </div>
           <div class="profile-tags__editor" data-edit-input>
             <input type="text" class="profile-tags__input" name="skills" placeholder="Type a skill and press Enter" />
             <div class="profile-tags__list"></div>
           </div>
         </div>
         <div class="profile-section__actions" data-section-actions="skills">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="profile-section reveal" data-delay="2" data-editable-section="projects">
+        <div class="profile-section__head">
+          <h2 class="profile-section__title">Projects</h2>
+          <span class="profile-section__hint">Showcase your work</span>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="projects">Edit</button>
+        </div>
+        <div class="profile-projects" data-field-group="projects">
+          <div class="profile-empty-state">
+            <p class="profile-empty-state__text">No projects added yet.</p>
+            <button type="button" class="btn btn--ghost btn--sm profile-empty-state__action" data-empty-action="projects">Add Project</button>
+          </div>
+          <div class="profile-projects__editor" data-edit-input>
+            <div class="profile-projects__item">
+              <input type="text" class="profile-field__input" name="projectName" placeholder="Project Name" />
+              <input type="text" class="profile-field__input" name="projectDescription" placeholder="Short description" />
+              <input type="url" class="profile-field__input" name="projectLink" placeholder="Project URL (optional)" />
+            </div>
+          </div>
+        </div>
+        <div class="profile-section__actions" data-section-actions="projects">
           <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
           <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
         </div>
@@ -232,7 +312,10 @@
           <button type="button" class="profile-section__edit-link" data-edit-trigger="interests">Edit</button>
         </div>
         <div class="profile-tags" data-field-group="interests">
-          <p class="profile-empty">No career interests set yet.</p>
+          <div class="profile-empty-state">
+            <p class="profile-empty-state__text">No career interests set yet.</p>
+            <button type="button" class="btn btn--ghost btn--sm profile-empty-state__action" data-empty-action="interests">Add Interests</button>
+          </div>
           <div class="profile-tags__editor" data-edit-input>
             <input type="text" class="profile-tags__input" name="interests" placeholder="Type an interest and press Enter" />
             <div class="profile-tags__list"></div>
@@ -252,10 +335,39 @@
           <button type="button" class="profile-section__edit-link" data-edit-trigger="bio">Edit</button>
         </div>
         <div class="profile-bio" data-field-group="bio">
-          <p class="profile-bio__text profile-field__value--empty">No bio added yet.</p>
+          <div class="profile-empty-state">
+            <p class="profile-empty-state__text">No bio added yet.</p>
+            <button type="button" class="btn btn--ghost btn--sm profile-empty-state__action" data-empty-action="bio">Add Bio</button>
+          </div>
           <textarea class="profile-bio__input" name="bio" placeholder="Write a short bio about yourself..." rows="4" data-edit-input></textarea>
         </div>
         <div class="profile-section__actions" data-section-actions="bio">
+          <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
+          <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
+        </div>
+      </section>
+
+      <!-- CERTIFICATIONS -->
+      <section class="profile-section reveal" data-delay="2" data-editable-section="certifications">
+        <div class="profile-section__head">
+          <h2 class="profile-section__title">Certifications</h2>
+          <span class="profile-section__hint">Earned certifications and credentials</span>
+          <button type="button" class="profile-section__edit-link" data-edit-trigger="certifications">Edit</button>
+        </div>
+        <div class="profile-certifications" data-field-group="certifications">
+          <div class="profile-empty-state">
+            <p class="profile-empty-state__text">No certifications added yet.</p>
+            <button type="button" class="btn btn--ghost btn--sm profile-empty-state__action" data-empty-action="certifications">Add Certification</button>
+          </div>
+          <div class="profile-certifications__editor" data-edit-input>
+            <div class="profile-certifications__item">
+              <input type="text" class="profile-field__input" name="certificationName" placeholder="Certification Name" />
+              <input type="text" class="profile-field__input" name="certificationIssuer" placeholder="Issuing Organization" />
+              <input type="text" class="profile-field__input" name="certificationDate" placeholder="Date Earned (e.g., Jan 2024)" />
+            </div>
+          </div>
+        </div>
+        <div class="profile-section__actions" data-section-actions="certifications">
           <button type="button" class="btn btn--primary btn--sm profile-section__save">Save</button>
           <button type="button" class="btn btn--ghost btn--sm profile-section__cancel">Cancel</button>
         </div>
@@ -293,48 +405,6 @@
 
       <!-- CONNECTED ACCOUNT (Google identity — live) -->
       <section class="profile-section profile-section--card gh-card reveal" data-delay="2" data-google-dashboard></section>
-
-      <!-- ACCOUNT SECURITY -->
-      <section class="profile-section reveal" data-delay="2">
-        <div class="profile-section__head">
-          <h2 class="profile-section__title">Account Security</h2>
-        </div>
-        <ul class="profile-rows">
-          <li class="profile-row">
-            <span class="profile-row__main">
-              <span class="profile-row__name">Sign-in method</span>
-              <span class="profile-row__sub">Google account</span>
-            </span>
-            <span class="profile-row__badge is-secure">Secure</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- PRIVACY -->
-      <section class="profile-section reveal" data-delay="2">
-        <div class="profile-section__head">
-          <h2 class="profile-section__title">Privacy</h2>
-          <span class="profile-section__hint">Control how your data is used</span>
-        </div>
-        <ul class="profile-rows">
-          <li class="profile-row">
-            <span class="profile-row__main">
-              <span class="profile-row__name">Profile visibility</span>
-              <span class="profile-row__sub">Only you can see your CareerOS profile.</span>
-            </span>
-            <span class="profile-row__badge is-secure">Private</span>
-          </li>
-        </ul>
-      </section>
-
-      <!-- DANGER ZONE -->
-      <section class="profile-section profile-danger reveal" data-delay="3">
-        <div class="profile-section__head">
-          <h2 class="profile-section__title">Delete Account</h2>
-        </div>
-        <p class="profile-danger__txt">Permanently delete your CareerOS account and all associated data. This action cannot be undone.</p>
-        <button type="button" class="btn btn--ghost btn--sm profile-danger__btn" data-google-disconnect>Delete &amp; Sign Out</button>
-      </section>
 
     </div>
   </main>
@@ -391,12 +461,10 @@
   <script>
     (function() {
       // State management
-      let isEditMode = false;
       let editingSection = null;
       let sectionChanges = new Map(); // Track changes per section
       
       // DOM elements
-      const manageProfileBtn = document.getElementById('manageProfileBtn');
       const body = document.body;
       const unsavedDialog = document.getElementById('unsavedDialog');
       const dialogSave = document.getElementById('dialogSave');
@@ -405,10 +473,6 @@
       
       // Initialize
       function init() {
-        if (!manageProfileBtn) return;
-        
-        manageProfileBtn.addEventListener('click', handleManageProfileToggle);
-        
         // Add section edit link listeners
         document.querySelectorAll('[data-edit-trigger]').forEach(btn => {
           btn.addEventListener('click', handleSectionEdit);
@@ -444,44 +508,6 @@
         });
       }
       
-      // Handle Manage Profile / Done toggle
-      function handleManageProfileToggle() {
-        if (isEditMode) {
-          // Check for unsaved changes
-          if (sectionChanges.size > 0) {
-            showUnsavedDialog();
-            return;
-          }
-          // Exit edit mode
-          exitEditMode();
-        } else {
-          // Enter edit mode
-          enterEditMode();
-        }
-      }
-      
-      // Enter edit mode
-      function enterEditMode() {
-        isEditMode = true;
-        body.classList.add('is-editing');
-        manageProfileBtn.textContent = 'Done';
-      }
-      
-      // Exit edit mode
-      function exitEditMode() {
-        isEditMode = false;
-        body.classList.remove('is-editing');
-        manageProfileBtn.textContent = 'Manage Profile';
-        
-        // Close any editing section
-        if (editingSection) {
-          closeEditingSection(editingSection);
-        }
-        
-        // Clear changes
-        sectionChanges.clear();
-      }
-      
       // Handle section edit click
       function handleSectionEdit(e) {
         e.preventDefault();
@@ -490,8 +516,15 @@
         
         if (!section) return;
         
-        // If another section is editing, close it first
+        // If another section is editing with unsaved changes, show dialog
         if (editingSection && editingSection !== section) {
+          const editingSectionId = editingSection.dataset.editableSection;
+          if (sectionChanges.has(editingSectionId)) {
+            pendingSection = section;
+            showUnsavedDialog();
+            return;
+          }
+          // Close the other section first
           closeEditingSection(editingSection);
         }
         
@@ -502,6 +535,8 @@
           openEditingSection(section);
         }
       }
+      
+      let pendingSection = null;
       
       // Open editing section
       function openEditingSection(section) {
@@ -518,6 +553,20 @@
         section.querySelectorAll('.profile-bio').forEach(bio => {
           bio.classList.add('is-editing');
         });
+        section.querySelectorAll('.profile-experience').forEach(exp => {
+          exp.classList.add('is-editing');
+        });
+        section.querySelectorAll('.profile-projects').forEach(proj => {
+          proj.classList.add('is-editing');
+        });
+        section.querySelectorAll('.profile-certifications').forEach(cert => {
+          cert.classList.add('is-editing');
+        });
+        
+        // Store original values
+        section.querySelectorAll('[data-edit-input]').forEach(input => {
+          input.dataset.originalValue = input.value;
+        });
       }
       
       // Close editing section
@@ -533,6 +582,15 @@
         });
         section.querySelectorAll('.profile-bio').forEach(bio => {
           bio.classList.remove('is-editing');
+        });
+        section.querySelectorAll('.profile-experience').forEach(exp => {
+          exp.classList.remove('is-editing');
+        });
+        section.querySelectorAll('.profile-projects').forEach(proj => {
+          proj.classList.remove('is-editing');
+        });
+        section.querySelectorAll('.profile-certifications').forEach(cert => {
+          cert.classList.remove('is-editing');
         });
         
         // Reset inputs to original values
@@ -553,21 +611,36 @@
         const section = e.currentTarget.closest('[data-editable-section]');
         if (!section) return;
         
+        const saveBtn = e.currentTarget;
         const sectionId = section.dataset.editableSection;
         
-        // Store original values before saving
-        section.querySelectorAll('[data-edit-input]').forEach(input => {
-          input.dataset.originalValue = input.value;
-        });
+        // Disable button and show Saving...
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving...';
         
-        // Clear changes for this section
-        sectionChanges.delete(sectionId);
-        
-        // Close the section
-        closeEditingSection(section);
-        
-        // Show success notification
-        showSuccessNotification('Changes saved successfully');
+        // Simulate save delay
+        setTimeout(() => {
+          // Store original values before saving
+          section.querySelectorAll('[data-edit-input]').forEach(input => {
+            input.dataset.originalValue = input.value;
+          });
+          
+          // Clear changes for this section
+          sectionChanges.delete(sectionId);
+          
+          // Show Saved briefly
+          saveBtn.textContent = 'Saved';
+          
+          // Collapse the section after brief delay
+          setTimeout(() => {
+            closeEditingSection(section);
+            saveBtn.disabled = false;
+            saveBtn.textContent = 'Save';
+            
+            // Show success notification
+            showSuccessNotification('Changes saved successfully');
+          }, 800);
+        }, 600);
       }
       
       // Handle section Cancel
@@ -592,33 +665,50 @@
       
       // Handle dialog Save
       function handleDialogSave() {
-        // Save all sections with changes
-        sectionChanges.forEach((_, sectionId) => {
-          const section = document.querySelector(`[data-editable-section="${sectionId}"]`);
-          if (section) {
-            section.querySelectorAll('[data-edit-input]').forEach(input => {
-              input.dataset.originalValue = input.value;
-            });
-          }
-        });
+        // Save the editing section
+        if (editingSection) {
+          const sectionId = editingSection.dataset.editableSection;
+          editingSection.querySelectorAll('[data-edit-input]').forEach(input => {
+            input.dataset.originalValue = input.value;
+          });
+          sectionChanges.delete(sectionId);
+          closeEditingSection(editingSection);
+        }
         
         sectionChanges.clear();
         hideUnsavedDialog();
-        exitEditMode();
-        showSuccessNotification('All changes saved successfully');
+        
+        // Open the pending section
+        if (pendingSection) {
+          openEditingSection(pendingSection);
+          pendingSection = null;
+        }
+        
+        showSuccessNotification('Changes saved successfully');
       }
       
       // Handle dialog Discard
       function handleDialogDiscard() {
-        // Discard all changes
+        // Discard changes
         sectionChanges.clear();
         hideUnsavedDialog();
-        exitEditMode();
+        
+        // Close editing section
+        if (editingSection) {
+          closeEditingSection(editingSection);
+        }
+        
+        // Open the pending section
+        if (pendingSection) {
+          openEditingSection(pendingSection);
+          pendingSection = null;
+        }
       }
       
       // Handle dialog Cancel
       function handleDialogCancel() {
         hideUnsavedDialog();
+        pendingSection = null;
       }
       
       // Handle tag input keydown

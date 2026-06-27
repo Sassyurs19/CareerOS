@@ -2893,7 +2893,34 @@ img, svg, video, canvas { max-width: 100%; height: auto; }
   color: var(--text-dim);
 }
 .profile-id__name { font-size: clamp(1.7rem, 5vw, 2.4rem); line-height: 1.1; margin: 2px 0; }
-.profile-id__email { font-size: 0.95rem; color: var(--text-muted); margin: 0; word-break: break-word; }
+.profile-id__email { font-size: 0.95rem; color: var(--text-muted); margin: 0 0 16px; word-break: break-word; }
+.profile-id__headline { font-size: 1rem; color: var(--text-muted); margin: 4px 0; font-weight: 400; }
+.profile-id__college { font-size: 0.9rem; color: var(--text-dim); margin: 0 0 8px; }
+
+/* Hero stats */
+.profile-id__stats {
+  display: flex;
+  gap: 32px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+}
+.profile-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-stat__value {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1;
+}
+.profile-stat__label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-top: 4px;
+}
 .profile-id__actions {
   display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 18px;
 }
@@ -3012,22 +3039,139 @@ img, svg, video, canvas { max-width: 100%; height: auto; }
   content: ""; position: absolute; left: 0; top: 50%; transform: translateY(-50%);
   width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--border-strong);
 }
-.profile-completion__step.is-done { color: var(--text); }
-.profile-completion__step.is-done::before {
-  border-color: #4ade80; background: #4ade80;
+/* Profile completion percentage */
+.profile-completion__percentage {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4ade80;
+}
+
+/* Profile completion details */
+.profile-completion__details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+.profile-completion__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.profile-completion__completed {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text);
+}
+.profile-completion__total {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.profile-completion__divider {
+  color: var(--text-dim);
+  font-size: 1rem;
+}
+.profile-completion__label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.profile-completion__next {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+}
+.profile-completion__next-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+.profile-completion__next-action {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(99, 102, 241, 0.9);
+}
+
+/* Profile completion benefits */
+.profile-completion__benefits {
+  margin-top: 20px;
+  padding: 20px;
+  border-radius: 12px;
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+}
+.profile-completion__benefits-title {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+}
+.profile-completion__benefits-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.profile-completion__benefit {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 8px;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+.profile-completion__benefit::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: rgba(99, 102, 241, 0.6);
+}
+.profile-completion__benefit:last-child {
+  margin-bottom: 0;
 }
 .profile-empty {
   margin: 0; font-size: 0.9rem; color: var(--text-dim); line-height: 1.5;
+}
+
+/* Empty state with action button */
+.profile-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 32px 20px;
+  text-align: center;
+}
+.profile-empty-state__text {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.5;
+}
+.profile-empty-state__action {
+  font-size: 0.85rem;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  transition: all 0.2s var(--ease);
+}
+.profile-empty-state__action:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-strong);
+  transform: translateY(-1px);
 }
 
 /* ============================================================
    PROFILE EDIT MODE - Premium SaaS Experience
    ============================================================ */
 
-/* Edit link - hidden by default, shown in edit mode */
+/* Edit link - small text action, hover to show on desktop */
 .profile-section__edit-link {
-  display: none;
-  font-size: 0.85rem;
+  font-size: 0.8rem;
   font-weight: 500;
   color: var(--text-muted);
   background: transparent;
@@ -3035,16 +3179,29 @@ img, svg, video, canvas { max-width: 100%; height: auto; }
   padding: 4px 8px;
   border-radius: 6px;
   cursor: pointer;
-  transition: all 0.2s var(--ease);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+  transform: translateX(4px);
+}
+.profile-section__head:hover .profile-section__edit-link {
+  opacity: 1;
+  transform: translateX(0);
 }
 .profile-section__edit-link:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
+.profile-section__edit-link:active {
+  transform: translateY(0);
 }
 
-/* Show edit links when in edit mode */
-body.is-editing .profile-section__edit-link {
-  display: inline-block;
+/* Always show on mobile */
+@media (max-width: 768px) {
+  .profile-section__edit-link {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Section actions (Save/Cancel) - hidden by default */
@@ -3062,20 +3219,12 @@ body.is-editing .profile-section__edit-link {
   display: flex;
 }
 
-/* Edit mode visual indicators */
-body.is-editing .profile-section {
-  border-color: rgba(99, 102, 241, 0.2);
-  transition: all 0.3s var(--ease);
-}
-body.is-editing .profile-section:hover {
-  border-color: rgba(99, 102, 241, 0.3);
-}
-
-/* Section being edited - enhanced styling */
+/* Section being edited - enhanced styling with card expansion */
 .profile-section.is-editing {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.1), 0 4px 20px rgba(0, 0, 0, 0.3);
-  transition: all 0.3s var(--ease);
+  padding: 28px 32px;
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 0 1px rgba(99, 102, 241, 0.08), 0 4px 24px rgba(0, 0, 0, 0.25);
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Edit inputs - completely hidden by default */
@@ -3087,16 +3236,9 @@ body.is-editing .profile-section:hover {
   visibility: hidden;
 }
 
-/* Show inputs when section is being edited - preserve layout */
+/* Show inputs when section is being edited - no preview, just input */
 .profile-field.is-editing .profile-field__value {
-  display: block !important;
-  margin-bottom: 8px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed var(--border);
-  color: var(--text-muted);
-  font-size: 0.85rem;
+  display: none !important;
 }
 .profile-field.is-editing .profile-field__input {
   display: block !important;
@@ -3110,7 +3252,7 @@ body.is-editing .profile-section:hover {
   opacity: 0;
   visibility: hidden;
 }
-.profile-tags.is-editing .profile-empty {
+.profile-tags.is-editing .profile-empty-state {
   display: none !important;
 }
 .profile-tags.is-editing .profile-tags__editor {
@@ -3118,14 +3260,7 @@ body.is-editing .profile-section:hover {
   opacity: 1;
   visibility: visible;
 }
-/* Show current tags when editing */
-.profile-tags.is-editing .profile-tags__list {
-  margin-bottom: 12px;
-  padding: 12px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed var(--border);
-}
+/* No preview for tags when editing - just input */
 
 /* Bio input styling - completely hidden by default */
 .profile-bio__input {
@@ -3133,16 +3268,8 @@ body.is-editing .profile-section:hover {
   opacity: 0;
   visibility: hidden;
 }
-.profile-bio.is-editing .profile-bio__text {
-  display: block !important;
-  margin-bottom: 12px;
-  padding: 12px;
-  border-radius: 6px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px dashed var(--border);
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.5;
+.profile-bio.is-editing .profile-empty-state {
+  display: none !important;
 }
 .profile-bio.is-editing .profile-bio__input {
   display: block !important;
@@ -3162,7 +3289,7 @@ body.is-editing .profile-section:hover {
   color: var(--text);
   font-family: var(--font-body);
   font-size: 0.95rem;
-  transition: all 0.2s var(--ease);
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -3170,14 +3297,21 @@ body.is-editing .profile-section:hover {
 .profile-tags__input:focus,
 .profile-bio__input:focus {
   outline: none;
-  border-color: rgba(99, 102, 241, 0.5);
+  border-color: rgba(99, 102, 241, 0.6);
   background: rgba(255, 255, 255, 0.06);
-  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15), 0 0 20px rgba(99, 102, 241, 0.1);
+  transform: translateY(-1px);
 }
 .profile-field__input::placeholder,
 .profile-tags__input::placeholder,
 .profile-bio__input::placeholder {
   color: var(--text-dim);
+  transition: color 0.2s ease;
+}
+.profile-field__input:focus::placeholder,
+.profile-tags__input:focus::placeholder,
+.profile-bio__input:focus::placeholder {
+  color: var(--border-strong);
 }
 .profile-field__input option {
   background: #0c0c0e;
@@ -3248,6 +3382,78 @@ select.profile-field__input {
   resize: vertical;
   min-height: 100px;
   line-height: 1.6;
+}
+
+/* Experience section */
+.profile-experience__editor {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.profile-experience.is-editing .profile-empty-state {
+  display: none !important;
+}
+.profile-experience.is-editing .profile-experience__editor {
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
+}
+.profile-experience__item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+}
+
+/* Projects section */
+.profile-projects__editor {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.profile-projects.is-editing .profile-empty-state {
+  display: none !important;
+}
+.profile-projects.is-editing .profile-projects__editor {
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
+}
+.profile-projects__item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
+}
+
+/* Certifications section */
+.profile-certifications__editor {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.profile-certifications.is-editing .profile-empty-state {
+  display: none !important;
+}
+.profile-certifications.is-editing .profile-certifications__editor {
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
+}
+.profile-certifications__item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border);
 }
 
 /* Disabled inputs */
@@ -3349,5 +3555,33 @@ select.profile-field__input {
   }
   .profile-section__actions .btn {
     width: 100%;
+  }
+  
+  /* Full-width inputs on mobile */
+  .profile-field__input,
+  .profile-tags__input,
+  .profile-bio__input {
+    font-size: 16px; /* Prevent zoom on iOS */
+    padding: 14px 16px;
+  }
+  
+  /* Larger touch targets */
+  .profile-section__edit-link {
+    padding: 8px 12px;
+    font-size: 0.85rem;
+  }
+  
+  /* Better spacing on mobile */
+  .profile-section.is-editing {
+    padding: 24px 20px;
+  }
+  
+  /* Profile completion benefits on mobile */
+  .profile-completion__benefits {
+    padding: 16px;
+  }
+  .profile-completion__benefit {
+    font-size: 0.9rem;
+    padding-left: 24px;
   }
 }
