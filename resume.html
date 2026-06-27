@@ -62,48 +62,54 @@
 
     <section class="section page-section resume" id="resume">
       <div class="container resume__grid">
-        <div class="resume__copy reveal">
-          <span class="section__kicker">Always current</span>
-          <h2 class="section__title">What you build, remembered.</h2>
-          <p class="section__lede">
-            Your resume evolves automatically as you grow. Ship a project, solve
-            a problem, earn a certificate — CareerOS records the proof and keeps
-            your story up to date.
+        <div class="resume__info reveal">
+          <h2 class="resume__title">Resume Builder</h2>
+          <p class="resume__desc">
+            Create and manage your ATS-ready professional resume from your verified Career Profile.
           </p>
-          <ul class="resume__points">
-            <li>Auto-synced from your connected sources</li>
-            <li>Verified achievements, never inflated</li>
-            <li>Export-ready, recruiter-friendly layout</li>
-          </ul>
+          <div class="resume__actions">
+            <button class="btn btn--primary">Generate Resume</button>
+            <button class="btn btn--ghost">Preview Resume</button>
+            <button class="btn btn--ghost">Download PDF</button>
+            <button class="btn btn--ghost">ATS Analysis</button>
+            <button class="btn btn--ghost">Version History</button>
+          </div>
+          <div class="resume__status">
+            <span class="resume__status-label">ATS Status</span>
+            <span class="resume__status-value resume__status-value--pending">Pending Analysis</span>
+          </div>
         </div>
 
         <div class="resume__preview reveal" data-delay="1">
-          <article class="doc" aria-label="Resume preview">
-            <header class="doc__head">
-              <div>
-                <h3 class="doc__name">Your Name</h3>
-                <p class="doc__role">Your role</p>
+          <article class="resume-card" aria-label="Resume preview">
+            <header class="resume-card__head">
+              <div class="resume-card__identity">
+                <h3 class="resume-card__name">Your Name</h3>
+                <p class="resume-card__title">Professional Title</p>
               </div>
-              <span class="doc__score">Career Score <b>—</b></span>
+              <div class="resume-card__score">
+                <span class="resume-card__score-label">Career Score</span>
+                <span class="resume-card__score-value">—</span>
+              </div>
             </header>
-            <div class="doc__divider"></div>
+            <div class="resume-card__divider"></div>
 
-            <section class="doc__block">
-              <h4>Experience</h4>
-              <p class="doc__placeholder">Connect your Career Profile to populate verified experience here.</p>
+            <section class="resume-card__section">
+              <h4 class="resume-card__section-title">Experience</h4>
+              <p class="resume-card__placeholder">Connect your Career Profile to populate verified experience here.</p>
             </section>
 
-            <section class="doc__block">
-              <h4>Projects</h4>
-              <p class="doc__placeholder">Your verified projects will appear here once your sources are connected.</p>
+            <section class="resume-card__section">
+              <h4 class="resume-card__section-title">Projects</h4>
+              <p class="resume-card__placeholder">Your verified projects will appear here once your sources are connected.</p>
             </section>
 
-            <section class="doc__block">
-              <h4>Verified Stats</h4>
-              <div class="doc__stats">
-                <div class="doc__stat"><b>—</b><span>Contributions</span></div>
-                <div class="doc__stat"><b>—</b><span>Problems</span></div>
-                <div class="doc__stat"><b>—</b><span>Certificates</span></div>
+            <section class="resume-card__section">
+              <h4 class="resume-card__section-title">Verified Statistics</h4>
+              <div class="resume-card__stats">
+                <div class="resume-card__stat"><span class="resume-card__stat-value">—</span><span class="resume-card__stat-label">Contributions</span></div>
+                <div class="resume-card__stat"><span class="resume-card__stat-value">—</span><span class="resume-card__stat-label">Problems</span></div>
+                <div class="resume-card__stat"><span class="resume-card__stat-value">—</span><span class="resume-card__stat-label">Certificates</span></div>
               </div>
             </section>
           </article>

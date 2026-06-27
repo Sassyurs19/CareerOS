@@ -2,6 +2,7 @@
    CareerOS — Navbar Module
    - Sticky glass navbar on scroll
    - Mobile menu toggle
+   - Profile/account dropdown for authenticated users
    - prefers-reduced-motion aware
    ============================================================ */
 (function () {
@@ -78,4 +79,38 @@
       if (e.key === "Escape") setMenu(false);
     });
   }
+
+  /* ---------- Account dropdown open/close behaviour ---------- */
+  function closeAccountMenus(except) {
+    document.querySelectorAll("[data-acct].is-open").forEach(function (acct) {
+      if (acct === except) return;
+      acct.classList.remove("is-open");
+      var t = acct.querySelector("[data-acct-toggle]");
+      if (t) t.setAttribute("aria-expanded", "false");
+    });
+  }
+
+  document.addEventListener("click", function (e) {
+    var toggle = e.target.closest("[data-acct-toggle]");
+    if (toggle) {
+      e.preventDefault();
+      var acct = toggle.closest("[data-acct]");
+      var willOpen = !acct.classList.contains("is-open");
+      closeAccountMenus(acct);
+      acct.classList.toggle("is-open", willOpen);
+      toggle.setAttribute("aria-expanded", String(willOpen));
+      return;
+    }
+    /* Clicks inside the menu (links / sign-out) act normally; everything
+       else outside an open menu closes it. */
+    if (e.target.closest("[data-acct-menu]")) return;
+    closeAccountMenus(null);
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      closeAccountMenus(null);
+      setMenu(false);
+    }
+  });
 })();
