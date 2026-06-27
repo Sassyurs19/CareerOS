@@ -2,7 +2,14 @@
    CareerOS — Premium career operating system
    Stylesheet: design tokens, base, layout, components
    Monochrome black & white theme · architectural backgrounds
+   Typography: Space Grotesk (headings), Inter (body), JetBrains Mono (numbers), DotGothic16 (logo)
    ============================================================ */
+
+/* ---------- Font Imports (Optimized Loading) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=DotGothic16&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
 
 /* ---------- Design tokens ---------- */
 :root {
@@ -21,8 +28,12 @@
   --accent:        #ffffff;
   --accent-soft:   rgba(255, 255, 255, 0.10);
 
-  --font-head: "Space Grotesk", system-ui, sans-serif;
+  /* Typography System */
+  --font-logo: "DotGothic16", monospace;
+  --font-head: "Space Grotesk", "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-btn: "Inter", system-ui, sans-serif;
 
   --container: 1160px;
   --radius:    18px;
@@ -94,7 +105,7 @@ img, svg { display: block; max-width: 100%; }
   justify-content: center;
   gap: 8px;
   padding: var(--pad);
-  font-family: var(--font-head);
+  font-family: var(--font-btn);
   font-weight: 500;
   font-size: 15px;
   letter-spacing: -0.01em;
@@ -187,11 +198,12 @@ img, svg { display: block; max-width: 100%; }
   box-shadow: none;
 }
 .brand__name {
-  font-family: var(--font-body);
-  font-weight: 600;
+  font-family: var(--font-logo);
+  font-weight: 400;
   font-size: 1.22rem;
-  letter-spacing: -0.03em;
+  letter-spacing: 0.05em;
   color: #fff;
+  text-transform: uppercase;
 }
 .brand__name b { font-weight: 700; }
 .brand:hover .brand__name { color: #fff; }
@@ -484,7 +496,7 @@ img, svg { display: block; max-width: 100%; }
   border: 1px solid var(--border); border-radius: 999px;
   padding: 6px 12px; white-space: nowrap;
 }
-.doc__score b { color: var(--text); }
+.doc__score b { color: var(--text); font-family: var(--font-mono); font-weight: 600; }
 .doc__divider { height: 1px; background: var(--border); margin: 20px 0; }
 .doc__block { margin-bottom: 22px; }
 .doc__block h4 {
@@ -721,8 +733,8 @@ img, svg { display: block; max-width: 100%; }
 .stat { text-align: center; }
 .stat b {
   display: block;
-  font-family: var(--font-head);
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-weight: 600;
   font-size: clamp(2rem, 5vw, 2.8rem);
   letter-spacing: -0.03em;
   color: var(--text);
@@ -818,10 +830,11 @@ img, svg { display: block; max-width: 100%; }
 
 .loader__name {
   position: relative;
-  font-family: var(--font-head);
-  font-weight: 600;
+  font-family: var(--font-logo);
+  font-weight: 400;
   font-size: 1.45rem;
-  letter-spacing: -0.01em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
   color: #f4f4f6;
   background: linear-gradient(100deg, #f4f4f6 0%, #f4f4f6 38%, #ffffff 50%, #f4f4f6 62%, #f4f4f6 100%);
   background-size: 250% auto;
@@ -829,7 +842,7 @@ img, svg { display: block; max-width: 100%; }
   -webkit-text-fill-color: transparent; color: transparent;
   animation: loaderSheen 2.8s ease-in-out infinite;
 }
-.loader__name b { font-weight: 700; }
+.loader__name b { font-weight: 400; }
 @keyframes loaderSheen {
   0%   { background-position: 160% center; }
   60%, 100% { background-position: -60% center; }
@@ -1685,6 +1698,7 @@ img, svg, video, canvas { max-width: 100%; }
   font-size: 1.2rem;
   font-weight: 600;
   color: #6366f1;
+  font-family: var(--font-mono);
 }
 .dash-hero__goal {
   grid-column: 1 / -1;
@@ -1961,6 +1975,7 @@ img, svg, video, canvas { max-width: 100%; }
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--text);
+  font-family: var(--font-mono);
 }
 .career-progress__value--empty {
   color: var(--text-dim);
@@ -2060,7 +2075,7 @@ img, svg, video, canvas { max-width: 100%; }
 .dash-stat:hover { transform: translateY(-4px); border-color: var(--border-strong); box-shadow: var(--glow); }
 .dash-stat__label { font-size: 0.82rem; color: var(--text-muted); letter-spacing: 0.02em; }
 .dash-stat__value {
-  font-family: "Space Grotesk", sans-serif; font-weight: 700;
+  font-family: var(--font-mono); font-weight: 600;
   font-size: clamp(1.7rem, 3vw, 2.2rem); margin-top: 10px; line-height: 1;
 }
 .dash-stat__meta { margin-top: 8px; font-size: 0.78rem; color: var(--text-muted); }
@@ -2454,9 +2469,9 @@ html { scroll-behavior: smooth; }
 }
 .gh-stat:hover { transform: translateY(-2px); background: var(--surface-2); border-color: rgba(255,255,255,0.2); }
 .gh-stat__value {
-  font-family: "Space Grotesk", "Inter", sans-serif;
+  font-family: var(--font-mono);
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text);
 }
 .gh-stat__label {
@@ -3210,6 +3225,7 @@ img, svg, video, canvas { max-width: 100%; height: auto; }
   font-weight: 600;
   color: var(--text);
   line-height: 1;
+  font-family: var(--font-mono);
 }
 .profile-stat__label {
   font-size: 0.8rem;
