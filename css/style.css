@@ -3126,52 +3126,64 @@ body.is-editing .profile-section__edit-btn {
   justify-content: center;
 }
 
-/* Edit inputs - hidden by default */
+/* Edit inputs - completely hidden by default */
 .profile-field__input,
 .profile-tags__editor,
 .profile-bio__input {
-  display: none;
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
 }
 
-/* Show inputs when section is being edited */
+/* Show inputs only when section is being edited */
 .profile-field.is-editing .profile-field__value,
 .profile-field.is-editing .profile-field__label {
-  display: none;
+  display: none !important;
 }
 .profile-field.is-editing .profile-field__input {
-  display: block;
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Tag input styling */
+/* Tag input styling - completely hidden by default */
 .profile-tags__editor {
-  display: none;
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
 }
 .profile-tags.is-editing .profile-empty {
-  display: none;
+  display: none !important;
 }
 .profile-tags.is-editing .profile-tags__editor {
-  display: block;
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Bio input styling */
+/* Bio input styling - completely hidden by default */
 .profile-bio__input {
-  display: none;
+  display: none !important;
+  opacity: 0;
+  visibility: hidden;
 }
 .profile-bio.is-editing .profile-bio__text {
-  display: none;
+  display: none !important;
 }
 .profile-bio.is-editing .profile-bio__input {
-  display: block;
+  display: block !important;
+  opacity: 1;
+  visibility: visible;
 }
 
-/* Input styling - glassmorphism */
+/* Input styling - CareerOS dark theme */
 .profile-field__input,
 .profile-tags__input,
 .profile-bio__input {
   width: 100%;
   padding: 12px 16px;
   border-radius: 10px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid var(--border);
   color: var(--text);
   font-family: var(--font-body);
@@ -3185,13 +3197,17 @@ body.is-editing .profile-section__edit-btn {
 .profile-bio__input:focus {
   outline: none;
   border-color: var(--border-strong);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.06);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.04);
 }
 .profile-field__input::placeholder,
 .profile-tags__input::placeholder,
 .profile-bio__input::placeholder {
   color: var(--text-dim);
+}
+.profile-field__input option {
+  background: #0c0c0e;
+  color: var(--text);
 }
 
 /* Select dropdown styling */
