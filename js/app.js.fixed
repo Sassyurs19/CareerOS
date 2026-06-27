@@ -1,0 +1,14 @@
+/* ============================================================
+   CareerOS — Application Bootstrap
+   - Lightweight entry point
+   - All functionality now in dedicated modules
+   ============================================================ */
+(function () {
+  "use strict";
+
+  // Application bootstrap - modules initialize themselves
+  // This file serves as the entry point and can be used for
+  // cross-module coordination if needed in the future.
+  
+  console.log("CareerOS initialized");
+})();

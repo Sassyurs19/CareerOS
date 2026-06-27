@@ -1,0 +1,59 @@
+{
+  "roadmap": {
+    "phases": [
+      {
+        "id": "phase-1",
+        "name": "Foundation",
+        "status": "completed",
+        "features": [
+          "Project architecture",
+          "UI/UX design system",
+          "Authentication pages",
+          "Toast notification system",
+          "Modal dialog system"
+        ]
+      },
+      {
+        "id": "phase-2",
+        "name": "Career Profile Engine",
+        "status": "pending",
+        "features": [
+          "Profile data structure",
+          "GitHub integration",
+          "LeetCode integration",
+          "LinkedIn integration",
+          "Skills extraction",
+          "Experience parsing"
+        ]
+      },
+      {
+        "id": "phase-3",
+        "name": "AI Resume Builder",
+        "status": "pending",
+        "features": [
+          "Resume templates",
+          "AI content generation",
+          "ATS optimization",
+          "PDF export",
+          "Real-time preview"
+        ]
+      },
+      {
+        "id": "phase-4",
+        "name": "Advanced Features",
+        "status": "pending",
+        "features": [
+          "Career analytics",
+          "Job matching",
+          "Skill recommendations",
+          "Portfolio showcase",
+          "Networking tools"
+        ]
+      }
+    ]
+  },
+  "metadata": {
+    "version": "1.0.0",
+    "last_updated": null
+  }
+}

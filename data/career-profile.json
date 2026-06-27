@@ -1,0 +1,25 @@
+{
+  "profile": {
+    "id": "",
+    "name": "",
+    "email": "",
+    "title": "",
+    "bio": "",
+    "location": "",
+    "website": "",
+    "github": "",
+    "linkedin": "",
+    "leetcode": "",
+    "skills": [],
+    "experience": [],
+    "education": [],
+    "projects": [],
+    "certifications": [],
+    "achievements": []
+  },
+  "metadata": {
+    "created_at": null,
+    "updated_at": null,
+    "version": "1.0.0"
+  }
+}

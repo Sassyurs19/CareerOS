@@ -1,0 +1,30 @@
+/* ============================================================
+   CareerOS — Application Bootstrap
+   - Loads and initializes all modules
+   - Single entry point for the application
+   ============================================================ */
+(function () {
+  "use strict";
+
+  // Note: Individual modules have been extracted to separate files:
+  // - utils.js: Helper functions
+  // - theme.js: Theme management
+  // - navbar.js: Navigation and mobile menu
+  // - animations.js: Scroll-reveal animations
+  // - loader.js: Loading screen
+  // - auth.js: Authentication flow (signin/signup/onboarding)
+  // - github.js: GitHub integration
+  // - google.js: Google sign-in integration
+  // - navigation.js: Active nav highlighting
+  // - toast.js: Toast notifications
+  // - modal.js: Modal dialogs
+  // - dashboard.js: Dashboard functionality
+  // - profile.js: Profile functionality
+  // - resume.js: Resume functionality
+  // - platform.js: Platform functionality
+
+  // All modules are self-initializing IIFEs
+  // They will execute when loaded via script tags in HTML
+
+  console.log("CareerOS: Application bootstrap complete");
+})();
