@@ -54,30 +54,18 @@
   <main>
     <section class="hero">
       <div class="hero__bg" aria-hidden="true">
-        <!-- Layer 1: Dark gradient base -->
-        <div class="premium-bg__gradient"></div>
-        
-        <!-- Layer 2: Soft radial glows -->
-        <div class="premium-bg__glow premium-bg__glow--blue"></div>
-        <div class="premium-bg__glow premium-bg__glow--violet"></div>
-        
-        <!-- Layer 3: Extremely subtle grid -->
-        <div class="premium-bg__grid"></div>
-        
-        <!-- Layer 4: Floating glass panels (edges only) -->
-        <div class="premium-bg__glass premium-bg__glass--1"></div>
-        <div class="premium-bg__glass premium-bg__glass--2"></div>
-        <div class="premium-bg__glass premium-bg__glass--3"></div>
-        
-        <!-- Layer 5: Subtle particles -->
-        <div class="premium-bg__particle premium-bg__particle--1"></div>
-        <div class="premium-bg__particle premium-bg__particle--2"></div>
-        <div class="premium-bg__particle premium-bg__particle--3"></div>
-        <div class="premium-bg__particle premium-bg__particle--4"></div>
-        <div class="premium-bg__particle premium-bg__particle--5"></div>
-        <div class="premium-bg__particle premium-bg__particle--6"></div>
-        <div class="premium-bg__particle premium-bg__particle--7"></div>
-        <div class="premium-bg__particle premium-bg__particle--8"></div>
+        <!-- Layer 1: Dark gradient base (Near Black, Deep Navy, Slate) -->
+        <div class="dash-bg__gradient"></div>
+        <!-- Layer 2: Large blurred blue glow (Top-right, very low opacity) -->
+        <div class="dash-bg__glow dash-bg__glow--blue"></div>
+        <!-- Layer 3: Soft violet glow (Bottom-left, low opacity) -->
+        <div class="dash-bg__glow dash-bg__glow--violet"></div>
+        <!-- Layer 4: Extremely subtle animated grid (Almost invisible, very thin lines) -->
+        <div class="dash-bg__grid"></div>
+        <!-- Layer 5: Very soft animated light sweep (Slow, barely noticeable) -->
+        <div class="dash-bg__sweep"></div>
+        <!-- Layer 6: Gentle vignette (Keep focus on content) -->
+        <div class="dash-bg__vignette"></div>
       </div>
 
       <div class="container hero__inner">
@@ -95,87 +83,6 @@
       </div>
     </section>
 
-    <!-- YOUR JOURNEY WITH CAREEROS -->
-
-    <section class="section" id="how">
-      <div class="container">
-        <header class="section__head reveal">
-          <span class="section__kicker">How it works</span>
-          <h2 class="section__title">Your Journey with CareerOS</h2>
-          <p class="section__lede">
-            Everything you need to become career-ready, from one intelligent platform.
-          </p>
-        </header>
-
-        <div class="journey reveal" data-delay="1">
-          <span class="journey__glow" aria-hidden="true"></span>
-          <ol class="journey__track">
-
-            <li class="journey-card reveal" data-delay="1">
-              <span class="journey-card__line" aria-hidden="true"></span>
-              <span class="journey-card__step">01</span>
-              <span class="journey-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 14.5 14.5 9.5"/><path d="M8 12 6 14a3.5 3.5 0 0 0 5 5l2-2"/><path d="M16 12l2-2a3.5 3.5 0 0 0-5-5l-2 2"/></svg>
-              </span>
-              <h3 class="journey-card__title">Connect Your Accounts</h3>
-              <p class="journey-card__desc">Securely connect GitHub, LinkedIn, LeetCode and GeeksforGeeks to import your public achievements and build your professional profile.</p>
-            </li>
-
-            <li class="journey-card reveal" data-delay="2">
-              <span class="journey-card__line" aria-hidden="true"></span>
-              <span class="journey-card__step">02</span>
-              <span class="journey-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4.5a3 3 0 0 0-3 3 2.7 2.7 0 0 0-1.5 4.9A2.7 2.7 0 0 0 9 17a3 3 0 0 0 3 2.5"/><path d="M12 4.5a3 3 0 0 1 3 3 2.7 2.7 0 0 1 1.5 4.9A2.7 2.7 0 0 1 15 17a3 3 0 0 1-3 2.5"/><path d="M12 4.5v15"/></svg>
-              </span>
-              <h3 class="journey-card__title">AI Understands Your Profile</h3>
-              <p class="journey-card__desc">CareerOS analyzes your skills, projects, achievements, coding activity and learning history to understand your current level.</p>
-            </li>
-
-            <li class="journey-card reveal" data-delay="3">
-              <span class="journey-card__line" aria-hidden="true"></span>
-              <span class="journey-card__step">03</span>
-              <span class="journey-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="0.6" fill="currentColor"/></svg>
-              </span>
-              <h3 class="journey-card__title">Identify Skill Gaps</h3>
-              <p class="journey-card__desc">Discover missing skills, technologies and certifications required for your dream role.</p>
-            </li>
-
-            <li class="journey-card reveal" data-delay="1">
-              <span class="journey-card__line" aria-hidden="true"></span>
-              <span class="journey-card__step">04</span>
-              <span class="journey-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18"/><path d="M9 3v3M15 6v3M9 11v3M15 14v3M9 18v2"/></svg>
-              </span>
-              <h3 class="journey-card__title">Receive Your Career Roadmap</h3>
-              <p class="journey-card__desc">Get a personalized semester-wise learning roadmap with projects, certifications and interview preparation.</p>
-            </li>
-
-            <li class="journey-card reveal" data-delay="2">
-              <span class="journey-card__line" aria-hidden="true"></span>
-              <span class="journey-card__step">05</span>
-              <span class="journey-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M9.5 12.5h6M9.5 16h6"/></svg>
-              </span>
-              <h3 class="journey-card__title">Build a Professional Resume</h3>
-              <p class="journey-card__desc">Generate an ATS-friendly resume and portfolio using your verified achievements and connected profiles.</p>
-            </li>
-
-            <li class="journey-card reveal" data-delay="3">
-              <span class="journey-card__step">06</span>
-              <span class="journey-card__icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16l4-5 3 3 4-6"/></svg>
-              </span>
-              <h3 class="journey-card__title">Monitor Your Progress</h3>
-              <p class="journey-card__desc">Track completed goals, learning milestones, profile strength and career readiness from your dashboard.</p>
-            </li>
-
-          </ol>
-        </div>
-      </div>
-    </section>
-
-
     <!-- VALUE PROPS -->
     <section class="section">
       <div class="container">
@@ -183,8 +90,7 @@
           <span class="section__kicker">Why CareerOS</span>
           <h2 class="section__title">Proof you can trust.</h2>
           <p class="section__lede">
-            No copy-pasted portfolios, no inflated claims. Everything on your CareerOS profile is
-            pulled from the source and verified against it.
+            Every contribution, solved problem and certificate is checked against the original platform — so what recruiters see is real.
           </p>
         </header>
 
@@ -194,14 +100,14 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
             </span>
             <h3>Verified, never inflated</h3>
-            <p>Every contribution, solved problem and certificate is checked against the original platform — so what recruiters see is real.</p>
+            <p>Activity pulled directly from your connected sources — no manual updates.</p>
           </article>
           <article class="trust__item reveal" data-delay="1">
             <span class="trust__check">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
             </span>
             <h3>Always in sync</h3>
-            <p>Connect once. CareerOS keeps your profile and resume current as you ship, solve and certify — no manual updates.</p>
+            <p>Connect once. CareerOS keeps your profile and resume current as you ship, solve and certify.</p>
           </article>
           <article class="trust__item reveal" data-delay="2">
             <span class="trust__check">

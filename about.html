@@ -14,6 +14,22 @@
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <!-- Premium Workspace Background -->
+  <div class="dash-bg" aria-hidden="true">
+    <!-- Layer 1: Dark gradient base (Near Black, Deep Navy, Slate) -->
+    <div class="dash-bg__gradient"></div>
+    <!-- Layer 2: Large blurred blue glow (Top-right, very low opacity) -->
+    <div class="dash-bg__glow dash-bg__glow--blue"></div>
+    <!-- Layer 3: Soft violet glow (Bottom-left, low opacity) -->
+    <div class="dash-bg__glow dash-bg__glow--violet"></div>
+    <!-- Layer 4: Extremely subtle animated grid (Almost invisible, very thin lines) -->
+    <div class="dash-bg__grid"></div>
+    <!-- Layer 5: Very soft animated light sweep (Slow, barely noticeable) -->
+    <div class="dash-bg__sweep"></div>
+    <!-- Layer 6: Gentle vignette (Keep focus on content) -->
+    <div class="dash-bg__vignette"></div>
+  </div>
+
   <header class="nav is-scrolled" id="nav">
     <div class="container nav__inner">
       <a class="brand" href="index.html" aria-label="CareerOS home">
@@ -27,7 +43,7 @@
       <nav class="nav__links" id="navLinks" aria-label="Primary">
         <a href="platform.html" class="nav__link">Platform</a>
         <a href="resume.html" class="nav__link">Resume</a>
-        <a href="about.html" class="nav__link nav__signin">About</a>
+        <a href="about.html" class="nav__link">About</a>
         <a href="signin.html" class="nav__link nav__signin">Sign In</a>
         <a href="signup.html" class="btn btn--primary btn--sm">Get Started</a>
       </nav>
