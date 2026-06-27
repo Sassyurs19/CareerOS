@@ -3135,10 +3135,20 @@ body.is-editing .profile-section__edit-btn {
   visibility: hidden;
 }
 
-/* Show inputs only when section is being edited */
-.profile-field.is-editing .profile-field__value,
+/* Show inputs when section is being edited - keep value visible */
 .profile-field.is-editing .profile-field__label {
-  display: none !important;
+  display: block !important;
+  margin-bottom: 6px;
+}
+.profile-field.is-editing .profile-field__value {
+  display: block !important;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  font-size: 0.85rem;
 }
 .profile-field.is-editing .profile-field__input {
   display: block !important;
@@ -3160,6 +3170,14 @@ body.is-editing .profile-section__edit-btn {
   opacity: 1;
   visibility: visible;
 }
+/* Show current tags when editing */
+.profile-tags.is-editing .profile-tags__list {
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+}
 
 /* Bio input styling - completely hidden by default */
 .profile-bio__input {
@@ -3168,7 +3186,15 @@ body.is-editing .profile-section__edit-btn {
   visibility: hidden;
 }
 .profile-bio.is-editing .profile-bio__text {
-  display: none !important;
+  display: block !important;
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.5;
 }
 .profile-bio.is-editing .profile-bio__input {
   display: block !important;
