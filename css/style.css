@@ -261,6 +261,150 @@ img, svg { display: block; max-width: 100%; }
 .mobile-menu__cta { margin-top: 22px; width: 100%; }
 
 /* ============================================================
+   UNIFIED PREMIUM BACKGROUND SYSTEM
+   5-layer structure for consistent design language
+   ============================================================ */
+
+/* Layer 1: Dark gradient base (Near Black, Deep Navy, Slate) */
+.premium-bg__gradient {
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 120% 80% at 20% 30%, rgba(15, 23, 42, 0.4) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 70% at 80% 70%, rgba(30, 41, 59, 0.3) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 50% at 50% 50%, rgba(15, 23, 42, 0.2) 0%, transparent 50%),
+    linear-gradient(180deg, #050505 0%, #0a0e1a 40%, #050505 100%);
+}
+
+/* Layer 2: One large blurred radial glow (very low opacity) */
+.premium-bg__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.15;
+  animation: premiumGlowBreath 12s ease-in-out infinite;
+}
+.premium-bg__glow--blue {
+  width: 700px; height: 700px;
+  top: -200px; left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.12), transparent 70%);
+}
+.premium-bg__glow--violet {
+  width: 500px; height: 500px;
+  bottom: -150px; right: -100px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.08), transparent 70%);
+  animation-delay: -6s;
+}
+
+/* Layer 3: Extremely subtle grid (almost invisible) */
+.premium-bg__grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 70% 50% at 50% 40%, #000 20%, transparent 70%);
+  -webkit-mask-image: radial-gradient(ellipse 70% 50% at 50% 40%, #000 20%, transparent 70%);
+}
+
+/* Layer 4: Floating glass panels (2-4, no text/icons) */
+.premium-bg__glass {
+  position: absolute;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  filter: blur(2px);
+  animation: premiumGlassFloat 20s ease-in-out infinite;
+}
+.premium-bg__glass--1 {
+  width: 200px; height: 280px;
+  top: 15%; left: 8%;
+  animation-delay: 0s;
+}
+.premium-bg__glass--2 {
+  width: 180px; height: 240px;
+  top: 45%; right: 10%;
+  animation-delay: -7s;
+}
+.premium-bg__glass--3 {
+  width: 160px; height: 200px;
+  bottom: 20%; left: 15%;
+  animation-delay: -14s;
+}
+
+/* Layer 5: Very subtle floating particles (5-8, slow movement) */
+.premium-bg__particle {
+  position: absolute;
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: rgba(148, 163, 184, 0.2);
+  animation: premiumParticleFloat 25s linear infinite;
+}
+.premium-bg__particle--1 { top: 10%; left: 15%; animation-delay: 0s; }
+.premium-bg__particle--2 { top: 25%; right: 20%; animation-delay: -5s; }
+.premium-bg__particle--3 { top: 45%; left: 25%; animation-delay: -10s; }
+.premium-bg__particle--4 { top: 60%; right: 25%; animation-delay: -15s; }
+.premium-bg__particle--5 { bottom: 30%; left: 20%; animation-delay: -8s; }
+.premium-bg__particle--6 { bottom: 20%; right: 30%; animation-delay: -12s; }
+.premium-bg__particle--7 { top: 35%; left: 40%; animation-delay: -3s; }
+.premium-bg__particle--8 { top: 55%; right: 35%; animation-delay: -7s; }
+
+/* Premium animations - slow and expensive */
+@keyframes premiumGlowBreath {
+  0%, 100% { opacity: 0.15; transform: translateX(-50%) scale(1); }
+  50% { opacity: 0.22; transform: translateX(-50%) scale(1.05); }
+}
+@keyframes premiumGlassFloat {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(0.3deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  75% { transform: translateY(-4px) rotate(-0.3deg); }
+}
+@keyframes premiumParticleFloat {
+  0% { transform: translate(0, 0); opacity: 0; }
+  10% { opacity: 0.2; }
+  90% { opacity: 0.2; }
+  100% { transform: translate(50px, -100px); opacity: 0; }
+}
+
+/* Mobile responsiveness - simplify decorative layers */
+@media (max-width: 768px) {
+  .premium-bg__glow--blue {
+    width: 500px; height: 500px;
+    top: -150px;
+  }
+  .premium-bg__glow--violet {
+    width: 350px; height: 350px;
+    bottom: -100px; right: -80px;
+  }
+  .premium-bg__glass {
+    opacity: 0.5;
+  }
+  .premium-bg__particle {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: 480px) {
+  .premium-bg__glow--blue {
+    width: 400px; height: 400px;
+    top: -120px;
+  }
+  .premium-bg__glow--violet {
+    width: 280px; height: 280px;
+    bottom: -80px; right: -60px;
+  }
+  .premium-bg__glass {
+    display: none;
+  }
+  .premium-bg__particle {
+    opacity: 0.2;
+  }
+}
+
+/* ============================================================
    HERO — Career Universe multi-layer background
    ============================================================ */
 .hero {

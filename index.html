@@ -55,87 +55,29 @@
     <section class="hero">
       <div class="hero__bg" aria-hidden="true">
         <!-- Layer 1: Dark gradient base -->
-        <div class="hero__gradient"></div>
+        <div class="premium-bg__gradient"></div>
         
-        <!-- Layer 2: Soft mesh glow -->
-        <div class="hero__mesh-glow hero__mesh-glow--blue"></div>
-        <div class="hero__mesh-glow hero__mesh-glow--violet"></div>
+        <!-- Layer 2: Soft radial glows -->
+        <div class="premium-bg__glow premium-bg__glow--blue"></div>
+        <div class="premium-bg__glow premium-bg__glow--violet"></div>
         
-        <!-- Layer 3: Career Constellation -->
-        <svg class="hero__constellation" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="constellationGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-              <stop offset="0%" style="stop-color:rgba(148, 163, 184, 0.12)"/>
-              <stop offset="50%" style="stop-color:rgba(99, 102, 241, 0.10)"/>
-              <stop offset="100%" style="stop-color:rgba(148, 163, 184, 0.06)"/>
-            </linearGradient>
-            <radialGradient id="nodeGlow" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" style="stop-color:rgba(99, 102, 241, 0.6)"/>
-              <stop offset="100%" style="stop-color:rgba(99, 102, 241, 0)"/>
-            </radialGradient>
-          </defs>
-          <g class="constellation-lines" stroke="url(#constellationGradient)" stroke-width="0.6" fill="none">
-            <!-- Career constellation connections -->
-            <path d="M200,150 Q280,200 350,180 T500,220" />
-            <path d="M350,180 Q420,280 380,350 T450,450" />
-            <path d="M500,220 Q580,300 550,380 T650,500" />
-            <path d="M380,350 Q480,420 550,380" />
-            <path d="M450,450 Q520,520 650,500 T800,550" />
-            <path d="M650,500 Q750,450 850,480 T950,420" />
-            <path d="M800,550 Q900,600 950,420" />
-            <path d="M850,480 Q920,380 1000,350 T1100,280" />
-            <path d="M950,420 Q1020,480 1100,280" />
-            <path d="M1000,350 Q1080,280 1150,200 T1250,150" />
-            <path d="M1100,280 Q1180,200 1250,150" />
-          </g>
-          <g class="constellation-nodes">
-            <circle cx="200" cy="150" r="4" fill="url(#nodeGlow)" class="constellation-node constellation-node--1"/>
-            <circle cx="350" cy="180" r="5" fill="url(#nodeGlow)" class="constellation-node constellation-node--2"/>
-            <circle cx="500" cy="220" r="4" fill="url(#nodeGlow)" class="constellation-node constellation-node--3"/>
-            <circle cx="380" cy="350" r="6" fill="url(#nodeGlow)" class="constellation-node constellation-node--4"/>
-            <circle cx="450" cy="450" r="4" fill="url(#nodeGlow)" class="constellation-node constellation-node--5"/>
-            <circle cx="550" cy="380" r="5" fill="url(#nodeGlow)" class="constellation-node constellation-node--6"/>
-            <circle cx="650" cy="500" r="6" fill="url(#nodeGlow)" class="constellation-node constellation-node--7"/>
-            <circle cx="800" cy="550" r="4" fill="url(#nodeGlow)" class="constellation-node constellation-node--8"/>
-            <circle cx="850" cy="480" r="5" fill="url(#nodeGlow)" class="constellation-node constellation-node--9"/>
-            <circle cx="950" cy="420" r="6" fill="url(#nodeGlow)" class="constellation-node constellation-node--10"/>
-            <circle cx="1000" cy="350" r="4" fill="url(#nodeGlow)" class="constellation-node constellation-node--11"/>
-            <circle cx="1100" cy="280" r="5" fill="url(#nodeGlow)" class="constellation-node constellation-node--12"/>
-            <circle cx="1150" cy="200" r="4" fill="url(#nodeGlow)" class="constellation-node constellation-node--13"/>
-            <circle cx="1250" cy="150" r="5" fill="url(#nodeGlow)" class="constellation-node constellation-node--14"/>
-          </g>
-        </svg>
+        <!-- Layer 3: Extremely subtle grid -->
+        <div class="premium-bg__grid"></div>
         
-        <!-- Layer 4: Career Flow Lines -->
-        <svg class="hero__flow-lines" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <defs>
-            <linearGradient id="flowGradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%" style="stop-color:rgba(99, 102, 241, 0.08)"/>
-              <stop offset="100%" style="stop-color:rgba(99, 102, 241, 0)"/>
-            </linearGradient>
-            <linearGradient id="flowGradient2" x1="100%" y1="0%" x2="0%" y2="0%">
-              <stop offset="0%" style="stop-color:rgba(139, 92, 246, 0.06)"/>
-              <stop offset="100%" style="stop-color:rgba(139, 92, 246, 0)"/>
-            </linearGradient>
-          </defs>
-          <g fill="none" stroke-width="1.5">
-            <path d="M-50,600 Q200,550 400,580 T800,520 T1200,560 T1500,500" stroke="url(#flowGradient1)" class="flow-line flow-line--1"/>
-            <path d="M-50,650 Q250,700 500,660 T900,720 T1300,680 T1500,750" stroke="url(#flowGradient2)" class="flow-line flow-line--2"/>
-            <path d="M-50,300 Q300,250 600,280 T1000,220 T1400,260 T1500,200" stroke="url(#flowGradient1)" class="flow-line flow-line--3"/>
-          </g>
-        </svg>
+        <!-- Layer 4: Floating glass panels (edges only) -->
+        <div class="premium-bg__glass premium-bg__glass--1"></div>
+        <div class="premium-bg__glass premium-bg__glass--2"></div>
+        <div class="premium-bg__glass premium-bg__glass--3"></div>
         
-        <!-- Layer 5: Floating Glass Cards -->
-        <div class="hero__glass-cards">
-          <div class="glass-card glass-card--1">AI</div>
-          <div class="glass-card glass-card--2">Resume</div>
-          <div class="glass-card glass-card--3">Portfolio</div>
-          <div class="glass-card glass-card--4">Skills</div>
-          <div class="glass-card glass-card--5">Projects</div>
-        </div>
-        
-        <!-- Layer 6: Soft animated light -->
-        <div class="hero__ambient-light"></div>
+        <!-- Layer 5: Subtle particles -->
+        <div class="premium-bg__particle premium-bg__particle--1"></div>
+        <div class="premium-bg__particle premium-bg__particle--2"></div>
+        <div class="premium-bg__particle premium-bg__particle--3"></div>
+        <div class="premium-bg__particle premium-bg__particle--4"></div>
+        <div class="premium-bg__particle premium-bg__particle--5"></div>
+        <div class="premium-bg__particle premium-bg__particle--6"></div>
+        <div class="premium-bg__particle premium-bg__particle--7"></div>
+        <div class="premium-bg__particle premium-bg__particle--8"></div>
       </div>
 
       <div class="container hero__inner">
